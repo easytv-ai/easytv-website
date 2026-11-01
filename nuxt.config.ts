@@ -1,3 +1,4 @@
+import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://easytv.ai'
@@ -32,7 +33,6 @@ export default defineNuxtConfig({
     defaultLocale: 'zh',
     strategy: 'prefix_except_default',
     baseUrl: siteUrl,
-    lazy: true,
     langDir: 'locales',
     locales: [
       { code: 'zh', language: 'zh-CN', name: '简体中文', file: 'zh.json' },

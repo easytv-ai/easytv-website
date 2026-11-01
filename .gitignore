@@ -12,3 +12,7 @@ dist
 *.log
 .idea
 .vscode
+
+# 只保留 pnpm 锁文件
+package-lock.json
+yarn.lock

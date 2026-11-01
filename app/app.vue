@@ -4,7 +4,7 @@ const head = useLocaleHead({ dir: true, seo: true })
 const config = useRuntimeConfig()
 
 useHead({
-  htmlAttrs: computed(() => ({ lang: head.value.htmlAttrs?.lang ?? locale.value })),
+  htmlAttrs: { lang: computed(() => head.value.htmlAttrs?.lang ?? locale.value) },
   link: computed(() => head.value.link ?? []),
   meta: computed(() => head.value.meta ?? []),
 })
