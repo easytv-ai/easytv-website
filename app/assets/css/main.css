@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #fafafa;
+  --bg-soft: #f2f3f5;
+  --panel: #ffffff;
+  --panel-2: #f5f6f8;
+  --fg: #0a0a0a;
+  --fg-2: #45515e;
+  --fg-3: #8e8e93;
+  --line: #e5e7eb;
+  --line-2: #eef0f3;
+  --accent: #ff5530;
+  --accent-2: #ea5ec1;
+  --accent-3: #7c5cff;
+  --glow: rgba(255, 85, 48, 0.18);
+  --code-bg: #0f1115;
+  --code-fg: #e6e8ec;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #080808;
+  --bg-soft: #0e0f12;
+  --panel: #111214;
+  --panel-2: #16181c;
+  --fg: #f5f5f5;
+  --fg-2: #b4b8bf;
+  --fg-3: #70747c;
+  --line: #22252b;
+  --line-2: #1a1c21;
+  --glow: rgba(255, 85, 48, 0.22);
+  --code-bg: #0b0c0f;
+  --code-fg: #e6e8ec;
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.font-mono { font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
+
+.section { @apply py-20 sm:py-28; }
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium tracking-wide uppercase;
+  border-color: var(--line);
+  color: var(--fg-2);
+  background: var(--panel);
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.h-display { @apply text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] leading-[1.05]; }
+.h-section { @apply text-3xl sm:text-4xl font-semibold tracking-[-0.02em] leading-tight; }
+.lead { color: var(--fg-2); @apply text-base sm:text-lg leading-relaxed; }
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  @apply rounded-2xl;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transform: translateY(-2px); box-shadow: 0 20px 50px -30px var(--glow); }
+
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition; }
+.btn-primary { background: var(--fg); color: var(--bg); }
+.btn-primary:hover { opacity: .88; }
+.btn-ghost { border: 1px solid var(--line); color: var(--fg); background: var(--panel); }
+.btn-ghost:hover { border-color: var(--fg-3); }
+
+.code {
+  background: var(--code-bg); color: var(--code-fg);
+  @apply rounded-xl text-[13px] leading-relaxed overflow-x-auto;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.code .cm { color: #6b7280; }
+.code .kw { color: #ff8a65; }
+.code .str { color: #9fe3b4; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--fg) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--fg) 6%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 100%);
+}
+
+@keyframes float-y { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+@keyframes dash { to { stroke-dashoffset: -40 } }
+@keyframes pulse-ring { 0% { transform: scale(.9); opacity: .9 } 100% { transform: scale(1.6); opacity: 0 } }
+.anim-float { animation: float-y 5s ease-in-out infinite; }
+.anim-dash { stroke-dasharray: 6 6; animation: dash 1.4s linear infinite; }
+.anim-ring { animation: pulse-ring 1.8s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float, .anim-dash, .anim-ring { animation: none; }
+}
+
+.marquee { display: flex; gap: 1rem; width: max-content; animation: marquee 48s linear infinite; }
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.marquee:hover { animation-play-state: paused; }

@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "title": "EasyTV · Open-source AI short drama studio",
+    "description": "EasyTV is an open-source, self-hosted AI short drama platform: node canvas, one-prompt film, 3D director stage, server-side compositing, with built-in credits billing, model pricing and an admin console. The New API of short drama."
+  },
+  "nav": {
+    "features": "Features",
+    "why": "Why",
+    "arch": "Architecture",
+    "compare": "Compare",
+    "quickstart": "Deploy",
+    "roadmap": "Roadmap",
+    "github": "GitHub",
+    "demo": "Live demo",
+    "theme": "Toggle theme",
+    "lang": "中文"
+  },
+  "hero": {
+    "eyebrow": "Open source · Self-hosted · AGPL-3.0",
+    "title1": "The New API of",
+    "title2": "short drama",
+    "subtitle": "Plug any video, image or voice model into one canvas and go from script to final cut in one place. Credits billing, model pricing, payments and an admin console are built in. Deploy on your own servers.",
+    "cta_github": "View on GitHub",
+    "cta_demo": "Live demo",
+    "cta_deploy": "Deploy in 5 minutes",
+    "stats": {
+      "repos": "Repositories",
+      "locales": "Built-in locales",
+      "api": "API contract",
+      "models": "Model access"
+    },
+    "stats_v": {
+      "repos": "3",
+      "locales": "7",
+      "api": "38 chapters",
+      "models": "OpenAI-compatible"
+    },
+    "flow": {
+      "script": "Script / plan",
+      "subject": "Subjects & styles",
+      "shot": "Shot generation",
+      "voice": "Voice & subtitles",
+      "compose": "Timeline compose",
+      "work": "Publish"
+    }
+  },
+  "showcase": {
+    "eyebrow": "Gallery",
+    "title": "One canvas, the whole short drama pipeline"
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "A complete studio, benchmarked against commercial platforms",
+    "subtitle": "Features were mapped one by one against LibTV and similar platforms. Canvas interaction, the director stage and smart editing have shipped; the gaps are on the roadmap.",
+    "items": [
+      {
+        "title": "Infinite canvas · node workflow",
+        "desc": "Text, image, video, audio and storyboard-group nodes wired together. Cross-canvas copy/paste, grid split, prompt chaining along edges."
+      },
+      {
+        "title": "One-prompt film",
+        "desc": "Conversational workflow generation: plan, characters, scenes, shots and voice-over from a single sentence, then refine shot by shot."
+      },
+      {
+        "title": "Series bible & plan",
+        "desc": "Character bios, world, episode index and revisions. Each canvas records which draft it was built from and flags affected shots after edits."
+      },
+      {
+        "title": "3D director stage",
+        "desc": "Block characters, set cameras and camera moves in the browser, then export shot descriptions straight into video models."
+      },
+      {
+        "title": "Subject & style libraries",
+        "desc": "Three-view character sheets and snapshot locks keep continuity. Official styles plus custom styles reverse-engineered from any image, shared after review."
+      },
+      {
+        "title": "Shot candidates & timeline compose",
+        "desc": "Multiple candidates per shot, in/out points and volume per clip, original audio mixed with voice-over, SRT subtitles, server-side ffmpeg render."
+      },
+      {
+        "title": "Media tools",
+        "desc": "Trim, split, extract frames, separate audio, remove silence, transcribe to subtitles. ffmpeg.wasm in the browser and ffmpeg on the server."
+      },
+      {
+        "title": "Remix hits",
+        "desc": "Works can expose their process. Clone the canvas in one click to remix, with rewards flowing back to the author."
+      },
+      {
+        "title": "Skill library & agent",
+        "desc": "Reusable workflow templates and a conversational canvas assistant that understands the current canvas."
+      },
+      {
+        "title": "Team spaces",
+        "desc": "Switch between personal and team spaces, with roles, approval gates, shared credit pools and monthly member caps."
+      },
+      {
+        "title": "Credits · plans · model pricing",
+        "desc": "Price per model per unit, member and launch promo prices, pre-deduction with refunds, hot-reloaded from the admin console."
+      },
+      {
+        "title": "Payments · invoices · affiliates",
+        "desc": "WeChat Pay / Alipay, invoice requests, referral rewards and partner withdrawals, ready out of the box."
+      },
+      {
+        "title": "Admin console",
+        "desc": "Users, works, community review, orders, model health, gateway balance checks and audit logs across twenty-plus pages."
+      },
+      {
+        "title": "Seven locales",
+        "desc": "Simplified and Traditional Chinese, English, French, Japanese, Russian and Vietnamese built in, guarded by structured keys and coverage tests."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "Why \"the New API of short drama\"",
+    "title": "New API unified LLMs. EasyTV unifies short drama production.",
+    "p1": "New API gathers every LLM behind one gateway: one interface, one billing model, one admin console. EasyTV does the same thing one layer up: it gathers video, image and voice models into one creation and operations platform, and talks to any New API / One API gateway through OpenAI-compatible endpoints.",
+    "p2": "You don't negotiate with every model vendor, and you don't write billing or an admin console. Connect a gateway, import the model list, set prices, and a paid short drama studio is running.",
+    "cards": [
+      {
+        "k": "Connect",
+        "title": "Any OpenAI-compatible gateway",
+        "desc": "/v1/chat, /v1/images and /v1/videos follow one contract. Pull the model list from the gateway and import it with pricing in one step."
+      },
+      {
+        "k": "Bill",
+        "title": "Credits are the tokens of short drama",
+        "desc": "Price per second, per image or per call. A margin factor suggests credits automatically; pre-deduction and refunds on failure are automatic."
+      },
+      {
+        "k": "Operate",
+        "title": "Gateway-grade admin",
+        "desc": "Model health, failure-rate alerts, suggested delisting and gateway balance checks, so operators never read logs."
+      },
+      {
+        "k": "Grow",
+        "title": "Works · skills · partners",
+        "desc": "Open works to remix, skill templates and partner affiliates let the platform grow its own content."
+      }
+    ]
+  },
+  "arch": {
+    "eyebrow": "Architecture",
+    "title": "Three repositories, one API contract",
+    "subtitle": "Separated front and back ends, token auth, and a contract in API.md that changes before the code does.",
+    "nodes": {
+      "web": "easytv-web",
+      "web_d": "Nuxt 4 studio · canvas / director / community",
+      "manage": "easytv-manage",
+      "manage_d": "Nuxt 4 admin SPA",
+      "api": "easytv-api",
+      "api_d": "Go · Gin · GORM · job scheduler · ffmpeg",
+      "db": "MySQL / Redis",
+      "oss": "OSS · Qiniu · local storage",
+      "gateway": "New API-compatible gateway",
+      "models": "Kling · Jimeng · Seedance · Hailuo",
+      "ffmpeg": "ffmpeg render",
+      "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "repos": [
+      {
+        "name": "easytv-web",
+        "stack": "Nuxt 4 · Vue Flow · TresJS · ffmpeg.wasm",
+        "desc": "The studio: canvas, one-prompt film, director stage, community and pricing. Deploys to Cloudflare Workers."
+      },
+      {
+        "name": "easytv-api",
+        "stack": "Go 1.22+ · Gin · GORM · MySQL · Redis",
+        "desc": "The backend: users, credits, payments, job queue, compositing and gateway adapters. AutoMigrate schema, sqlmock smoke tests."
+      },
+      {
+        "name": "easytv-manage",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "The admin console: users, works, review, orders, model pricing and system settings."
+      }
+    ]
+  },
+  "compare": {
+    "eyebrow": "Compare",
+    "title": "Self-hosted open source, not a rented SaaS",
+    "subtitle": "The commercial column is compiled from public material; refer to each vendor for specifics.",
+    "col_easytv": "EasyTV",
+    "col_saas": "Commercial SaaS (LibTV and others)",
+    "rows": [
+      {
+        "k": "Source & hosting",
+        "a": "AGPL-3.0, runs on your servers",
+        "b": "Closed source, vendor-hosted"
+      },
+      {
+        "k": "Model sources",
+        "a": "Any OpenAI-compatible gateway, your vendors and prices",
+        "b": "Vendor-chosen models and prices"
+      },
+      {
+        "k": "Billing & pricing",
+        "a": "Credits, plans and promos are yours to set",
+        "b": "Fixed by the vendor"
+      },
+      {
+        "k": "Payments",
+        "a": "WeChat Pay / Alipay direct, invoices, affiliates, withdrawals",
+        "b": "Collected by the vendor"
+      },
+      {
+        "k": "Data ownership",
+        "a": "Assets, canvases and films live in your own storage",
+        "b": "Stored by the vendor"
+      },
+      {
+        "k": "Teams",
+        "a": "Team spaces, roles and approval gates built in",
+        "b": "Usually a paid team tier"
+      },
+      {
+        "k": "Languages",
+        "a": "7 locales built in, extensible",
+        "b": "Varies"
+      },
+      {
+        "k": "Customization",
+        "a": "Public API contract, fork and extend",
+        "b": "Not available"
+      }
+    ]
+  },
+  "quickstart": {
+    "eyebrow": "Quick start",
+    "title": "Running in five minutes",
+    "subtitle": "Bring a MySQL instance and a token for a New API-compatible gateway. Everything else has defaults.",
+    "steps": [
+      {
+        "title": "Backend",
+        "desc": "Copy the env example, set SQL_DSN and ROOT_PASSWORD. The first start migrates the schema and creates the admin."
+      },
+      {
+        "title": "Studio",
+        "desc": "Point it at the backend. Default port 3005."
+      },
+      {
+        "title": "Admin console",
+        "desc": "Sign in as root, enter the gateway URL and key under System · Gateway, fetch the model list and import pricing."
+      }
+    ],
+    "tabs": [
+      "easytv-api",
+      "easytv-web",
+      "easytv-manage"
+    ],
+    "note": "Production deployment, systemd, Nginx and seed data are documented in each repository's README."
+  },
+  "roadmap": {
+    "eyebrow": "Roadmap",
+    "title": "What's next",
+    "cols": [
+      {
+        "title": "Open-source release",
+        "items": [
+          "LICENSE and contributing guide in all repos",
+          "docker compose one-command start",
+          "Docs site and API reference",
+          "GitHub Actions CI everywhere"
+        ]
+      },
+      {
+        "title": "Creation",
+        "items": [
+          "Voice cloning and multi-character dialogue",
+          "Long-form video by segmented continuation",
+          "9–25 panel storyboard drafts",
+          "Real-time multi-user canvas"
+        ]
+      },
+      {
+        "title": "Ecosystem",
+        "items": [
+          "Pluggable model providers",
+          "Skill / template marketplace",
+          "Public API and agent orchestration",
+          "Error monitoring and observability"
+        ]
+      }
+    ]
+  },
+  "community": {
+    "eyebrow": "Join",
+    "title": "Let's open-source the short drama pipeline",
+    "subtitle": "File issues, send PRs, translate copy, or just deploy a site and use it.",
+    "cards": [
+      {
+        "title": "GitHub",
+        "desc": "All three repositories live under the easytv-ai organization.",
+        "cta": "Open the org"
+      },
+      {
+        "title": "API contract",
+        "desc": "API.md records every entity, route and behavior change.",
+        "cta": "Read API.md"
+      },
+      {
+        "title": "Live demo",
+        "desc": "Try the official site before deploying.",
+        "cta": "Open EasyTV"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Open-source AI short drama studio",
+    "license": "AGPL-3.0 · Architecture inspired by New API / One API",
+    "links": {
+      "web": "Studio",
+      "api": "Backend",
+      "manage": "Admin",
+      "demo": "Official site"
+    }
+  }
+}
