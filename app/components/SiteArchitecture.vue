@@ -11,7 +11,7 @@ const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api'
       <SectionHead :eyebrow="t('arch.eyebrow')" :title="t('arch.title')" :subtitle="t('arch.subtitle')" />
 
       <div class="card overflow-x-auto p-4 sm:p-8">
-        <svg viewBox="0 0 960 420" class="mx-auto block min-w-[720px] w-full" role="img" :aria-label="t('arch.title')" font-family="Geist, ui-sans-serif, system-ui, sans-serif">
+        <svg viewBox="0 0 1104 448" class="mx-auto block min-w-[800px] w-full" role="img" :aria-label="t('arch.title')" font-family="Geist, ui-sans-serif, system-ui, sans-serif">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="var(--fg-3)" /></marker>
             <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)" /><stop offset="1" stop-color="var(--accent-3)" /></linearGradient>
@@ -19,59 +19,75 @@ const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api'
 
           <!-- clients -->
           <g>
-            <rect x="40" y="40" width="220" height="92" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
-            <text x="60" y="72" font-size="16" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.web') }}</text>
-            <text x="60" y="98" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.web_d') }}</text>
-            <rect x="40" y="160" width="220" height="92" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
-            <text x="60" y="192" font-size="16" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.manage') }}</text>
-            <text x="60" y="218" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.manage_d') }}</text>
+            <rect x="36" y="40" width="232" height="96" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
+            <text x="56" y="74" font-size="16" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.web') }}</text>
+            <text x="56" y="94" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.web_d') }}</text>
+            <text x="56" y="112" font-size="11" fill="var(--fg-3)">{{ t('arch.nodes.web_d2') }}</text>
+            <rect x="36" y="168" width="232" height="96" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
+            <text x="56" y="204" font-size="16" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.manage') }}</text>
+            <text x="56" y="228" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.manage_d') }}</text>
           </g>
 
           <!-- api -->
           <g>
-            <rect x="360" y="40" width="240" height="212" rx="16" fill="var(--panel-2)" stroke="url(#acc)" stroke-width="1.5" />
-            <text x="384" y="76" font-size="18" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.api') }}</text>
-            <text x="384" y="100" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.api_d') }}</text>
+            <rect x="424" y="40" width="256" height="224" rx="16" fill="var(--panel-2)" stroke="url(#acc)" stroke-width="1.5" />
+            <text x="444" y="76" font-size="18" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.api') }}</text>
+            <text x="444" y="100" font-size="12" fill="var(--fg-2)">{{ t('arch.nodes.api_d') }}</text>
             <g font-size="11" fill="var(--fg-2)">
-              <rect x="384" y="120" width="192" height="24" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="396" y="136">router · controller · service</text>
-              <rect x="384" y="152" width="192" height="24" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="396" y="168">generation_task · compose_job</text>
-              <rect x="384" y="184" width="192" height="24" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="396" y="200">billing · quota · audit</text>
-              <rect x="384" y="216" width="192" height="24" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="396" y="232">{{ t('arch.nodes.ffmpeg') }}</text>
+              <rect x="444" y="118" width="216" height="26" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="456" y="135">router · controller · service</text>
+              <rect x="444" y="152" width="216" height="26" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="456" y="169">generation_task · compose_job</text>
+              <rect x="444" y="186" width="216" height="26" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="456" y="203">billing · quota · audit</text>
+              <rect x="444" y="220" width="216" height="26" rx="6" fill="var(--panel)" stroke="var(--line)" /><text x="456" y="237">{{ t('arch.nodes.ffmpeg') }}</text>
             </g>
           </g>
 
           <!-- gateway + models -->
           <g>
-            <rect x="700" y="40" width="220" height="92" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
-            <text x="720" y="72" font-size="15" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.gateway') }}</text>
-            <text x="720" y="98" font-size="10.5" fill="var(--fg-2)" font-family="Geist Mono, monospace">/v1/chat · /v1/images · /v1/videos</text>
-            <rect x="700" y="160" width="220" height="92" rx="14" fill="var(--panel-2)" stroke="var(--line)" stroke-dasharray="4 4" />
-            <text x="720" y="192" font-size="13" font-weight="600" fill="var(--fg)">AI models</text>
-            <text x="720" y="214" font-size="11" fill="var(--fg-2)">{{ t('arch.nodes.models') }}</text>
-            <text x="720" y="234" font-size="11" fill="var(--fg-2)">{{ t('arch.nodes.models2') }}</text>
+            <rect x="836" y="40" width="232" height="96" rx="14" fill="var(--panel-2)" stroke="var(--line)" />
+            <text x="856" y="74" font-size="15" font-weight="600" fill="var(--fg)">{{ t('arch.nodes.gateway') }}</text>
+            <text x="856" y="94" font-size="11" fill="var(--fg-2)" font-family="Geist Mono, monospace">/v1/chat · /v1/images</text>
+            <text x="856" y="112" font-size="11" fill="var(--fg-2)" font-family="Geist Mono, monospace">/v1/videos</text>
+            <rect x="836" y="168" width="232" height="96" rx="14" fill="var(--panel-2)" stroke="var(--line)" stroke-dasharray="4 4" />
+            <text x="856" y="204" font-size="13" font-weight="600" fill="var(--fg)">AI models</text>
+            <text x="856" y="226" font-size="11" fill="var(--fg-2)">{{ t('arch.nodes.models') }}</text>
+            <text x="856" y="246" font-size="11" fill="var(--fg-2)">{{ t('arch.nodes.models2') }}</text>
           </g>
 
           <!-- infra -->
           <g>
-            <rect x="360" y="300" width="112" height="72" rx="12" fill="var(--panel-2)" stroke="var(--line)" />
-            <text x="416" y="342" font-size="12" text-anchor="middle" fill="var(--fg)">{{ t('arch.nodes.db') }}</text>
-            <rect x="488" y="300" width="112" height="72" rx="12" fill="var(--panel-2)" stroke="var(--line)" />
-            <text x="544" y="342" font-size="12" text-anchor="middle" fill="var(--fg)">{{ t('arch.nodes.oss') }}</text>
+            <rect x="424" y="328" width="120" height="72" rx="12" fill="var(--panel-2)" stroke="var(--line)" />
+            <text x="484" y="370" font-size="12" text-anchor="middle" fill="var(--fg)">{{ t('arch.nodes.db') }}</text>
+            <rect x="560" y="328" width="120" height="72" rx="12" fill="var(--panel-2)" stroke="var(--line)" />
+            <text x="620" y="362" font-size="12" text-anchor="middle" fill="var(--fg)">{{ t('arch.nodes.oss') }}</text>
+            <text x="620" y="380" font-size="11" text-anchor="middle" fill="var(--fg-2)">{{ t('arch.nodes.oss_d') }}</text>
           </g>
 
-          <!-- edges -->
+          <!-- edges (under labels) -->
           <g fill="none" stroke="var(--fg-3)" stroke-width="1.5" marker-end="url(#arr)">
-            <path d="M260 86 H356" class="anim-dash" />
-            <path d="M260 206 H356" class="anim-dash" />
-            <path d="M600 86 H696" class="anim-dash" />
-            <path d="M810 132 V156" />
-            <path d="M416 252 V296" />
-            <path d="M544 252 V296" />
+            <path d="M268 88 H424" class="anim-dash" />
+            <path d="M268 216 H424" class="anim-dash" />
+            <path d="M680 88 H836" class="anim-dash" />
+            <path d="M952 136 V168" />
+            <path d="M484 264 V328" />
+            <path d="M620 264 V328" />
           </g>
-          <g font-size="11" fill="var(--fg-3)" font-family="Geist Mono, monospace">
-            <text x="268" y="78">Bearer + EasyTV-User</text>
-            <text x="268" y="198">/admin/*</text>
-            <text x="612" y="78">OpenAI-compatible</text>
+
+          <!-- edge labels sit in the column gaps, with a panel fill so they don't collide with boxes -->
+          <g font-size="11" font-family="Geist Mono, monospace">
+            <g>
+              <rect x="286" y="66" width="120" height="40" rx="8" fill="var(--panel)" stroke="var(--line)" />
+              <text x="346" y="82" text-anchor="middle" fill="var(--fg-2)">{{ t('arch.edges.web1') }}</text>
+              <text x="346" y="96" text-anchor="middle" fill="var(--fg-3)">{{ t('arch.edges.web2') }}</text>
+            </g>
+            <g>
+              <rect x="301" y="204" width="90" height="24" rx="8" fill="var(--panel)" stroke="var(--line)" />
+              <text x="346" y="220" text-anchor="middle" fill="var(--fg-2)">{{ t('arch.edges.manage') }}</text>
+            </g>
+            <g>
+              <rect x="698" y="66" width="120" height="40" rx="8" fill="var(--panel)" stroke="var(--line)" />
+              <text x="758" y="82" text-anchor="middle" fill="var(--fg-2)">{{ t('arch.edges.gateway1') }}</text>
+              <text x="758" y="96" text-anchor="middle" fill="var(--fg-3)">{{ t('arch.edges.gateway2') }}</text>
+            </g>
           </g>
         </svg>
       </div>

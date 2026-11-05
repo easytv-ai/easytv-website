@@ -33,8 +33,7 @@ If you cannot use GitHub, email the maintainers at **leida@easyapi.com** with
 
 - The repository and commit / version you tested
 - A minimal proof of concept or reproduction steps
-- The impact you believe the issue has (data exposure, privilege escalation,
-  RCE, …)
+- The impact you believe the issue has (XSS, open redirect, data exposure, …)
 - Any suggested mitigation
 
 ## Disclosure Process
@@ -48,17 +47,26 @@ We ask reporters to give us up to **90 days** before public disclosure.
 
 ## Scope
 
-In scope: everything in this repository, including the Docker images and CI
-workflows it ships.
+This repository is the static project website (Nuxt generate + Cloudflare).
 
-Out of scope: the hosted service at easytv.ai (report issues there through the
-same channel, but SLAs above apply to the open-source code only), social
-engineering, denial of service against third-party infrastructure.
+In scope:
 
-## Security Best Practices for Self-Hosters
+- Pages, assets and client-side scripts in this repository
+- The production site built from this repository (`easytv.ai`)
+- CI workflows and the Wrangler deploy configuration it ships
+
+Out of scope:
+
+- The creator studio ([easytv-web](https://github.com/easytv-ai/easytv-web))
+  and the hosted app at `www.easytv.ai`
+- The API ([easytv-api](https://github.com/easytv-ai/easytv-api)) and admin
+  console ([easytv-manage](https://github.com/easytv-ai/easytv-manage)) — report
+  those in their own repositories
+- Social engineering and denial of service against third-party infrastructure
+
+## Security Notes for Deployers
 
 - Never commit `.env` files. Only `.env.example` belongs in git.
-- Rotate `CRYPTO_SECRET`, database and object-storage credentials when a
-  deployment is shared or leaves your control.
-- Run the API behind TLS and keep `DEBUG=false` in production.
-- Keep dependencies up to date; Dependabot is enabled on every repository.
+- `NUXT_PUBLIC_*` values are baked into the static build and visible to every
+  visitor. Do not put secrets there.
+- Keep dependencies up to date; Dependabot is enabled on this repository.

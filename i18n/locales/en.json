@@ -145,17 +145,26 @@
     "subtitle": "Separated front and back ends, token auth, and a contract in API.md that changes before the code does.",
     "nodes": {
       "web": "easytv-web",
-      "web_d": "Nuxt 4 studio · canvas / director / community",
+      "web_d": "Nuxt 4 studio",
+      "web_d2": "canvas / director / community",
       "manage": "easytv-manage",
       "manage_d": "Nuxt 4 admin SPA",
       "api": "easytv-api",
-      "api_d": "Go · Gin · GORM · job scheduler · ffmpeg",
+      "api_d": "Go · Gin · GORM · job scheduler",
       "db": "MySQL / Redis",
-      "oss": "OSS · Qiniu · local storage",
-      "gateway": "New API-compatible gateway",
+      "oss": "Object storage",
+      "oss_d": "OSS · Qiniu · local",
+      "gateway": "New API gateway",
       "models": "Kling · Jimeng · Seedance · Hailuo",
       "ffmpeg": "ffmpeg render",
       "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "edges": {
+      "web1": "Bearer",
+      "web2": "EasyTV-User",
+      "manage": "/admin/*",
+      "gateway1": "OpenAI",
+      "gateway2": "compatible"
     },
     "repos": [
       {

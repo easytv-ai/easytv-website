@@ -39,8 +39,8 @@ design assets alike.
 
 ## Development Setup
 
-Requirements: Node.js 22.5+ and [pnpm](https://pnpm.io) 10+ (`corepack enable`
-installs the version pinned in `package.json`).
+Requirements: Node.js 22.21+ and [pnpm](https://pnpm.io) 10+ (`corepack enable`
+installs the version pinned in `package.json`). Use pnpm, not npm or cnpm.
 
 ```bash
 git clone https://github.com/easytv-ai/easytv-website.git
@@ -64,7 +64,7 @@ only read from it. Change copy there, not in templates.
 
 1. Fork the repository and create a branch from `main`:
    `git checkout -b feat/short-description`
-2. Make your change, including tests and documentation.
+2. Make your change, including documentation or locale updates.
 3. Run the local checks listed above. CI runs the same commands.
 4. Push to your fork and open a pull request against `main`.
 
@@ -88,9 +88,8 @@ issues in the body or footer (`Closes #123`).
 ## Pull Requests
 
 - Fill in the pull request template. Describe **what** changed and **why**.
-- Make sure CI is green. Fix lint, type and test failures before requesting a
-  review.
-- Add or update tests for behavior changes.
+- Make sure CI is green. Fix `pnpm typecheck` and `pnpm generate` failures
+  before requesting a review.
 - Update `CHANGELOG.md` under **Unreleased** for user-visible changes.
 - Keep the PR rebased on the latest `main`; we squash-merge.
 - A maintainer will review within a week. Please respond to review comments or

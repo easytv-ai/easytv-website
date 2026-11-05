@@ -17,10 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - `pnpm typecheck` is clean again (`htmlAttrs` typing, Node types, removed the obsolete i18n `lazy` option) and now runs in CI.
+- Architecture diagram: edge labels no longer overlap the API and gateway boxes.
 
 ### Changed
 
 - Switched to pnpm (`pnpm-lock.yaml`), matching the other EasyTV repositories.
 - README rewritten (English + 简体中文).
+- Security policy, contributing guide and issue / PR templates now describe this
+  static website (no Docker, database or test runner). Required Node.js is 22.21+.
 
 [Unreleased]: https://github.com/easytv-ai/easytv-website/commits/main

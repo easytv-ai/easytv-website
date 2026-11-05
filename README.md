@@ -18,7 +18,7 @@ Nuxt 4, Tailwind CSS 4 and `@nuxtjs/i18n`, deployed to Cloudflare.
 
 ## Development
 
-Requires Node.js 22.5+ and [pnpm](https://pnpm.io) 10+ (`corepack enable`).
+Requires Node.js 22.21+ and [pnpm](https://pnpm.io) 10+ (`corepack enable`).
 
 ```bash
 pnpm install

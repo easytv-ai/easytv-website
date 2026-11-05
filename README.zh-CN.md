@@ -16,7 +16,7 @@
 
 ## 开发
 
-需要 Node.js 22.5+ 与 [pnpm](https://pnpm.io) 10+（`corepack enable`）。
+需要 Node.js 22.21+ 与 [pnpm](https://pnpm.io) 10+（`corepack enable`）。
 
 ```bash
 pnpm install

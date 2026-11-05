@@ -145,17 +145,26 @@
     "subtitle": "前后端分离，Token 鉴权，契约写在 API.md 里，改接口先改契约。",
     "nodes": {
       "web": "easytv-web",
-      "web_d": "Nuxt 4 创作台 · 画布 / 导演台 / 社区",
+      "web_d": "Nuxt 4 创作台",
+      "web_d2": "画布 / 导演台 / 社区",
       "manage": "easytv-manage",
       "manage_d": "Nuxt 4 运营后台 SPA",
       "api": "easytv-api",
-      "api_d": "Go · Gin · GORM · 作业调度 · ffmpeg",
+      "api_d": "Go · Gin · GORM · 作业调度",
       "db": "MySQL / Redis",
-      "oss": "OSS · 七牛 · 本地存储",
-      "gateway": "New API 兼容网关",
+      "oss": "对象存储",
+      "oss_d": "OSS · 七牛 · 本地",
+      "gateway": "New API 网关",
       "models": "Kling · 即梦 · Seedance · Hailuo",
       "ffmpeg": "ffmpeg 合成",
       "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "edges": {
+      "web1": "Bearer",
+      "web2": "EasyTV-User",
+      "manage": "/admin/*",
+      "gateway1": "OpenAI",
+      "gateway2": "兼容协议"
     },
     "repos": [
       {

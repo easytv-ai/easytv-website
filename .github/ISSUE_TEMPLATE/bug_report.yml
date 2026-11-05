@@ -43,10 +43,9 @@ body:
     attributes:
       label: How are you running it?
       options:
-        - Local development
-        - Self-hosted (binary / systemd)
-        - Self-hosted (Docker)
-        - Cloudflare Workers
+        - Local development (`pnpm dev`)
+        - Local static preview (`pnpm generate` + `pnpm preview`)
+        - Cloudflare (this repo's Wrangler deploy)
         - Hosted easytv.ai
         - Other
     validations:
@@ -55,7 +54,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      description: OS, browser, Node.js version, database version — whatever is relevant.
+      description: OS, browser and Node.js version — whatever is relevant.
   - type: textarea
     id: logs
     attributes:
