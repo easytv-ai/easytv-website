@@ -3,6 +3,8 @@ title: 架构
 description: 创作台、运营后台、渠道后台如何连到 easytv-api，以及网关与存储。
 ---
 
+架构图在 [开始使用](/docs) 页是会跟主题变色的那一张。三端都打到同一个 API，模型再转发到网关。
+
 ```
 easytv-web      ──┐
 easytv-manage   ──┼──▶  easytv-api (Gin)  ── MySQL / Redis

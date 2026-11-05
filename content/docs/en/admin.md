@@ -5,6 +5,8 @@ description: What easytv-manage covers, and the settings to change first after g
 
 The admin console talks to `/admin/*` on the API, repository [easytv-manage](https://github.com/easytv-ai/easytv-manage). Sign in with the `admin` account created on first boot.
 
+![Admin: dashboard, users, review, prices and gateway](/images/docs/admin.svg)
+
 ## What you can manage
 
 | Area | Pages |

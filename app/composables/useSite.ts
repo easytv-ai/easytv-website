@@ -12,16 +12,38 @@ export function useSiteLinks() {
   }
 }
 
+const THEME_KEY = 'easytv-site-theme'
+
+export function readStoredTheme(): boolean {
+  if (!import.meta.client) return true
+  try {
+    const stored = localStorage.getItem(THEME_KEY)
+    if (stored === 'light') return false
+    if (stored === 'dark') return true
+  } catch {}
+  return document.documentElement.classList.contains('dark')
+}
+
+export function applyThemeClass(dark: boolean) {
+  if (!import.meta.client) return
+  document.documentElement.classList.toggle('dark', dark)
+  document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
+}
+
 export function useTheme() {
   const isDark = useState('site-theme-dark', () => true)
-  onMounted(() => {
-    isDark.value = document.documentElement.classList.contains('dark')
-  })
-  function toggle() {
-    isDark.value = !isDark.value
-    document.documentElement.classList.toggle('dark', isDark.value)
-    document.documentElement.style.colorScheme = isDark.value ? 'dark' : 'light'
-    try { localStorage.setItem('easytv-site-theme', isDark.value ? 'dark' : 'light') } catch {}
+
+  function apply(dark: boolean, persist = true) {
+    isDark.value = dark
+    applyThemeClass(dark)
+    if (persist && import.meta.client) {
+      try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light') } catch {}
+    }
   }
-  return { isDark, toggle }
+
+  function toggle() {
+    apply(!isDark.value)
+  }
+
+  return { isDark, toggle, apply }
 }

@@ -5,6 +5,8 @@ description: Credit lots, member prices, reserve-and-settle, and how WeChat / Al
 
 Creation spends **credits** only. Legacy `quota` is for withdrawals and similar; it is not used for generation. Contract: API.md chapter 6.
 
+![Admin dashboard credits](/images/docs/admin.svg)
+
 ## How credits work
 
 - Each grant is a **lot**: source + amount + expiry. Spend oldest-expiring first

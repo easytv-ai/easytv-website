@@ -5,6 +5,10 @@ description: Point EasyTV at a New API / One API-compatible gateway, pull models
 
 EasyTV calls models through OpenAI-compatible routes: `/v1/chat`, `/v1/images`, `/v1/videos` (and audio if the gateway exposes it). **You need a gateway before generation works.**
 
+Set the gateway URL and key under admin **System → Gateway**. Changes apply without a restart.
+
+![Admin gateway](/images/docs/admin.svg)
+
 ## First-time setup
 
 1. Have a running [New API](https://github.com/QuantumNous/new-api) (or another compatible gateway) token that can call the text / image / video models you care about.

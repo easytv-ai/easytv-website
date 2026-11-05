@@ -16,7 +16,7 @@ EasyTV 是开源、可自托管的 AI 短剧创作平台。创作者在浏览器
 | [easytv-manage](https://github.com/easytv-ai/easytv-manage) | 运营后台：用户、审核、定价、网关、增长 | 3006 |
 | [easytv-partner](https://github.com/easytv-ai/easytv-partner) | 渠道伙伴自助后台：返佣、提现、推广物料 | 3010 |
 
-官网（本站）在 [easytv-website](https://github.com/easytv-ai/easytv-website)，不参与创作链路。
+官网（本站）在 [easytv-website](https://github.com/easytv-ai/easytv-website)，不参与创作链路。界面见 [开始使用](/docs)。
 
 ## 适合谁
 

@@ -5,6 +5,8 @@ description: easytv-web 能做什么、常用路由，以及如何指向你的�
 
 创作台是创作者用的前端，仓库 [easytv-web](https://github.com/easytv-ai/easytv-web)。分功能的说明见 [画布](/docs/canvas)、[一句话成片](/docs/create)、[导演台](/docs/director)、[社区](/docs/community)、[登录与团队](/docs/team)。
 
+![创作台首页与精选成片](/images/docs/studio.png)
+
 ## 能做什么
 
 - **自由画布**：文本、图片、视频、音频、分镜组节点连线即跑，带版本历史和只读分享

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" fill="none">
+  <rect width="960" height="540" rx="16" fill="#09090b"/>
+  <rect width="200" height="540" fill="#18181b"/>
+  <rect x="200" width="760" height="56" fill="#09090b" stroke="#27272a"/>
+  <text x="16" y="34" fill="#fafafa" font-size="14" font-weight="600" font-family="sans-serif">easytv-manage</text>
+  <text x="220" y="34" fill="#fafafa" font-size="14" font-weight="600" font-family="sans-serif">Dashboard</text>
+  <rect x="12" y="90" width="176" height="28" rx="6" fill="#27272a"/>
+  <text x="24" y="109" fill="#ff5530" font-size="12" font-family="sans-serif">Dashboard</text>
+  <text x="24" y="141" fill="#a1a1aa" font-size="12" font-family="sans-serif">Users</text>
+  <text x="24" y="165" fill="#a1a1aa" font-size="12" font-family="sans-serif">Works</text>
+  <text x="24" y="189" fill="#a1a1aa" font-size="12" font-family="sans-serif">Review</text>
+  <text x="24" y="213" fill="#a1a1aa" font-size="12" font-family="sans-serif">Orders</text>
+  <text x="24" y="237" fill="#a1a1aa" font-size="12" font-family="sans-serif">Model price</text>
+  <text x="24" y="261" fill="#a1a1aa" font-size="12" font-family="sans-serif">Gateway</text>
+  <rect x="220" y="76" width="168" height="88" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="236" y="100" fill="#a1a1aa" font-size="12" font-family="sans-serif">Users</text>
+  <text x="236" y="132" fill="#fafafa" font-size="22" font-weight="600" font-family="sans-serif">12,480</text>
+  <rect x="400" y="76" width="168" height="88" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="416" y="100" fill="#a1a1aa" font-size="12" font-family="sans-serif">Works</text>
+  <text x="416" y="132" fill="#fafafa" font-size="22" font-weight="600" font-family="sans-serif">3,912</text>
+  <rect x="580" y="76" width="168" height="88" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="596" y="100" fill="#a1a1aa" font-size="12" font-family="sans-serif">Tasks</text>
+  <text x="596" y="132" fill="#fafafa" font-size="22" font-weight="600" font-family="sans-serif">48,201</text>
+  <rect x="760" y="76" width="176" height="88" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="776" y="100" fill="#a1a1aa" font-size="12" font-family="sans-serif">Credits today</text>
+  <text x="776" y="132" fill="#fafafa" font-size="22" font-weight="600" font-family="sans-serif">96,400</text>
+  <rect x="220" y="180" width="716" height="160" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="236" y="206" fill="#fafafa" font-size="13" font-weight="600" font-family="sans-serif">14-day tasks / revenue</text>
+  <polyline points="250,300 300,280 350,286 400,250 450,262 500,230 550,240 600,220 650,236 700,210 750,218 800,198 850,206 900,190" stroke="#ff5530" stroke-width="2" fill="none"/>
+  <rect x="220" y="356" width="716" height="160" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="236" y="382" fill="#fafafa" font-size="13" font-weight="600" font-family="sans-serif">Inbox</text>
+  <text x="236" y="412" fill="#d4d4d8" font-size="12" font-family="sans-serif">Work review</text>
+  <text x="820" y="412" fill="#ff5530" font-size="12" font-family="sans-serif">14</text>
+  <text x="236" y="440" fill="#d4d4d8" font-size="12" font-family="sans-serif">Reports</text>
+  <text x="820" y="440" fill="#a1a1aa" font-size="12" font-family="sans-serif">3</text>
+  <text x="236" y="468" fill="#d4d4d8" font-size="12" font-family="sans-serif">Withdrawals</text>
+  <text x="820" y="468" fill="#a1a1aa" font-size="12" font-family="sans-serif">2</text>
+  <text x="236" y="496" fill="#d4d4d8" font-size="12" font-family="sans-serif">Partner apply</text>
+  <text x="820" y="496" fill="#a1a1aa" font-size="12" font-family="sans-serif">1</text>
+</svg>

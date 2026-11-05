@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DOC_SECTIONS, docPath } from '~/utils/docs'
+import { DOC_PAGES, DOC_SECTIONS, docPath, type DocSection } from '~/utils/docs'
 import { loadDocNav } from '~/utils/docs-render'
 
 const { t, locale } = useI18n()
@@ -10,11 +10,37 @@ const links = useSiteLinks()
 const { isDark, toggle } = useTheme()
 const open = ref(false)
 const query = ref('')
+const searchEl = ref<HTMLInputElement | null>(null)
+const mainEl = ref<HTMLElement | null>(null)
+const isMac = ref(false)
+const toc = useDocsToc()
 const otherLocale = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
-const nav = computed(() => loadDocNav(locale.value))
+const nav = computed(() => {
+  const pages = loadDocNav(locale.value)
+  return [
+    { slug: '', section: 'start' as DocSection, title: t('docs.hub.nav'), description: t('docs.hub.subtitle') },
+    ...pages,
+  ]
+})
+
+const sectionHome: Record<DocSection, string> = {
+  start: '/docs',
+  install: '/docs/install',
+  guide: '/docs/studio',
+  api: '/docs/api',
+  ref: '/docs/faq',
+}
+
+const activeSection = computed<DocSection>(() => {
+  if (isHub()) return 'start'
+  return DOC_PAGES.find(p => isActive(p.slug))?.section || 'start'
+})
+
+const searching = computed(() => query.value.trim().length > 0)
 const sections = computed(() => {
   const needle = query.value.trim().toLowerCase()
-  return DOC_SECTIONS.map(id => ({
+  const ids = searching.value ? DOC_SECTIONS : [activeSection.value]
+  return ids.map(id => ({
     id,
     title: t(`docs.sections.${id}`),
     pages: nav.value.filter((p) => {
@@ -25,66 +51,148 @@ const sections = computed(() => {
   })).filter(sec => sec.pages.length)
 })
 
+function isHub() {
+  const path = route.path.replace(/\/$/, '')
+  return path === localePath('/docs') || path.endsWith('/docs')
+}
+
 function isActive(slug: string) {
   const path = route.path.replace(/\/$/, '')
   return path === localePath(docPath(slug)) || path.endsWith(`/docs/${slug}`)
 }
+
+function pageTo(p: { slug: string }) {
+  return p.slug ? localePath(docPath(p.slug)) : localePath('/docs')
+}
+
+function isPageActive(p: { slug: string }) {
+  return p.slug ? isActive(p.slug) : isHub()
+}
+
+function focusSearch() {
+  searchEl.value?.focus()
+  searchEl.value?.select()
+}
+
+function onSearchKey(e: KeyboardEvent) {
+  if (e.key === 'Escape') {
+    query.value = ''
+    searchEl.value?.blur()
+  }
+}
+
+function onKey(e: KeyboardEvent) {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault()
+    open.value = true
+    nextTick(focusSearch)
+  }
+}
+
+onMounted(() => {
+  isMac.value = /Mac|iPhone|iPad/.test(navigator.platform)
+  window.addEventListener('keydown', onKey)
+})
+onUnmounted(() => window.removeEventListener('keydown', onKey))
+
+watch(() => route.path, () => {
+  open.value = false
+  nextTick(() => {
+    if (mainEl.value)
+      mainEl.value.scrollTop = 0
+  })
+})
 </script>
 
 <template>
-  <div class="docs-root" style="background: var(--bg); color: var(--fg)">
-    <header class="z-40 shrink-0 border-b backdrop-blur-md" style="border-color: var(--line-2); background: color-mix(in srgb, var(--bg) 78%, transparent)">
-      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
-        <div class="flex items-center gap-3">
-          <button type="button" class="rounded-full p-2 lg:hidden" style="color: var(--fg-2)" aria-label="menu" @click="open = !open">
+  <div class="docs-root">
+    <aside class="docs-side" :class="open ? 'docs-side--open' : ''">
+      <div class="docs-brand">
+        <NuxtLink :to="localePath('/')" class="docs-brand-link">
+          <SiteLogo class="h-7 w-7" />
+          <span>EasyTV</span>
+        </NuxtLink>
+        <button type="button" class="docs-icon-btn docs-mobile-only" :aria-label="t('nav.docs')" @click="open = false">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="docs-search-wrap" @click.stop>
+        <svg class="docs-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" /></svg>
+        <input
+          ref="searchEl"
+          v-model="query"
+          type="search"
+          :placeholder="t('docs.search')"
+          class="docs-search"
+          @keydown="onSearchKey"
+        >
+        <kbd class="docs-kbd">{{ isMac ? '⌘ K' : 'Ctrl K' }}</kbd>
+      </div>
+      <nav class="docs-nav docs-scroll" @click="open = false">
+        <p v-if="!sections.length" class="px-3 py-2 text-sm" style="color: var(--fg-3)">{{ t('docs.empty') }}</p>
+        <div v-for="sec in sections" :key="sec.id" class="docs-nav-group">
+          <div v-if="searching" class="docs-nav-label">{{ sec.title }}</div>
+          <NuxtLink
+            v-for="p in sec.pages"
+            :key="`${sec.id}-${p.slug}`"
+            :to="pageTo(p)"
+            class="docs-link"
+            :class="{ 'docs-link--active': isPageActive(p) }"
+          >{{ p.title }}</NuxtLink>
+        </div>
+      </nav>
+      <div class="docs-side-foot">
+        <a :href="links.org" target="_blank" rel="noopener" class="docs-icon-btn" :aria-label="t('nav.github')">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" /></svg>
+        </a>
+        <button type="button" class="docs-icon-btn" :aria-label="t('nav.theme')" @click="toggle">
+          <svg v-if="isDark" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" /></svg>
+          <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" /></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="docs-col">
+      <header class="docs-top">
+        <div class="flex min-w-0 items-center gap-1">
+          <button type="button" class="docs-icon-btn docs-mobile-only" aria-label="menu" @click="open = true">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           </button>
-          <NuxtLink :to="localePath('/')" class="flex items-center gap-2.5">
-            <SiteLogo class="h-7 w-7" />
-            <span class="text-[15px] font-semibold tracking-tight">EasyTV</span>
-          </NuxtLink>
-          <NuxtLink :to="localePath('/docs')" class="hidden rounded-full px-2.5 py-0.5 text-[13px] font-medium sm:inline" style="background: var(--panel-2); color: var(--fg-2)">{{ t('nav.docs') }}</NuxtLink>
-        </div>
-        <div class="flex items-center gap-2">
-          <NuxtLink :to="switchLocalePath(otherLocale)" class="hidden rounded-full px-3 py-1.5 text-sm sm:inline-flex" style="color: var(--fg-2)">{{ t('nav.lang') }}</NuxtLink>
-          <button type="button" :aria-label="t('nav.theme')" class="rounded-full p-2" style="color: var(--fg-2)" @click="toggle">
-            <svg v-if="isDark" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" /></svg>
-            <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" /></svg>
-          </button>
-          <a :href="links.org" target="_blank" rel="noopener" class="btn btn-primary hidden !px-4 !py-2 sm:inline-flex">{{ t('nav.github') }}</a>
-        </div>
-      </div>
-    </header>
-
-    <div class="docs-layout">
-      <aside class="docs-side docs-scroll" :class="open ? 'docs-side--open' : ''">
-        <nav class="docs-nav" @click="open = false">
-          <label class="mb-5 block px-2" @click.stop>
-            <span class="sr-only">{{ t('docs.search') }}</span>
-            <input
-              v-model="query"
-              type="search"
-              :placeholder="t('docs.search')"
-              class="docs-search"
-            >
-          </label>
-          <p v-if="!sections.length" class="px-2 text-sm" style="color: var(--fg-3)">{{ t('docs.empty') }}</p>
-          <div v-for="sec in sections" :key="sec.id" class="mb-6">
-            <div class="mb-2 px-2 text-[11px] font-semibold uppercase tracking-wider" style="color: var(--fg-3)">{{ sec.title }}</div>
+          <nav class="docs-tabs">
             <NuxtLink
-              v-for="p in sec.pages"
-              :key="p.slug"
-              :to="localePath(docPath(p.slug))"
-              class="block rounded-lg px-2 py-1.5 text-sm transition"
-              :style="{ color: isActive(p.slug) ? 'var(--fg)' : 'var(--fg-2)', background: isActive(p.slug) ? 'var(--panel-2)' : 'transparent' }"
-            >{{ p.title }}</NuxtLink>
+              v-for="id in DOC_SECTIONS"
+              :key="id"
+              :to="localePath(sectionHome[id])"
+              class="docs-tab"
+              :class="{ 'docs-tab--active': activeSection === id }"
+            >{{ t(`docs.sections.${id}`) }}</NuxtLink>
+          </nav>
+        </div>
+        <div class="flex shrink-0 items-center gap-1">
+          <NuxtLink :to="switchLocalePath(otherLocale)" class="docs-tab hidden sm:inline-flex">{{ t('nav.lang') }}</NuxtLink>
+          <a :href="links.org" target="_blank" rel="noopener" class="docs-tab hidden sm:inline-flex">{{ t('nav.github') }}</a>
+        </div>
+      </header>
+
+      <div class="docs-stage">
+        <div ref="mainEl" class="docs-main docs-scroll">
+          <slot />
+        </div>
+        <aside v-if="toc.length" class="docs-toc docs-scroll">
+          <div class="docs-toc-title">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h16" /></svg>
+            {{ t('docs.toc') }}
           </div>
-        </nav>
-      </aside>
-      <div class="docs-main docs-scroll">
-        <slot />
+          <a
+            v-for="h in toc"
+            :key="h.id"
+            :href="`#${h.id}`"
+            :class="{ 'is-h3': h.depth === 3 }"
+          >{{ h.text }}</a>
+        </aside>
       </div>
     </div>
-    <div v-if="open" class="fixed inset-0 z-20 bg-black/40 lg:hidden" @click="open = false" />
+
+    <div v-if="open" class="docs-mask docs-mobile-only" @click="open = false" />
   </div>
 </template>

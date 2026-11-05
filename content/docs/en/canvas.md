@@ -5,6 +5,8 @@ description: Node kinds, wired generation, version history, read-only share, and
 
 The canvas is the studio core, at `/canvas`. `?id=` opens one; `?project_id=` creates from a project. The API stores `graph` as opaque JSON and **does not parse node semantics**. Cap: **2 MB per canvas**.
 
+![Canvas nodes and wires](/images/docs/canvas.png)
+
 ## Node kinds
 
 | kind | Role |

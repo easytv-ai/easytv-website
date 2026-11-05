@@ -16,7 +16,7 @@ Think of it as the **New API of short-drama creation**: models still go through 
 | [easytv-manage](https://github.com/easytv-ai/easytv-manage) | Admin: users, review, pricing, gateway, growth | 3006 |
 | [easytv-partner](https://github.com/easytv-ai/easytv-partner) | Partner console: rebates, withdrawals, promo materials | 3010 |
 
-The marketing site is [easytv-website](https://github.com/easytv-ai/easytv-website) and is not on the creation path.
+The marketing site is [easytv-website](https://github.com/easytv-ai/easytv-website) and is not on the creation path. Screens are on [Get started](/docs).
 
 ## Who it is for
 

@@ -5,6 +5,8 @@ description: 在浏览器里摆角色、定机位、推运镜，镜头描述写�
 
 路径 `/canvas/director`。导演台是 [open-director](https://github.com/x1n9/open-director)（MIT）的 Vue / TresJS 移植，和自由画布共用同一张 `graph`。
 
+![3D 导演台](/images/docs/director.png)
+
 ## 用来干什么
 
 短剧生成最容易崩在「镜头语言对不上」。导演台让你先在三维里看好站位和机位，再把描述喂给视频模型，而不是只靠一段提示词碰运气。

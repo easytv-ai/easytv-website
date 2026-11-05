@@ -5,6 +5,8 @@ description: 输入一句话，自动出策划案、分层生成、合成带字�
 
 路径 `/create`。向导是：输入 → 策划案 → 分层生成 → 合成 → 完成。契约在 `API.md` 第 8.2 节。
 
+![一句话成片](/images/docs/create.png)
+
 匿名可以看第一步；点「生成策划案」才要求登录。状态按策划案 id 存在 sessionStorage，刷新或 `?screenplay=` 能接上。
 
 ## 流程

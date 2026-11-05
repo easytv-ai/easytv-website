@@ -5,6 +5,8 @@ description: Public feed, follow/rank, comment review, and how skill templates a
 
 The studio is also a public film community. Operators review works, comments and skills in admin.
 
+![Explore feed](/images/docs/explore.png)
+
 ## Works
 
 Creators publish from an asset: `POST /user/work`. Public feed `GET /work`, player `/watch/:id` (view count +1). Authors can expose a making-of at `/process/:id`.

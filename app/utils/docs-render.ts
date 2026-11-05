@@ -1,7 +1,7 @@
 import { marked } from 'marked'
 import { DOC_PAGES, parseFrontmatter, slugifyHeading, type DocPageMeta } from './docs'
 
-const sources = import.meta.glob('../../content/docs/*/*.md', {
+const sources = import.meta.glob('../../content/docs/{zh,en}/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -37,6 +37,17 @@ export function loadDoc(locale: string, slug: string): RenderedDoc | null {
   const { title, description, body } = parseFrontmatter(sources[key] || '')
   const toc: DocTocItem[] = []
   let html = marked.parse(body, { gfm: true, async: false }) as string
+  html = html.replace(
+    /<h([23])>(GET|POST|PUT|DELETE|PATCH)\s+(?:<code>)?([^<]+?)(?:<\/code>)?<\/h\1>/gi,
+    (_m, depth: string, method: string, path: string) => {
+      const verb = method.toUpperCase()
+      const route = path.trim()
+      const text = `${verb} ${route}`
+      const id = slugifyHeading(text)
+      toc.push({ id, text, depth: Number(depth) })
+      return `<h${depth} id="${id}"><span class="docs-method is-${verb.toLowerCase()}">${verb}</span><code class="docs-ep-path">${route}</code></h${depth}>`
+    },
+  )
   html = html.replace(/<h([23])>([\s\S]*?)<\/h\1>/g, (_m, depth: string, inner: string) => {
     const text = inner.replace(/<[^>]+>/g, '').trim()
     const id = slugifyHeading(text)

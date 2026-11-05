@@ -1,5 +1,6 @@
 import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
+import { DOC_PAGES } from './app/utils/docs'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://easytv.ai'
 
@@ -13,7 +14,6 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      htmlAttrs: { class: 'dark' },
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          // 主题：默认暗色，localStorage 记住用户选择
+          // 主题：跟首页同一套。未选过默认暗色，选过则听 localStorage，避免文档页把浅色盖回去
           innerHTML: `(function(){try{var s=localStorage.getItem('easytv-site-theme');var d=s?s==='dark':true;document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';}catch(e){}})();`,
           tagPosition: 'head',
         },
@@ -55,31 +55,7 @@ export default defineNuxtConfig({
         '/en',
         '/docs',
         '/en/docs',
-        ...[
-          'introduction',
-          'architecture',
-          'quickstart',
-          'install',
-          'install-docker',
-          'install-source',
-          'config',
-          'storage',
-          'deploy',
-          'studio',
-          'canvas',
-          'create',
-          'director',
-          'media',
-          'billing',
-          'community',
-          'team',
-          'admin',
-          'partner',
-          'gateway',
-          'api',
-          'faq',
-          'license',
-        ].flatMap(slug => [`/docs/${slug}`, `/en/docs/${slug}`]),
+        ...DOC_PAGES.flatMap(p => [`/docs/${p.slug}`, `/en/docs/${p.slug}`]),
       ],
     },
   },

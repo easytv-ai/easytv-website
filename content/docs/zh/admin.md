@@ -5,6 +5,8 @@ description: easytv-manage 管哪些东西，以及上线后要先改哪几项�
 
 运营后台对接 API 的 `/admin/*`，仓库 [easytv-manage](https://github.com/easytv-ai/easytv-manage)。用首次启动创建的 `admin` 账号登录。
 
+![运营后台：看板、用户、审核、定价和网关](/images/docs/admin.svg)
+
 ## 能管什么
 
 | 领域 | 页面 |

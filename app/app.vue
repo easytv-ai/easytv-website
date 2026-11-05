@@ -2,9 +2,13 @@
 const { locale, locales } = useI18n()
 const head = useLocaleHead({ dir: true, seo: true })
 const config = useRuntimeConfig()
+const { isDark } = useTheme()
 
 useHead({
-  htmlAttrs: { lang: computed(() => head.value.htmlAttrs?.lang ?? locale.value) },
+  htmlAttrs: {
+    lang: computed(() => head.value.htmlAttrs?.lang ?? locale.value),
+    class: computed(() => (isDark.value ? 'dark' : '')),
+  },
   link: computed(() => head.value.link ?? []),
   meta: computed(() => head.value.meta ?? []),
 })

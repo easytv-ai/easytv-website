@@ -3,6 +3,8 @@ title: Architecture
 description: How the studio, admin and partner consoles talk to easytv-api, plus gateway and storage.
 ---
 
+The live diagram on [Get started](/docs) follows the site theme. All three clients hit one API; models go out through the gateway.
+
 ```
 easytv-web      ──┐
 easytv-manage   ──┼──▶  easytv-api (Gin)  ── MySQL / Redis

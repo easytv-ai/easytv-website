@@ -1,4 +1,5 @@
 <script setup lang="ts">
+withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
 const { t, tm, rt } = useI18n()
 const links = useSiteLinks()
 const repos = computed(() => (tm('arch.repos') as any[]).map(r => ({ name: rt(r.name), stack: rt(r.stack), desc: rt(r.desc) })))
@@ -6,11 +7,11 @@ const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api'
 </script>
 
 <template>
-  <section id="arch" class="section">
-    <div class="container-x">
-      <SectionHead :eyebrow="t('arch.eyebrow')" :title="t('arch.title')" :subtitle="t('arch.subtitle')" />
+  <section :id="compact ? undefined : 'arch'" :class="compact ? '' : 'section'">
+    <div :class="compact ? '' : 'container-x'">
+      <SectionHead v-if="!compact" :eyebrow="t('arch.eyebrow')" :title="t('arch.title')" :subtitle="t('arch.subtitle')" />
 
-      <div class="card overflow-x-auto p-4 sm:p-8">
+      <div class="overflow-x-auto p-4 sm:p-8" :class="compact ? 'docs-arch-embed' : 'card'">
         <svg viewBox="0 0 1104 448" class="mx-auto block min-w-[800px] w-full" role="img" :aria-label="t('arch.title')" font-family="Geist, ui-sans-serif, system-ui, sans-serif">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5 0 10z" fill="var(--fg-3)" /></marker>
@@ -92,7 +93,7 @@ const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api'
         </svg>
       </div>
 
-      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div v-if="!compact" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <a v-for="r in repos" :key="r.name" :href="repoLink[r.name]" target="_blank" rel="noopener" class="card block p-5">
           <div class="flex items-center justify-between">
             <span class="font-mono text-sm font-semibold">{{ r.name }}</span>

@@ -5,6 +5,8 @@ description: One sentence in; a planned, layered, subtitled film out.
 
 Path `/create`. The wizard is: input → plan → layered generate → compose → done. Contract: API.md §8.2.
 
+![One-prompt film](/images/docs/create.png)
+
 Anonymous visitors can see step 1; generating a plan requires sign-in. Wizard state lives in sessionStorage keyed by screenplay id; refresh or `?screenplay=` resumes.
 
 ## Flow

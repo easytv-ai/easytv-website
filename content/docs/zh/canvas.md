@@ -5,6 +5,8 @@ description: 节点种类、连线生成、版本历史、只读分享，以及�
 
 画布是创作台的核心，路径 `/canvas`。`?id=` 打开已有画布，`?project_id=` 从项目新建。后端把 `graph` 当 JSON 原样存，**不解析节点语义**；上限 **2 MB / 张**。
 
+![自由画布节点连线](/images/docs/canvas.png)
+
 ## 节点种类
 
 | kind | 做什么 |

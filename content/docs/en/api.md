@@ -1,44 +1,50 @@
 ---
 title: API overview
-description: Auth, response envelope, how the three clients split; the full contract is still API.md.
+description: Base URL, the response envelope, and the resource index. The contract is still API.md.
 ---
 
-Entities, routes and state machines live in [`easytv-api/API.md`](https://github.com/easytv-ai/easytv-api/blob/main/API.md). **Change that file before you change code.** This page is only the glue you need to wire a client.
+Entities, routes and state machines live in [`easytv-api/API.md`](https://github.com/easytv-ai/easytv-api/blob/main/API.md). **Change that file before the code.** This site splits the common routes by resource, with method, params, curl and example responses.
 
 ## Conventions
 
-- Base URL: `NUXT_PUBLIC_API_BASE_URL`, locally `http://127.0.0.1:8383`
-- HTTP is always 200; read `success` in the JSON:
+- Base URL: `NUXT_PUBLIC_API_BASE_URL`, locally `http://127.0.0.1:8383`. Curl below uses `$API`.
+- HTTP is **always 200**. Read `success` in the JSON.
+- Timestamps are Unix seconds. Empty `deleted_at` means not deleted.
+- Pagination: `?page=1&page_size=20` (max 100), `data = { "items": [], "total": 123 }`.
+- Soft delete: `DELETE` goes to trash, physical cleanup after 30 days; restore with `POST …/restore`.
 
 ```json
 { "success": true, "message": "", "data": {} }
-{ "success": false, "message": "why it failed" }
+{ "success": false, "message": "reason" }
 ```
 
-- Pagination: `?page=1&page_size=20` (max 100), `data = { "items": [], "total": 123 }`
-- Time: Unix seconds. Empty `deleted_at` means not deleted
-- Soft delete: `DELETE` goes to the trash; physical purge after 30 days
-
-## Auth
-
-Sign-in: `POST /user/login` (email) or SMS code + `POST /user/sms_login`. The response includes `access_token`.
-
-Every authenticated request then sends:
-
-```
-Authorization: Bearer <access_token>
-EasyTV-User: <user_id>
-```
-
-Optional `EasyTV-Team: <team_id>` selects a team space. `/admin/*` needs `role ≥ 10`.
-
-Authorization failures return `success: false, message: "资源不存在"` so absence and no-access look the same.
+Headers, sign-in and no-access replies: [Auth](/docs/api-auth).
 
 ## Health
 
-`GET /healthz` → `200 {"status":"ok"}`. Docker and Compose use this as the probe.
+### GET `/healthz`
+
+Anonymous. Used as the Docker / Compose probe. Body is not the usual envelope:
+
+```json
+{ "status": "ok" }
+```
+
+## Index
+
+| Group | Pages |
+| --- | --- |
+| Basics | [Auth](/docs/api-auth) · [User API index](/docs/api-user) |
+| Studio | [Projects](/docs/api-project) · [Canvas](/docs/api-canvas) · [Assets](/docs/api-asset) · [Tasks](/docs/api-task) |
+| Community | [Works](/docs/api-work) · [Skills](/docs/api-skill) · [Public feed](/docs/api-public) |
+| Billing | [Models](/docs/api-models) · [Wallet](/docs/api-wallet) · [Orders](/docs/api-order) |
+| Collab | [Teams](/docs/api-team) · [Media jobs](/docs/api-media) |
+| Admin | [Admin index](/docs/api-admin) · [Users](/docs/api-admin-user) · [Review](/docs/api-admin-review) · [Pricing](/docs/api-admin-price) |
+| Partner | [Partner console](/docs/api-partner) |
 
 ## Reverse proxy
+
+Auth is headers, not cookies. Generation and uploads can run for minutes.
 
 ```nginx
 location /api/ {
@@ -51,20 +57,3 @@ location /api/ {
     client_max_body_size 512m;
 }
 ```
-
-Auth is headers, not cookies. User, public and admin route tables are chapter 2 of API.md on GitHub.
-
-## How routes split
-
-| Prefix | Who calls it | What it covers |
-| --- | --- | --- |
-| `/user/*` | Studio | Projects, canvases, assets, tasks, works, skills, notifications |
-| `/user/partner/*` | Partner console | Apply, dashboard, customers, rebates, withdrawals, materials |
-| `/admin/*` | Admin console | Users, review, prices, gateway, payments, growth. `role ≥ 10`; system settings need `role ≥ 100` |
-| `/work` `/skill` `/share/*` | Public | Feed, skill plaza, read-only canvas share |
-| `/generation/models` | Public | Models that already have prices imported |
-| `POST /user/login` · `POST /user/sms_login` | Public | Sign-in, returns `access_token` |
-
-Canvas `PUT` must send the current `version` (optimistic lock). The whole `graph` is capped at 2 MB — do not embed director-stage camera stills as base64.
-
-Generation: `POST /user/task` to create, poll `GET /user/task/:id`. Credits are reserved from `model_price` and refunded on failure or cancel.

@@ -5,6 +5,8 @@ description: 作品流、关注榜单、评论审核，以及技能模板怎么�
 
 创作台不只是工作台，也有一条公开的成片社区。运营在后台审作品、评论和技能。
 
+![探索页作品流](/images/docs/explore.png)
+
 ## 作品
 
 创作者从资产发布：`POST /user/work`。公开信息流 `GET /work`，详情 `/watch/:id`（浏览数 +1）。作者可选择公开「制作过程」`/process/:id`。

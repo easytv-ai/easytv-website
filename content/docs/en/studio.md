@@ -5,6 +5,8 @@ description: What easytv-web does, main routes, and how to point it at your API.
 
 The studio is the creator front end, repository [easytv-web](https://github.com/easytv-ai/easytv-web). Feature guides: [canvas](/docs/canvas), [one-prompt film](/docs/create), [director](/docs/director), [community](/docs/community), [sign-in and teams](/docs/team).
 
+![Studio home and featured films](/images/docs/studio.png)
+
 ## What it does
 
 - **Free canvas**: text, image, video, audio and storyboard-group nodes, with version history and read-only sharing

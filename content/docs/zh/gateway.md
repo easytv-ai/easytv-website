@@ -5,6 +5,10 @@ description: 把 New API / One API 兼容网关接到 EasyTV，拉取模型并�
 
 EasyTV 通过 OpenAI 兼容接口调用模型：`/v1/chat`、`/v1/images`、`/v1/videos`（以及网关提供的音频能力）。**先有网关，再谈生成。**
 
+网关地址和 Key 在运营后台 **系统 → 网关** 填写，改完立刻生效。
+
+![运营后台系统与网关](/images/docs/admin.svg)
+
 ## 第一次接通
 
 1. 准备一个已在跑的 [New API](https://github.com/QuantumNous/new-api)（或其它兼容网关）令牌，该令牌能调你要用的文本 / 图像 / 视频模型。
