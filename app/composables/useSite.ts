@@ -6,6 +6,7 @@ export function useSiteLinks() {
     web: `${org}/easytv-web`,
     api: `${org}/easytv-api`,
     manage: `${org}/easytv-manage`,
+    partner: `${org}/easytv-partner`,
     apiDoc: `${org}/easytv-api/blob/main/API.md`,
     demo: config.public.demoUrl,
   }

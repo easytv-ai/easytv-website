@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Open-source governance: AGPL-3.0 license, contributing guide, code of
   conduct, security policy, issue and pull request templates, Dependabot and
   GitHub Actions CI.
+- In-site docs at `/docs` (English `/en/docs`): quick start, install, storage,
+  production, canvas, one-prompt film, director, media tools, billing, community,
+  teams, admin, partner, gateway, API overview, FAQ and license.
 
 ### Fixed
 

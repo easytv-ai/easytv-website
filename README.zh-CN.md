@@ -12,7 +12,7 @@
 
 </div>
 
-一个静态的中英双语介绍页：说明 EasyTV 是什么、展示流水线与案例、链接到各仓库。基于 Nuxt 4、Tailwind CSS 4 与 `@nuxtjs/i18n`，部署在 Cloudflare。
+一个静态的中英双语介绍页，外加 `/docs` 文档站：安装、四个产品仓库、网关对接与接口约定。基于 Nuxt 4、Tailwind CSS 4 与 `@nuxtjs/i18n`，部署在 Cloudflare。
 
 ## 开发
 
@@ -40,13 +40,16 @@ GitHub 组织地址在 `nuxt.config.ts`（`githubOrg`）。
 
 ## 改文案
 
-所有文案都在 `i18n/locales/zh.json` 与 `i18n/locales/en.json`，组件只读取这两个文件。每个 key 两种语言都要有。案例图在 `public/images/showcase/`。
+介绍页文案在 `i18n/locales/zh.json` 与 `i18n/locales/en.json`。文档正文是 `content/docs/{zh,en}/` 下的 Markdown。UI 文案两种语言都要有，两套文档目录保持同步。
 
 ```
 app/pages/index.vue        首页，按区块拼装
-app/components/Site*.vue   每个区块一个组件
+app/pages/docs/            文档首页与文章
+app/components/Site*.vue   落地页区块
+app/components/docs/       文档外壳
+content/docs/              Markdown（中 / 英）
 app/composables/useSite.ts 仓库链接与主题切换
-i18n/locales/              文案
+i18n/locales/              落地页与文档界面文案
 ```
 
 ## 参与贡献
@@ -60,6 +63,7 @@ i18n/locales/              文案
 | [easytv-api](https://github.com/easytv-ai/easytv-api) | Go 后端 |
 | [easytv-web](https://github.com/easytv-ai/easytv-web) | 创作台 |
 | [easytv-manage](https://github.com/easytv-ai/easytv-manage) | 运营后台 |
+| [easytv-partner](https://github.com/easytv-ai/easytv-partner) | 渠道后台 |
 
 ## 开源协议
 

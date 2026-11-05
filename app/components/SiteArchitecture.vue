@@ -2,7 +2,7 @@
 const { t, tm, rt } = useI18n()
 const links = useSiteLinks()
 const repos = computed(() => (tm('arch.repos') as any[]).map(r => ({ name: rt(r.name), stack: rt(r.stack), desc: rt(r.desc) })))
-const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api': links.api, 'easytv-manage': links.manage }
+const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api': links.api, 'easytv-manage': links.manage, 'easytv-partner': links.partner }
 </script>
 
 <template>
@@ -92,7 +92,7 @@ const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api'
         </svg>
       </div>
 
-      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <a v-for="r in repos" :key="r.name" :href="repoLink[r.name]" target="_blank" rel="noopener" class="card block p-5">
           <div class="flex items-center justify-between">
             <span class="font-mono text-sm font-semibold">{{ r.name }}</span>

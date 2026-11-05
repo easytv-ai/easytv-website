@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 const links = useSiteLinks()
 const flow = ['script', 'subject', 'shot', 'voice', 'compose', 'work'] as const
 const stats = ['repos', 'locales', 'api', 'models'] as const
@@ -20,7 +21,7 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
         <p class="lead mx-auto mt-6 max-w-2xl">{{ t('hero.subtitle') }}</p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           <a :href="links.org" target="_blank" rel="noopener" class="btn btn-primary">{{ t('hero.cta_github') }}</a>
-          <a href="#quickstart" class="btn btn-ghost">{{ t('hero.cta_deploy') }}</a>
+          <NuxtLink :to="localePath('/docs/quickstart')" class="btn btn-ghost">{{ t('hero.cta_deploy') }}</NuxtLink>
           <a :href="links.demo" target="_blank" rel="noopener" class="btn btn-ghost">{{ t('hero.cta_demo') }} ↗</a>
         </div>
       </div>

@@ -12,9 +12,10 @@
 
 </div>
 
-A static, bilingual (中文 / English) landing page that explains what EasyTV is,
-shows the pipeline and showcase, and links to the repositories. Built with
-Nuxt 4, Tailwind CSS 4 and `@nuxtjs/i18n`, deployed to Cloudflare.
+A static, bilingual (中文 / English) landing page and docs site for EasyTV.
+The home page explains the product; `/docs` covers install, the four product
+repositories, gateway setup and the API contract. Built with Nuxt 4, Tailwind
+CSS 4 and `@nuxtjs/i18n`, deployed to Cloudflare.
 
 ## Development
 
@@ -42,15 +43,18 @@ The GitHub organisation link is set in `nuxt.config.ts` (`githubOrg`).
 
 ## Editing content
 
-All copy lives in `i18n/locales/zh.json` and `i18n/locales/en.json`; components
-only read from those files. Add every key to both locales. Showcase images are
-in `public/images/showcase/`.
+Marketing copy lives in `i18n/locales/zh.json` and `i18n/locales/en.json`.
+Docs articles are Markdown under `content/docs/{zh,en}/`. Add every UI key to
+both locales, and keep the two doc trees in sync.
 
 ```
 app/pages/index.vue        home page, assembled from sections
-app/components/Site*.vue   one component per section
+app/pages/docs/            docs hub and article pages
+app/components/Site*.vue   landing sections
+app/components/docs/       docs chrome
+content/docs/              Markdown (zh + en)
 app/composables/useSite.ts repository links and theme toggle
-i18n/locales/              copy
+i18n/locales/              marketing + docs UI chrome
 ```
 
 ## Contributing
@@ -66,6 +70,7 @@ especially welcome.
 | [easytv-api](https://github.com/easytv-ai/easytv-api) | Go backend |
 | [easytv-web](https://github.com/easytv-ai/easytv-web) | Creator studio |
 | [easytv-manage](https://github.com/easytv-ai/easytv-manage) | Admin console |
+| [easytv-partner](https://github.com/easytv-ai/easytv-partner) | Partner console |
 
 ## License
 

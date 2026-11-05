@@ -10,6 +10,7 @@
     "compare": "Compare",
     "quickstart": "Deploy",
     "roadmap": "Roadmap",
+    "docs": "Docs",
     "github": "GitHub",
     "demo": "Live demo",
     "theme": "Toggle theme",
@@ -30,7 +31,7 @@
       "models": "Model access"
     },
     "stats_v": {
-      "repos": "3",
+      "repos": "4",
       "locales": "7",
       "api": "38 chapters",
       "models": "OpenAI-compatible"
@@ -141,7 +142,7 @@
   },
   "arch": {
     "eyebrow": "Architecture",
-    "title": "Three repositories, one API contract",
+    "title": "Four repositories, one API contract",
     "subtitle": "Separated front and back ends, token auth, and a contract in API.md that changes before the code does.",
     "nodes": {
       "web": "easytv-web",
@@ -181,6 +182,11 @@
         "name": "easytv-manage",
         "stack": "Nuxt 4 SPA · Nuxt UI",
         "desc": "The admin console: users, works, review, orders, model pricing and system settings."
+      },
+      {
+        "name": "easytv-partner",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "Self-serve partner console: rebate dashboard, attributed customers, withdrawals and promo kits."
       }
     ]
   },
@@ -254,9 +260,10 @@
     "tabs": [
       "easytv-api",
       "easytv-web",
-      "easytv-manage"
+      "easytv-manage",
+      "easytv-partner"
     ],
-    "note": "Production deployment, systemd, Nginx and seed data are documented in each repository's README."
+    "note": "Full install, gateway setup and systemd live in the docs."
   },
   "roadmap": {
     "eyebrow": "Roadmap",
@@ -267,7 +274,7 @@
         "items": [
           "LICENSE and contributing guide in all repos",
           "docker compose one-command start",
-          "Docs site and API reference",
+          "Searchable API contract",
           "GitHub Actions CI everywhere"
         ]
       },
@@ -298,13 +305,13 @@
     "cards": [
       {
         "title": "GitHub",
-        "desc": "All three repositories live under the easytv-ai organization.",
+        "desc": "All four product repositories live under the easytv-ai organization.",
         "cta": "Open the org"
       },
       {
-        "title": "API contract",
-        "desc": "API.md records every entity, route and behavior change.",
-        "cta": "Read API.md"
+        "title": "Docs",
+        "desc": "Install, gateway, the three consoles and the API contract.",
+        "cta": "Open the docs"
       },
       {
         "title": "Live demo",
@@ -320,7 +327,48 @@
       "web": "Studio",
       "api": "Backend",
       "manage": "Admin",
+      "partner": "Partner",
+      "docs": "Docs",
       "demo": "Official site"
+    }
+  },
+  "docs": {
+    "toc": "On this page",
+    "prev": "Previous",
+    "next": "Next",
+    "search": "Search docs",
+    "edit": "Edit this page on GitHub",
+    "empty": "No matching pages",
+    "sections": {
+      "start": "Start",
+      "install": "Install",
+      "guide": "Guides",
+      "ref": "Reference"
+    },
+    "hub": {
+      "eyebrow": "Docs",
+      "title": "From first deploy to daily ops",
+      "subtitle": "Laid out like the New API docs: install, use, API and troubleshooting. The full contract is still API.md on GitHub.",
+      "open": "Open",
+      "all": "All pages",
+      "start_t": "Quick start",
+      "start_d": "Fifteen minutes: Docker, admin, gateway, first film.",
+      "install_t": "Install",
+      "install_d": "Docker, source, env vars, storage and production hosts.",
+      "guide_t": "Create",
+      "guide_d": "Canvas, one-prompt film, director stage, media tools.",
+      "bill_t": "Billing and ops",
+      "bill_d": "Credits, plans, payments, team space, partner rebates.",
+      "api_t": "API overview",
+      "api_d": "Auth, the response envelope, and a door into API.md.",
+      "arch_t": "Architecture",
+      "arch_d": "How four repositories share one backend.",
+      "gw_t": "Gateway",
+      "gw_d": "Point EasyTV at a New API-compatible gateway and import prices.",
+      "prod_t": "Production",
+      "prod_d": "Subdomains, Nginx, Cloudflare, multi-node workers.",
+      "help_t": "Help",
+      "help_d": "FAQ plus AGPL / commercial licensing."
     }
   }
 }

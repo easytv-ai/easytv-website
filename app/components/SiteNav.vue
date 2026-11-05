@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
 const links = useSiteLinks()
 const { isDark, toggle } = useTheme()
@@ -26,6 +27,7 @@ const otherLocale = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
 
       <nav class="hidden items-center gap-1 lg:flex">
         <a v-for="it in items" :key="it.id" :href="`#${it.id}`" class="rounded-full px-3 py-1.5 text-sm transition hover:bg-[var(--panel-2)]" style="color: var(--fg-2)">{{ t(it.key) }}</a>
+        <NuxtLink :to="localePath('/docs')" class="rounded-full px-3 py-1.5 text-sm transition hover:bg-[var(--panel-2)]" style="color: var(--fg-2)">{{ t('nav.docs') }}</NuxtLink>
       </nav>
 
       <div class="flex items-center gap-2">
@@ -46,6 +48,7 @@ const otherLocale = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
     <div v-if="open" class="border-t lg:hidden" style="border-color: var(--line-2); background: var(--bg)">
       <div class="container-x flex flex-col py-2">
         <a v-for="it in items" :key="it.id" :href="`#${it.id}`" class="py-2.5 text-sm" style="color: var(--fg-2)" @click="open = false">{{ t(it.key) }}</a>
+        <NuxtLink :to="localePath('/docs')" class="py-2.5 text-sm" style="color: var(--fg-2)" @click="open = false">{{ t('nav.docs') }}</NuxtLink>
         <NuxtLink :to="switchLocalePath(otherLocale)" class="py-2.5 text-sm" style="color: var(--fg-2)" @click="open = false">{{ t('nav.lang') }}</NuxtLink>
         <a :href="links.org" target="_blank" rel="noopener" class="py-2.5 text-sm font-semibold">{{ t('nav.github') }}</a>
       </div>

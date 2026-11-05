@@ -10,6 +10,7 @@
     "compare": "对比",
     "quickstart": "部署",
     "roadmap": "路线图",
+    "docs": "文档",
     "github": "GitHub",
     "demo": "在线体验",
     "theme": "切换主题",
@@ -30,7 +31,7 @@
       "models": "模型接入方式"
     },
     "stats_v": {
-      "repos": "3",
+      "repos": "4",
       "locales": "7",
       "api": "38 章",
       "models": "OpenAI 兼容"
@@ -141,7 +142,7 @@
   },
   "arch": {
     "eyebrow": "架构",
-    "title": "三个仓库，一份接口契约",
+    "title": "四个仓库，一份接口契约",
     "subtitle": "前后端分离，Token 鉴权，契约写在 API.md 里，改接口先改契约。",
     "nodes": {
       "web": "easytv-web",
@@ -181,6 +182,11 @@
         "name": "easytv-manage",
         "stack": "Nuxt 4 SPA · Nuxt UI",
         "desc": "运营后台：用户、作品、审核、订单、模型定价、系统设置。"
+      },
+      {
+        "name": "easytv-partner",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "渠道伙伴自助后台：返佣看板、归属客户、提现、推广物料。"
       }
     ]
   },
@@ -254,9 +260,10 @@
     "tabs": [
       "easytv-api",
       "easytv-web",
-      "easytv-manage"
+      "easytv-manage",
+      "easytv-partner"
     ],
-    "note": "生产部署、systemd、Nginx 反代与 seed 演示数据见各仓库 README。"
+    "note": "完整安装、网关对接与 systemd 见文档站。"
   },
   "roadmap": {
     "eyebrow": "路线图",
@@ -265,9 +272,9 @@
       {
         "title": "开源发布",
         "items": [
-          "三仓库 LICENSE 与贡献指南",
+          "四仓库 LICENSE 与贡献指南",
           "docker compose 一键启动",
-          "文档站与接口文档上线",
+          "接口契约可视化检索",
           "GitHub Actions 全仓库 CI"
         ]
       },
@@ -298,13 +305,13 @@
     "cards": [
       {
         "title": "GitHub",
-        "desc": "三个仓库都在 easytv-ai 组织下。",
+        "desc": "四个产品仓库都在 easytv-ai 组织下。",
         "cta": "前往组织"
       },
       {
-        "title": "接口契约",
-        "desc": "API.md 记录了全部实体、路由与行为变更。",
-        "cta": "阅读 API.md"
+        "title": "文档",
+        "desc": "安装、网关、三端后台和接口约定都写在文档站。",
+        "cta": "打开文档"
       },
       {
         "title": "在线体验",
@@ -320,7 +327,48 @@
       "web": "创作台",
       "api": "后端",
       "manage": "后台",
+      "partner": "渠道",
+      "docs": "文档",
       "demo": "官方站"
+    }
+  },
+  "docs": {
+    "toc": "本页目录",
+    "prev": "上一页",
+    "next": "下一页",
+    "search": "搜索文档",
+    "edit": "在 GitHub 上编辑此页",
+    "empty": "没有匹配的页面",
+    "sections": {
+      "start": "开始",
+      "install": "安装部署",
+      "guide": "使用指南",
+      "ref": "参考"
+    },
+    "hub": {
+      "eyebrow": "文档",
+      "title": "从部署到日常运营",
+      "subtitle": "按 New API 文档站的方式组织：安装、使用、接口和排错都在这里。完整接口契约仍以 GitHub 上的 API.md 为准。",
+      "open": "打开",
+      "all": "全部页面",
+      "start_t": "快速开始",
+      "start_d": "15 分钟：Docker、后台、网关、第一条成片。",
+      "install_t": "安装部署",
+      "install_d": "Docker、源码、环境变量、存储与生产域名。",
+      "guide_t": "创作指南",
+      "guide_d": "画布、一句话成片、导演台、媒体工具。",
+      "bill_t": "计费与运营",
+      "bill_d": "积分、会员、支付、团队空间、渠道返佣。",
+      "api_t": "接口概览",
+      "api_d": "鉴权、响应包，以及指向 API.md 的入口。",
+      "arch_t": "架构",
+      "arch_d": "四个仓库如何接到同一个后端。",
+      "gw_t": "对接网关",
+      "gw_d": "把 New API 兼容网关接上并导入定价。",
+      "prod_t": "生产部署",
+      "prod_d": "子域、Nginx、Cloudflare、多节点 worker。",
+      "help_t": "帮助",
+      "help_d": "常见问题与 AGPL / 商业许可。"
     }
   }
 }

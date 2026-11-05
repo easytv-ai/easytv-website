@@ -56,8 +56,9 @@ pnpm typecheck      # vue-tsc
 pnpm generate       # static build into .output/public
 ```
 
-Copy lives in `i18n/locales/{zh,en}.json`; components under `app/components`
-only read from it. Change copy there, not in templates.
+Marketing copy lives in `i18n/locales/{zh,en}.json`. Docs articles live in
+`content/docs/zh/` and `content/docs/en/` as Markdown with a `title` /
+`description` frontmatter. Keep both languages in the same pull request.
 
 
 ## Making Changes

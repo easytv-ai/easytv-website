@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 const links = useSiteLinks()
 const year = new Date().getFullYear()
 </script>
@@ -15,9 +16,11 @@ const year = new Date().getFullYear()
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" style="color: var(--fg-2)">
+        <NuxtLink :to="localePath('/docs')">{{ t('footer.links.docs') }}</NuxtLink>
         <a :href="links.web" target="_blank" rel="noopener">{{ t('footer.links.web') }}</a>
         <a :href="links.api" target="_blank" rel="noopener">{{ t('footer.links.api') }}</a>
         <a :href="links.manage" target="_blank" rel="noopener">{{ t('footer.links.manage') }}</a>
+        <a :href="links.partner" target="_blank" rel="noopener">{{ t('footer.links.partner') }}</a>
         <a :href="links.demo" target="_blank" rel="noopener">{{ t('footer.links.demo') }}</a>
       </nav>
       <div class="text-xs" style="color: var(--fg-3)">© {{ year }} EasyTV · {{ t('footer.license') }}</div>
