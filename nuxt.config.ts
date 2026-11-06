@@ -1,5 +1,6 @@
 import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
+import { apiGroupRedirects } from './app/utils/api-catalog'
 import { DOC_PAGES } from './app/utils/docs'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://easytv.ai'
@@ -59,4 +60,7 @@ export default defineNuxtConfig({
       ],
     },
   },
+  routeRules: Object.fromEntries(
+    apiGroupRedirects().map(r => [r.from, { redirect: { to: r.to, statusCode: 301 } }]),
+  ),
 })

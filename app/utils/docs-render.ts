@@ -31,6 +31,16 @@ function localizeDocLinks(html: string, locale: string) {
   return html.replaceAll('href="/docs/', `href="/${locale}/docs/`)
 }
 
+export function loadDocSource(locale: string, slug: string): string | null {
+  const key = keyFor(locale, slug) || keyFor('zh', slug)
+  if (!key) return null
+  const { title, description, body } = parseFrontmatter(sources[key] || '')
+  const parts = [`# ${title}`]
+  if (description) parts.push('', description)
+  if (body) parts.push('', body)
+  return `${parts.join('\n').trim()}\n`
+}
+
 export function loadDoc(locale: string, slug: string): RenderedDoc | null {
   const key = keyFor(locale, slug) || keyFor('zh', slug)
   if (!key) return null

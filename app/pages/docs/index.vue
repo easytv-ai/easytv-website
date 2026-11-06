@@ -33,17 +33,17 @@ const repos = computed(() => [
 
 const apis = computed(() => [
   { to: '/docs/api', title: t('docs.hub.api_t'), desc: t('docs.hub.api_d') },
-  { to: '/docs/api-auth', title: t('docs.hub.auth_t'), desc: t('docs.hub.auth_d') },
-  { to: '/docs/api-canvas', title: t('docs.hub.canvas_api_t'), desc: t('docs.hub.canvas_api_d') },
-  { to: '/docs/api-task', title: t('docs.hub.task_t'), desc: t('docs.hub.task_d') },
-  { to: '/docs/api-models', title: t('docs.hub.models_t'), desc: t('docs.hub.models_d') },
-  { to: '/docs/api-wallet', title: t('docs.hub.wallet_t'), desc: t('docs.hub.wallet_d') },
-  { to: '/docs/api-order', title: t('docs.hub.order_t'), desc: t('docs.hub.order_d') },
+  { to: '/docs/api-auth-login', title: t('docs.hub.auth_t'), desc: t('docs.hub.auth_d') },
+  { to: '/docs/api-canvas-list', title: t('docs.hub.canvas_api_t'), desc: t('docs.hub.canvas_api_d') },
+  { to: '/docs/api-task-create', title: t('docs.hub.task_t'), desc: t('docs.hub.task_d') },
+  { to: '/docs/api-models-list', title: t('docs.hub.models_t'), desc: t('docs.hub.models_d') },
+  { to: '/docs/api-wallet-get', title: t('docs.hub.wallet_t'), desc: t('docs.hub.wallet_d') },
+  { to: '/docs/api-order-plans', title: t('docs.hub.order_t'), desc: t('docs.hub.order_d') },
   { to: '/docs/api-admin', title: t('docs.hub.admin_t'), desc: t('docs.hub.admin_d') },
-  { to: '/docs/api-admin-price', title: t('docs.hub.price_t'), desc: t('docs.hub.price_d') },
-  { to: '/docs/api-public', title: t('docs.hub.pub_t'), desc: t('docs.hub.pub_d') },
-  { to: '/docs/api-partner', title: t('docs.hub.ptn_t'), desc: t('docs.hub.ptn_d') },
-  { to: '/docs/api-user', title: t('docs.hub.user_t'), desc: t('docs.hub.user_d') },
+  { to: '/docs/api-admin-model-price', title: t('docs.hub.price_t'), desc: t('docs.hub.price_d') },
+  { to: '/docs/api-public-feed', title: t('docs.hub.pub_t'), desc: t('docs.hub.pub_d') },
+  { to: '/docs/api-partner-apply', title: t('docs.hub.ptn_t'), desc: t('docs.hub.ptn_d') },
+  { to: '/docs/api-user-self', title: t('docs.hub.user_t'), desc: t('docs.hub.user_d') },
 ])
 
 const explore = computed(() => [

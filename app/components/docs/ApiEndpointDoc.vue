@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ApiEndpoint, ApiField } from '~/utils/api-catalog'
-import { buildCurl, pick } from '~/utils/api-catalog'
+import { buildCurl, buildEndpointMarkdown, pick } from '~/utils/api-catalog'
+import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
 
 const props = defineProps<{ endpoint: ApiEndpoint }>()
 
@@ -14,6 +15,22 @@ const pathParams = computed(() => (props.endpoint.params || []).filter(f => f.lo
 const body = computed(() => props.endpoint.body || [])
 const authLabel = computed(() => t(`docs.api.auth_${props.endpoint.auth}`))
 const codeTab = ref<'curl' | 'json'>('curl')
+const markdown = computed(() => buildEndpointMarkdown(props.endpoint, locale.value, {
+  auth: authLabel.value,
+  headers: t('docs.api.headers'),
+  query: t('docs.api.query'),
+  path: t('docs.api.path'),
+  body: t('docs.api.body'),
+  errors: t('docs.api.errors'),
+  curl: t('docs.api.md_curl'),
+  response: t('docs.api.md_response'),
+  name: t('docs.api.md_name'),
+  type: t('docs.api.md_type'),
+  required: t('docs.api.md_required'),
+  desc: t('docs.api.md_desc'),
+  yes: t('docs.api.md_yes'),
+  no: t('docs.api.md_no'),
+}))
 
 const toc = computed(() => {
   const items: { id: string; text: string; depth: number }[] = []
@@ -62,6 +79,9 @@ function loc(field: ApiField) {
       <code class="docs-ep-path">{{ endpoint.path }}</code>
       <span class="docs-ep-auth">{{ authLabel }}</span>
     </p>
+    <div class="docs-page-actions">
+      <DocsCopyMarkdown :markdown="markdown" />
+    </div>
     <p class="docs-lead">{{ pick(endpoint.summary, locale) }}</p>
 
     <div class="docs-api">

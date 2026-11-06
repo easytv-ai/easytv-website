@@ -18,7 +18,7 @@ description: Base URL、响应包、鉴权头。左侧按资源展开到每一�
 { "success": false, "message": "错误原因" }
 ```
 
-鉴权头、登录见左侧 [鉴权与登录](/docs/api-auth)。健康检查见 [GET /healthz](/docs/api-healthz)。
+鉴权头、登录见 [密码登录](/docs/api-auth-login)。健康检查见 [GET /healthz](/docs/api-healthz)。
 
 ## 反向代理
 

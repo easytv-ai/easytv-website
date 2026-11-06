@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DOC_PAGES, DOC_SECTIONS, docPath, type DocSection } from '~/utils/docs'
 import { loadDocNav } from '~/utils/docs-render'
-import { API_GROUPS, API_TOP_LEVEL, pick, type ApiEndpoint, type ApiGroup } from '~/utils/api-catalog'
+import { API_GROUPS, API_TOP_LEVEL, groupEntrySlug, pick, type ApiEndpoint, type ApiGroup } from '~/utils/api-catalog'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -87,8 +87,8 @@ const currentApiGroupId = computed(() => {
   return API_GROUPS.find(g => g.slug === slug || g.endpoints.some(e => e.slug === slug))?.id || ''
 })
 
-watch(currentApiGroupId, (id) => {
-  if (id && opened.value[id] !== true)
+watch(currentApiGroupId, (id, prev) => {
+  if (id && id !== prev)
     opened.value = { ...opened.value, [id]: true }
 }, { immediate: true })
 
@@ -194,9 +194,9 @@ watch(() => route.path, () => {
             <NuxtLink
               v-for="hit in apiSearchHits"
               :key="hit.ep?.slug || hit.group?.slug"
-              :to="localePath(docPath(hit.ep?.slug || hit.group?.slug || 'api'))"
+              :to="localePath(docPath(hit.ep?.slug || (hit.group ? groupEntrySlug(hit.group) : 'api')))"
               class="docs-link docs-link--ep"
-              :class="{ 'docs-link--active': isActive(hit.ep?.slug || hit.group?.slug || '') }"
+              :class="{ 'docs-link--active': isActive(hit.ep?.slug || (hit.group ? groupEntrySlug(hit.group) : '')) }"
               @click="open = false"
             >
               <span>{{ hit.ep ? pick(hit.ep.title, locale) : pick(hit.group!.title, locale) }}</span>
@@ -215,31 +215,41 @@ watch(() => route.path, () => {
               <span>{{ pick(ep.title, locale) }}</span>
               <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
             </NuxtLink>
-            <div v-for="g in API_GROUPS" :key="g.id" class="docs-fold" :class="{ 'is-open': isFoldOpen(g.id) }">
-              <div class="docs-fold-row" :class="{ 'is-active': isActive(g.slug) }">
-                <button type="button" class="docs-fold-chevron" :aria-expanded="isFoldOpen(g.id)" @click.stop="toggleFold(g.id)">
-                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m9 6 6 6-6 6" /></svg>
-                </button>
-                <NuxtLink
-                  :to="localePath(docPath(g.slug))"
-                  class="docs-fold-title"
-                  @click="open = false"
-                >{{ pick(g.title, locale) }}</NuxtLink>
-              </div>
-              <div v-if="isFoldOpen(g.id) && g.endpoints.length" class="docs-fold-items">
-                <NuxtLink
-                  v-for="ep in g.endpoints"
-                  :key="ep.slug"
-                  :to="localePath(docPath(ep.slug))"
-                  class="docs-link docs-link--ep"
-                  :class="{ 'docs-link--active': isActive(ep.slug) }"
-                  @click="open = false"
+            <template v-for="g in API_GROUPS" :key="g.id">
+              <NuxtLink
+                v-if="!g.endpoints.length"
+                :to="localePath(docPath(g.slug))"
+                class="docs-link"
+                :class="{ 'docs-link--active': isActive(g.slug) }"
+                @click="open = false"
+              >{{ pick(g.title, locale) }}</NuxtLink>
+              <div v-else class="docs-fold" :class="{ 'is-open': isFoldOpen(g.id) }">
+                <button
+                  type="button"
+                  class="docs-fold-row"
+                  :aria-expanded="isFoldOpen(g.id)"
+                  @click="toggleFold(g.id)"
                 >
-                  <span>{{ pick(ep.title, locale) }}</span>
-                  <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
-                </NuxtLink>
+                  <span class="docs-fold-title">{{ pick(g.title, locale) }}</span>
+                  <span class="docs-fold-chevron" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 11 8l-5 4.5" /></svg>
+                  </span>
+                </button>
+                <div v-if="isFoldOpen(g.id)" class="docs-fold-items">
+                  <NuxtLink
+                    v-for="ep in g.endpoints"
+                    :key="ep.slug"
+                    :to="localePath(docPath(ep.slug))"
+                    class="docs-link docs-link--ep"
+                    :class="{ 'docs-link--active': isActive(ep.slug) }"
+                    @click="open = false"
+                  >
+                    <span>{{ pick(ep.title, locale) }}</span>
+                    <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
+                  </NuxtLink>
+                </div>
               </div>
-            </div>
+            </template>
           </template>
         </div>
       </nav>

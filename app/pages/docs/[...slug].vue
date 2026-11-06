@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { DOC_PAGES, docPath } from '~/utils/docs'
-import { loadDoc, neighbors } from '~/utils/docs-render'
-import { API_GROUPS, findApiEndpoint, pageTitle } from '~/utils/api-catalog'
+import { loadDoc, loadDocSource, neighbors } from '~/utils/docs-render'
+import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
+import { API_GROUPS, findApiEndpoint, groupEntrySlug, pageTitle } from '~/utils/api-catalog'
 import ApiEndpointDoc from '~/components/docs/ApiEndpointDoc.vue'
 import ApiGroupLinks from '~/components/docs/ApiGroupLinks.vue'
 
@@ -22,6 +23,7 @@ const slug = computed(() => {
 const endpoint = computed(() => findApiEndpoint(slug.value))
 const group = computed(() => API_GROUPS.find(g => g.slug === slug.value) || null)
 const doc = computed(() => loadDoc(locale.value, slug.value))
+const docMarkdown = computed(() => loadDocSource(locale.value, slug.value) || '')
 const around = computed(() => neighbors(slug.value))
 
 function titleOf(pageSlug?: string) {
@@ -34,7 +36,13 @@ const nextTitle = computed(() => titleOf(around.value.next?.slug))
 const sectionTitle = computed(() => t(`docs.sections.${DOC_PAGES.find(p => p.slug === slug.value)?.section || 'start'}`))
 const toc = useDocsToc()
 
-if (!endpoint.value && !doc.value) {
+const groupRedirect = computed(() => API_GROUPS.find(g => g.slug === slug.value && g.endpoints.length) || null)
+watch(groupRedirect, async (g) => {
+  if (!g) return
+  await navigateTo(localePath(docPath(groupEntrySlug(g))), { redirectCode: 301, replace: true })
+}, { immediate: true })
+
+if (!endpoint.value && !doc.value && !groupRedirect.value) {
   throw createError({ statusCode: 404, statusMessage: 'Doc not found' })
 }
 
@@ -56,9 +64,12 @@ useSeoMeta({
 
 <template>
   <ApiEndpointDoc v-if="endpoint" :endpoint="endpoint" />
-  <article v-else-if="doc" class="docs-prose">
+  <article v-else-if="doc && !groupRedirect" class="docs-prose">
     <p class="mb-3 text-[12px]" style="color: var(--fg-3)">{{ sectionTitle }}</p>
     <h1>{{ doc.title }}</h1>
+    <div class="docs-page-actions">
+      <DocsCopyMarkdown :markdown="docMarkdown" />
+    </div>
     <p v-if="doc.description" class="docs-lead">{{ doc.description }}</p>
     <ApiGroupLinks v-if="group" :group="group" />
     <div class="docs-body" v-html="doc.html" />

@@ -18,7 +18,7 @@ Entities, routes and state machines live in [`easytv-api/API.md`](https://github
 { "success": false, "message": "reason" }
 ```
 
-Headers and login are under [Auth](/docs/api-auth). Health check: [GET /healthz](/docs/api-healthz).
+Headers and login are under [password login](/docs/api-auth-login). Health check: [GET /healthz](/docs/api-healthz).
 
 ## Reverse proxy
 

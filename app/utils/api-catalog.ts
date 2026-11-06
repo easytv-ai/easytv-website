@@ -1022,11 +1022,25 @@ export function findApiGroup(slug: string) {
   return API_GROUPS.find(g => g.slug === slug || g.endpoints.some(e => e.slug === slug)) || null
 }
 
+export function groupEntrySlug(g: ApiGroup) {
+  return g.endpoints[0]?.slug || g.slug
+}
+
+export function apiGroupRedirects() {
+  return API_GROUPS.filter(g => g.endpoints.length).flatMap((g) => {
+    const to = `/docs/${groupEntrySlug(g)}`
+    return [
+      { from: `/docs/${g.slug}`, to },
+      { from: `/en/docs/${g.slug}`, to: `/en${to}` },
+    ]
+  })
+}
+
 export function apiNavPages(): { slug: string; section: 'api' }[] {
   const pages: { slug: string; section: 'api' }[] = [{ slug: 'api', section: 'api' }]
   for (const e of API_TOP_LEVEL) pages.push({ slug: e.slug, section: 'api' })
   for (const g of API_GROUPS) {
-    pages.push({ slug: g.slug, section: 'api' })
+    if (!g.endpoints.length) pages.push({ slug: g.slug, section: 'api' })
     for (const e of g.endpoints) pages.push({ slug: e.slug, section: 'api' })
   }
   return pages
@@ -1067,6 +1081,74 @@ export function buildCurl(ep: ApiEndpoint) {
     lines.push(`  -d '${ep.requestExample}'`)
   if (lines.length === 1) return lines[0]
   return `${lines[0]} \\\n${lines.slice(1).join(' \\\n')}`
+}
+
+export interface EndpointMdLabels {
+  auth: string
+  headers: string
+  query: string
+  path: string
+  body: string
+  errors: string
+  curl: string
+  response: string
+  name: string
+  type: string
+  required: string
+  desc: string
+  yes: string
+  no: string
+}
+
+function mdEscapeCell(text: string) {
+  return text.replace(/\|/g, '\\|').replace(/\n+/g, ' ')
+}
+
+function mdFieldTable(fields: ApiField[], locale: string, labels: EndpointMdLabels) {
+  const rows = fields.map((field) => {
+    const req = field.required ? labels.yes : labels.no
+    const extra = field.example ? ` \`${field.example}\`` : ''
+    return `| \`${mdEscapeCell(field.name)}\` | \`${mdEscapeCell(field.type)}\` | ${req} | ${mdEscapeCell(pick(field.desc, locale))}${extra} |`
+  })
+  return `| ${labels.name} | ${labels.type} | ${labels.required} | ${labels.desc} |\n| --- | --- | --- | --- |\n${rows.join('\n')}`
+}
+
+export function buildEndpointMarkdown(ep: ApiEndpoint, locale: string, labels: EndpointMdLabels) {
+  const lines: string[] = [
+    `# ${pick(ep.title, locale)}`,
+    '',
+    `\`${ep.method}\` \`${ep.path}\` · ${labels.auth}`,
+    '',
+    pick(ep.summary, locale),
+  ]
+  const headers = (ep.headers || []).filter(f => f.loc === 'header')
+  const pathParams = (ep.params || []).filter(f => f.loc === 'path')
+  const query = (ep.params || []).filter(f => f.loc === 'query')
+  const body = ep.body || []
+  if (headers.length) {
+    lines.push('', `## ${labels.headers}`, '', mdFieldTable(headers, locale, labels))
+  }
+  if (pathParams.length) {
+    lines.push('', `## ${labels.path}`, '', mdFieldTable(pathParams, locale, labels))
+  }
+  if (query.length) {
+    lines.push('', `## ${labels.query}`, '', mdFieldTable(query, locale, labels))
+  }
+  if (body.length) {
+    lines.push('', `## ${labels.body}`, '')
+    if (ep.contentType) lines.push(ep.contentType, '')
+    lines.push(mdFieldTable(body, locale, labels))
+  }
+  lines.push('', `## ${labels.curl}`, '', '```bash', buildCurl(ep), '```')
+  lines.push('', `## ${labels.response}`, '', '```json', ep.responseJson.trim(), '```')
+  if (ep.responseNote) lines.push('', pick(ep.responseNote, locale))
+  if (ep.errors?.length) {
+    lines.push('', `## ${labels.errors}`, '')
+    for (const err of ep.errors) {
+      lines.push(`- **${err.message}** — ${pick(err.desc, locale)}`)
+    }
+  }
+  return `${lines.join('\n').trim()}\n`
 }
 
 export function pageTitle(slug: string, locale: string) {
