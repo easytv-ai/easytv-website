@@ -419,6 +419,20 @@
       "prod_d": "子域、Nginx、Cloudflare、多节点 worker。",
       "help_t": "帮助",
       "help_d": "常见问题与 AGPL / 商业许可。"
+    },
+    "api": {
+      "headers": "Header Parameters",
+      "query": "Query Parameters",
+      "path": "Path Parameters",
+      "body": "Request Body",
+      "responses": "Responses",
+      "errors": "Errors",
+      "copy": "复制",
+      "copied": "已复制",
+      "auth_none": "无需鉴权",
+      "auth_user": "需要登录",
+      "auth_admin": "需要管理员",
+      "auth_root": "需要超级管理员"
     }
   }
 }

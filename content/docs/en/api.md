@@ -1,13 +1,13 @@
 ---
 title: API overview
-description: Base URL, the response envelope, and the resource index. The contract is still API.md.
+description: Base URL, envelope, auth headers. The left nav expands each resource into endpoints with typed params and a 200 body.
 ---
 
-Entities, routes and state machines live in [`easytv-api/API.md`](https://github.com/easytv-ai/easytv-api/blob/main/API.md). **Change that file before the code.** This site splits the common routes by resource, with method, params, curl and example responses.
+Entities, routes and state machines live in [`easytv-api/API.md`](https://github.com/easytv-ai/easytv-api/blob/main/API.md). **Change that file before the code.** This site splits common routes into the left menu, with Header / Query / Body and a JSON response on each page.
 
 ## Conventions
 
-- Base URL: `NUXT_PUBLIC_API_BASE_URL`, locally `http://127.0.0.1:8383`. Curl below uses `$API`.
+- Base URL: `NUXT_PUBLIC_API_BASE_URL`, locally `http://127.0.0.1:8383`. Curl uses `$API`.
 - HTTP is **always 200**. Read `success` in the JSON.
 - Timestamps are Unix seconds. Empty `deleted_at` means not deleted.
 - Pagination: `?page=1&page_size=20` (max 100), `data = { "items": [], "total": 123 }`.
@@ -18,33 +18,11 @@ Entities, routes and state machines live in [`easytv-api/API.md`](https://github
 { "success": false, "message": "reason" }
 ```
 
-Headers, sign-in and no-access replies: [Auth](/docs/api-auth).
-
-## Health
-
-### GET `/healthz`
-
-Anonymous. Used as the Docker / Compose probe. Body is not the usual envelope:
-
-```json
-{ "status": "ok" }
-```
-
-## Index
-
-| Group | Pages |
-| --- | --- |
-| Basics | [Auth](/docs/api-auth) · [User API index](/docs/api-user) |
-| Studio | [Projects](/docs/api-project) · [Canvas](/docs/api-canvas) · [Assets](/docs/api-asset) · [Tasks](/docs/api-task) |
-| Community | [Works](/docs/api-work) · [Skills](/docs/api-skill) · [Public feed](/docs/api-public) |
-| Billing | [Models](/docs/api-models) · [Wallet](/docs/api-wallet) · [Orders](/docs/api-order) |
-| Collab | [Teams](/docs/api-team) · [Media jobs](/docs/api-media) |
-| Admin | [Admin index](/docs/api-admin) · [Users](/docs/api-admin-user) · [Review](/docs/api-admin-review) · [Pricing](/docs/api-admin-price) |
-| Partner | [Partner console](/docs/api-partner) |
+Headers and login are under [Auth](/docs/api-auth). Health check: [GET /healthz](/docs/api-healthz).
 
 ## Reverse proxy
 
-Auth is headers, not cookies. Generation and uploads can run for minutes.
+Auth is headers, not cookies. Generation and uploads can run for minutes — raise timeouts and body size.
 
 ```nginx
 location /api/ {
@@ -57,3 +35,17 @@ location /api/ {
     client_max_body_size 512m;
 }
 ```
+
+## Page to API
+
+| Page | API |
+| --- | --- |
+| web `/projects` | [List](/docs/api-project-list), [create](/docs/api-project-create) |
+| web `/canvas?id=` | [Get canvas](/docs/api-canvas-get), [save](/docs/api-canvas-update) |
+| web generate | [Models](/docs/api-models-list) → [create task](/docs/api-task-create) → [poll](/docs/api-task-get) |
+| web `/studio` `/watch/:id` | [Feed](/docs/api-public-feed), [work](/docs/api-public-work) |
+| web `/settings` wallet | [Wallet](/docs/api-wallet-get), [order](/docs/api-order-create) |
+| manage `/user` | [Users](/docs/api-admin-user-list), [impersonate](/docs/api-admin-console-access) |
+| manage `/community-audit` | [Review](/docs/api-admin-review-work), [reports](/docs/api-admin-report) |
+| manage `/model-price` | [Prices](/docs/api-admin-model-price), [fetch](/docs/api-admin-fetch-models) |
+| partner dashboard | [Overview](/docs/api-partner-overview), [stats](/docs/api-partner-stats) |

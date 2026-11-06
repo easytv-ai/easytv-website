@@ -1,31 +1,6 @@
 ---
 title: Assets
-description: Upload, list, trash. source=upload / generated / media.
+description: Upload, list, trash. generated = task output, upload = user file, media = media-tool output.
 ---
 
-Needs [auth](/docs/api-auth). `type` is inferred from MIME: `image` / `video` / `audio` / `text` / `other`. Default max 200 MB.
-
-## GET `/user/asset`
-
-Query `type`, `project_id`, `source`, `keyword`, pagination.
-
-## GET `/user/asset/:id`
-
-Single asset.
-
-## POST `/user/asset/upload`
-
-`multipart/form-data` field `file`, optional `project_id`. Returns the asset.
-
-```bash
-curl -X POST "$API/user/asset/upload" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "EasyTV-User: $UID" \
-  -F "file=@./frame.png"
-```
-
-Qiniu direct upload: `GET /user/qiniu/upload-token`, then `POST /user/asset/import`.
-
-## DELETE `/user/asset/:id`
-
-Trash; file kept 30 days. Restore: `POST /user/asset/:id/restore`. List: `GET /user/asset/trash`.
+Needs [auth](/docs/api-auth). Type comes from MIME: `image` / `video` / `audio` / `text` / `other`. Default max file 200 MB (`UPLOAD_MAX_MB`). With Qiniu, the browser uploads directly then registers via `POST /user/asset/import`.

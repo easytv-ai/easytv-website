@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { DOC_PAGES, DOC_SECTIONS, docPath, type DocSection } from '~/utils/docs'
 import { loadDocNav } from '~/utils/docs-render'
+import { API_GROUPS, API_TOP_LEVEL, pick, type ApiEndpoint, type ApiGroup } from '~/utils/api-catalog'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -14,6 +15,7 @@ const searchEl = ref<HTMLInputElement | null>(null)
 const mainEl = ref<HTMLElement | null>(null)
 const isMac = ref(false)
 const toc = useDocsToc()
+const opened = useState<Record<string, boolean>>('docs-api-opened', () => ({}))
 const otherLocale = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
 const nav = computed(() => {
   const pages = loadDocNav(locale.value)
@@ -37,6 +39,9 @@ const activeSection = computed<DocSection>(() => {
 })
 
 const searching = computed(() => query.value.trim().length > 0)
+const groupSlugs = new Set(API_GROUPS.map(g => g.slug))
+const endpointSlugs = new Set([...API_TOP_LEVEL, ...API_GROUPS.flatMap(g => g.endpoints)].map(e => e.slug))
+
 const sections = computed(() => {
   const needle = query.value.trim().toLowerCase()
   const ids = searching.value ? DOC_SECTIONS : [activeSection.value]
@@ -45,11 +50,56 @@ const sections = computed(() => {
     title: t(`docs.sections.${id}`),
     pages: nav.value.filter((p) => {
       if (p.section !== id) return false
+      if (id === 'api' && (endpointSlugs.has(p.slug) || groupSlugs.has(p.slug)))
+        return false
       if (!needle) return true
       return `${p.title} ${p.description} ${p.slug}`.toLowerCase().includes(needle)
     }),
-  })).filter(sec => sec.pages.length)
+  })).filter((sec) => {
+    if (sec.pages.length) return true
+    if (sec.id !== 'api') return false
+    return !searching.value || apiSearchHits.value.length > 0
+  })
 })
+
+const apiSearchHits = computed(() => {
+  const needle = query.value.trim().toLowerCase()
+  if (!needle) return [] as { kind: 'group' | 'ep'; group?: ApiGroup; ep?: ApiEndpoint }[]
+  const hits: { kind: 'group' | 'ep'; group?: ApiGroup; ep?: ApiEndpoint }[] = []
+  for (const ep of API_TOP_LEVEL) {
+    const hay = `${pick(ep.title, locale.value)} ${ep.path} ${ep.method} ${ep.slug}`.toLowerCase()
+    if (hay.includes(needle)) hits.push({ kind: 'ep', ep })
+  }
+  for (const g of API_GROUPS) {
+    const gHay = `${pick(g.title, locale.value)} ${g.slug}`.toLowerCase()
+    if (gHay.includes(needle)) hits.push({ kind: 'group', group: g })
+    for (const ep of g.endpoints) {
+      const hay = `${pick(ep.title, locale.value)} ${ep.path} ${ep.method} ${ep.slug}`.toLowerCase()
+      if (hay.includes(needle)) hits.push({ kind: 'ep', ep })
+    }
+  }
+  return hits
+})
+
+const currentApiGroupId = computed(() => {
+  const path = route.path.replace(/\/$/, '')
+  const slug = path.match(/\/docs\/(.+)$/)?.[1] || ''
+  return API_GROUPS.find(g => g.slug === slug || g.endpoints.some(e => e.slug === slug))?.id || ''
+})
+
+watch(currentApiGroupId, (id) => {
+  if (id && opened.value[id] !== true)
+    opened.value = { ...opened.value, [id]: true }
+}, { immediate: true })
+
+function isFoldOpen(id: string) {
+  return opened.value[id] === true
+}
+
+function toggleFold(id: string) {
+  opened.value = { ...opened.value, [id]: !isFoldOpen(id) }
+}
+
 
 function isHub() {
   const path = route.path.replace(/\/$/, '')
@@ -128,8 +178,8 @@ watch(() => route.path, () => {
         >
         <kbd class="docs-kbd">{{ isMac ? '⌘ K' : 'Ctrl K' }}</kbd>
       </div>
-      <nav class="docs-nav docs-scroll" @click="open = false">
-        <p v-if="!sections.length" class="px-3 py-2 text-sm" style="color: var(--fg-3)">{{ t('docs.empty') }}</p>
+      <nav class="docs-nav docs-scroll">
+        <p v-if="!sections.length && !apiSearchHits.length" class="px-3 py-2 text-sm" style="color: var(--fg-3)">{{ t('docs.empty') }}</p>
         <div v-for="sec in sections" :key="sec.id" class="docs-nav-group">
           <div v-if="searching" class="docs-nav-label">{{ sec.title }}</div>
           <NuxtLink
@@ -138,7 +188,59 @@ watch(() => route.path, () => {
             :to="pageTo(p)"
             class="docs-link"
             :class="{ 'docs-link--active': isPageActive(p) }"
+            @click="open = false"
           >{{ p.title }}</NuxtLink>
+          <template v-if="sec.id === 'api' && searching">
+            <NuxtLink
+              v-for="hit in apiSearchHits"
+              :key="hit.ep?.slug || hit.group?.slug"
+              :to="localePath(docPath(hit.ep?.slug || hit.group?.slug || 'api'))"
+              class="docs-link docs-link--ep"
+              :class="{ 'docs-link--active': isActive(hit.ep?.slug || hit.group?.slug || '') }"
+              @click="open = false"
+            >
+              <span>{{ hit.ep ? pick(hit.ep.title, locale) : pick(hit.group!.title, locale) }}</span>
+              <span v-if="hit.ep" class="docs-method-mini" :class="`is-${hit.ep.method.toLowerCase()}`">{{ hit.ep.method }}</span>
+            </NuxtLink>
+          </template>
+          <template v-if="sec.id === 'api' && !searching">
+            <NuxtLink
+              v-for="ep in API_TOP_LEVEL"
+              :key="ep.slug"
+              :to="localePath(docPath(ep.slug))"
+              class="docs-link docs-link--ep"
+              :class="{ 'docs-link--active': isActive(ep.slug) }"
+              @click="open = false"
+            >
+              <span>{{ pick(ep.title, locale) }}</span>
+              <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
+            </NuxtLink>
+            <div v-for="g in API_GROUPS" :key="g.id" class="docs-fold" :class="{ 'is-open': isFoldOpen(g.id) }">
+              <div class="docs-fold-row" :class="{ 'is-active': isActive(g.slug) }">
+                <button type="button" class="docs-fold-chevron" :aria-expanded="isFoldOpen(g.id)" @click.stop="toggleFold(g.id)">
+                  <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m9 6 6 6-6 6" /></svg>
+                </button>
+                <NuxtLink
+                  :to="localePath(docPath(g.slug))"
+                  class="docs-fold-title"
+                  @click="open = false"
+                >{{ pick(g.title, locale) }}</NuxtLink>
+              </div>
+              <div v-if="isFoldOpen(g.id) && g.endpoints.length" class="docs-fold-items">
+                <NuxtLink
+                  v-for="ep in g.endpoints"
+                  :key="ep.slug"
+                  :to="localePath(docPath(ep.slug))"
+                  class="docs-link docs-link--ep"
+                  :class="{ 'docs-link--active': isActive(ep.slug) }"
+                  @click="open = false"
+                >
+                  <span>{{ pick(ep.title, locale) }}</span>
+                  <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
+                </NuxtLink>
+              </div>
+            </div>
+          </template>
         </div>
       </nav>
       <div class="docs-side-foot">

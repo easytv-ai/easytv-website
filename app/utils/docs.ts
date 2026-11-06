@@ -1,3 +1,5 @@
+import { apiNavPages } from './api-catalog'
+
 export type DocSection = 'start' | 'install' | 'guide' | 'api' | 'ref'
 
 export interface DocPageMeta {
@@ -31,26 +33,7 @@ export const DOC_PAGES: DocPageMeta[] = [
   { slug: 'admin', section: 'guide' },
   { slug: 'partner', section: 'guide' },
   { slug: 'gateway', section: 'guide' },
-  { slug: 'api', section: 'api' },
-  { slug: 'api-auth', section: 'api' },
-  { slug: 'api-user', section: 'api' },
-  { slug: 'api-project', section: 'api' },
-  { slug: 'api-canvas', section: 'api' },
-  { slug: 'api-asset', section: 'api' },
-  { slug: 'api-task', section: 'api' },
-  { slug: 'api-work', section: 'api' },
-  { slug: 'api-skill', section: 'api' },
-  { slug: 'api-models', section: 'api' },
-  { slug: 'api-wallet', section: 'api' },
-  { slug: 'api-order', section: 'api' },
-  { slug: 'api-team', section: 'api' },
-  { slug: 'api-media', section: 'api' },
-  { slug: 'api-public', section: 'api' },
-  { slug: 'api-admin', section: 'api' },
-  { slug: 'api-admin-user', section: 'api' },
-  { slug: 'api-admin-review', section: 'api' },
-  { slug: 'api-admin-price', section: 'api' },
-  { slug: 'api-partner', section: 'api' },
+  ...apiNavPages(),
   { slug: 'faq', section: 'ref' },
   { slug: 'license', section: 'ref' },
 ]

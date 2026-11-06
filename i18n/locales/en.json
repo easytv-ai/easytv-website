@@ -419,6 +419,20 @@
       "prod_d": "Subdomains, Nginx, Cloudflare, multi-node workers.",
       "help_t": "Help",
       "help_d": "FAQ plus AGPL / commercial licensing."
+    },
+    "api": {
+      "headers": "Header Parameters",
+      "query": "Query Parameters",
+      "path": "Path Parameters",
+      "body": "Request Body",
+      "responses": "Responses",
+      "errors": "Errors",
+      "copy": "Copy",
+      "copied": "Copied",
+      "auth_none": "No auth",
+      "auth_user": "User auth",
+      "auth_admin": "Admin auth",
+      "auth_root": "Root auth"
     }
   }
 }
