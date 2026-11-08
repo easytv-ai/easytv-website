@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.0",
-    "@tailwindcss/vite": "^4.3.2",
+    "@tailwindcss/vite": "^4.3.4",
     "marked": "^17.0.1",
     "nuxt": "^4.4.8",
     "tailwindcss": "^4.3.2",
