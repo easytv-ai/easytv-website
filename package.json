@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vue-tsc": "^3",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.157.0"
   }
 }
