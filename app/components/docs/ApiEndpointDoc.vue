@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { ApiEndpoint, ApiField } from '~/utils/api-catalog'
-import { buildCurl, buildEndpointMarkdown, pick } from '~/utils/api-catalog'
+import { buildCurl, buildEndpointMarkdown, findApiGroup, pick } from '~/utils/api-catalog'
+import { docPath } from '~/utils/docs'
 import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
 
 const props = defineProps<{ endpoint: ApiEndpoint }>()
 
 const { t, locale } = useI18n()
+const localePath = useLocalePath()
 const copied = ref<'curl' | 'json' | ''>('')
+const group = computed(() => findApiGroup(props.endpoint.slug))
 
 const curl = computed(() => buildCurl(props.endpoint))
 const headers = computed(() => (props.endpoint.headers || []).filter(f => f.loc === 'header'))
@@ -70,7 +73,11 @@ function loc(field: ApiField) {
 
 <template>
   <article class="docs-prose docs-api-page">
-    <p class="mb-3 text-[12px]" style="color: var(--fg-3)">{{ t('docs.sections.api') }}</p>
+    <p class="docs-crumb">
+      <NuxtLink :to="localePath(docPath('api'))">{{ t('docs.api.crumb') }}</NuxtLink>
+      <span v-if="group && group.slug !== 'api-healthz'" aria-hidden="true">›</span>
+      <span v-if="group && group.slug !== 'api-healthz'">{{ pick(group.title, locale) }}</span>
+    </p>
     <div class="docs-ep-title">
       <span class="docs-method" :class="`is-${endpoint.method.toLowerCase()}`">{{ endpoint.method }}</span>
       <h1>{{ pick(endpoint.title, locale) }}</h1>

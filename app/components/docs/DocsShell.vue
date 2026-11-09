@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DOC_PAGES, DOC_SECTIONS, docPath, type DocSection } from '~/utils/docs'
 import { loadDocNav } from '~/utils/docs-render'
-import { API_GROUPS, API_TOP_LEVEL, groupEntrySlug, pick, type ApiEndpoint, type ApiGroup } from '~/utils/api-catalog'
+import { API_GROUPS, API_TOP_LEVEL, pick, type ApiEndpoint } from '~/utils/api-catalog'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -64,18 +64,23 @@ const sections = computed(() => {
 
 const apiSearchHits = computed(() => {
   const needle = query.value.trim().toLowerCase()
-  if (!needle) return [] as { kind: 'group' | 'ep'; group?: ApiGroup; ep?: ApiEndpoint }[]
-  const hits: { kind: 'group' | 'ep'; group?: ApiGroup; ep?: ApiEndpoint }[] = []
+  if (!needle) return [] as ApiEndpoint[]
+  const hits: ApiEndpoint[] = []
+  const seen = new Set<string>()
+  function add(ep: ApiEndpoint) {
+    if (seen.has(ep.slug)) return
+    seen.add(ep.slug)
+    hits.push(ep)
+  }
   for (const ep of API_TOP_LEVEL) {
     const hay = `${pick(ep.title, locale.value)} ${ep.path} ${ep.method} ${ep.slug}`.toLowerCase()
-    if (hay.includes(needle)) hits.push({ kind: 'ep', ep })
+    if (hay.includes(needle)) add(ep)
   }
   for (const g of API_GROUPS) {
-    const gHay = `${pick(g.title, locale.value)} ${g.slug}`.toLowerCase()
-    if (gHay.includes(needle)) hits.push({ kind: 'group', group: g })
+    const groupMatch = `${pick(g.title, locale.value)} ${g.slug}`.toLowerCase().includes(needle)
     for (const ep of g.endpoints) {
       const hay = `${pick(ep.title, locale.value)} ${ep.path} ${ep.method} ${ep.slug}`.toLowerCase()
-      if (hay.includes(needle)) hits.push({ kind: 'ep', ep })
+      if (groupMatch || hay.includes(needle)) add(ep)
     }
   }
   return hits
@@ -192,15 +197,15 @@ watch(() => route.path, () => {
           >{{ p.title }}</NuxtLink>
           <template v-if="sec.id === 'api' && searching">
             <NuxtLink
-              v-for="hit in apiSearchHits"
-              :key="hit.ep?.slug || hit.group?.slug"
-              :to="localePath(docPath(hit.ep?.slug || (hit.group ? groupEntrySlug(hit.group) : 'api')))"
+              v-for="ep in apiSearchHits"
+              :key="ep.slug"
+              :to="localePath(docPath(ep.slug))"
               class="docs-link docs-link--ep"
-              :class="{ 'docs-link--active': isActive(hit.ep?.slug || (hit.group ? groupEntrySlug(hit.group) : '')) }"
+              :class="{ 'docs-link--active': isActive(ep.slug) }"
               @click="open = false"
             >
-              <span>{{ hit.ep ? pick(hit.ep.title, locale) : pick(hit.group!.title, locale) }}</span>
-              <span v-if="hit.ep" class="docs-method-mini" :class="`is-${hit.ep.method.toLowerCase()}`">{{ hit.ep.method }}</span>
+              <span>{{ pick(ep.title, locale) }}</span>
+              <span class="docs-method-mini" :class="`is-${ep.method.toLowerCase()}`">{{ ep.method }}</span>
             </NuxtLink>
           </template>
           <template v-if="sec.id === 'api' && !searching">

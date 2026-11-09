@@ -4,6 +4,7 @@ import { loadDoc, loadDocSource, neighbors } from '~/utils/docs-render'
 import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
 import { API_GROUPS, findApiEndpoint, groupEntrySlug, pageTitle } from '~/utils/api-catalog'
 import ApiEndpointDoc from '~/components/docs/ApiEndpointDoc.vue'
+import ApiCatalog from '~/components/docs/ApiCatalog.vue'
 import ApiGroupLinks from '~/components/docs/ApiGroupLinks.vue'
 
 definePageMeta({
@@ -48,6 +49,7 @@ if (!endpoint.value && !doc.value && !groupRedirect.value) {
 
 watchEffect(() => {
   if (endpoint.value) return
+  if (slug.value === 'api') return
   toc.value = doc.value?.toc ?? []
 })
 onUnmounted(() => {
@@ -63,7 +65,14 @@ useSeoMeta({
 </script>
 
 <template>
-  <ApiEndpointDoc v-if="endpoint" :endpoint="endpoint" />
+  <ApiCatalog
+    v-if="slug === 'api' && doc"
+    :title="doc.title"
+    :description="doc.description"
+    :html="doc.html"
+    :markdown="docMarkdown"
+  />
+  <ApiEndpointDoc v-else-if="endpoint" :endpoint="endpoint" />
   <article v-else-if="doc && !groupRedirect" class="docs-prose">
     <p class="mb-3 text-[12px]" style="color: var(--fg-3)">{{ sectionTitle }}</p>
     <h1>{{ doc.title }}</h1>
