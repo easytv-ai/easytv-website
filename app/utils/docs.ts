@@ -48,12 +48,12 @@ export function parseFrontmatter(raw: string) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/)
   if (!match) return { title: '', description: '', body: raw.trim() }
   const fm: Record<string, string> = {}
-  for (const line of match[1].split(/\r?\n/)) {
+  for (const line of (match[1] ?? '').split(/\r?\n/)) {
     const i = line.indexOf(':')
     if (i === -1) continue
     fm[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^["']|["']$/g, '')
   }
-  return { title: fm.title || '', description: fm.description || '', body: match[2].trim() }
+  return { title: fm.title || '', description: fm.description || '', body: (match[2] ?? '').trim() }
 }
 
 export function slugifyHeading(text: string) {

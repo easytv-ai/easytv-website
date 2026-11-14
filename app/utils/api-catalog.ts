@@ -1079,8 +1079,7 @@ export function buildCurl(ep: ApiEndpoint) {
   }
   if (ep.requestExample && ep.contentType !== 'multipart/form-data')
     lines.push(`  -d '${ep.requestExample}'`)
-  if (lines.length === 1) return lines[0]
-  return `${lines[0]} \\\n${lines.slice(1).join(' \\\n')}`
+  return lines.join(' \\\n')
 }
 
 export interface EndpointMdLabels {
@@ -1152,7 +1151,6 @@ export function buildEndpointMarkdown(ep: ApiEndpoint, locale: string, labels: E
 }
 
 export function pageTitle(slug: string, locale: string) {
-  if (slug === 'api-healthz') return pick(API_TOP_LEVEL[0].title, locale)
   const ep = findApiEndpoint(slug)
   if (ep) return pick(ep.title, locale)
   const g = API_GROUPS.find(x => x.slug === slug)
