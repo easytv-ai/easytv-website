@@ -39,8 +39,8 @@
     "@nuxt/eslint": "^1.17.0",
     "@types/node": "^26.6.6",
     "eslint": "^10.14.0",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vue-tsc": "^3",
-    "wrangler": "^4.128.0"
+    "wrangler": "^4.160.1"
   }
 }
