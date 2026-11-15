@@ -52,6 +52,7 @@ pnpm dev            # http://localhost:3000
 Local checks (CI runs exactly these):
 
 ```bash
+pnpm lint           # eslint, correctness rules only; errors fail CI, warnings do not
 pnpm typecheck      # vue-tsc
 pnpm generate       # static build into .output/public
 ```
@@ -89,7 +90,7 @@ issues in the body or footer (`Closes #123`).
 ## Pull Requests
 
 - Fill in the pull request template. Describe **what** changed and **why**.
-- Make sure CI is green. Fix `pnpm typecheck` and `pnpm generate` failures
+- Make sure CI is green. Fix `pnpm lint`, `pnpm typecheck` and `pnpm generate` failures
   before requesting a review.
 - Update `CHANGELOG.md` under **Unreleased** for user-visible changes.
 - Keep the PR rebased on the latest `main`; we squash-merge.

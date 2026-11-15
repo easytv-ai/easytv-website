@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   build:
-    name: Typecheck & static build
+    name: Lint, typecheck & static build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -25,5 +25,6 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm generate

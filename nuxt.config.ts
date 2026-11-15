@@ -8,7 +8,7 @@ const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://easytv.ai'
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-01',
   ssr: true,
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],

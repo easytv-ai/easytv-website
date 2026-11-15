@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { locale, locales } = useI18n()
+const { locale } = useI18n()
 const head = useLocaleHead({ dir: true, seo: true })
 const config = useRuntimeConfig()
 const { isDark } = useTheme()

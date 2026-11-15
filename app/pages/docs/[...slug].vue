@@ -64,6 +64,7 @@ useSeoMeta({
 })
 </script>
 
+<!-- eslint-disable vue/no-multiple-template-root -- 正文与翻页器并列两个根节点；本站没开页面过渡，暂不改结构 -->
 <template>
   <ApiCatalog
     v-if="slug === 'api' && doc"

@@ -24,7 +24,7 @@ Closes #
 ## Checklist
 
 - [ ] I read [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md)
-- [ ] Local checks pass (`pnpm typecheck`, `pnpm generate`)
+- [ ] Local checks pass (`pnpm lint`, `pnpm typecheck`, `pnpm generate`)
 - [ ] Copy keys updated in both `i18n/locales/zh.json` and `en.json` if the UI changed
 - [ ] Documentation updated (README, `.env.example`) where relevant
 - [ ] `CHANGELOG.md` updated under **Unreleased** for user-visible changes
