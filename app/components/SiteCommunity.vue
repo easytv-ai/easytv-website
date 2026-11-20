@@ -1,13 +1,16 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
+const { t } = useI18n()
+const { rows } = useI18nRows()
 const localePath = useLocalePath()
 const links = useSiteLinks()
+// 动态 :is 传字符串 'NuxtLink' 解析不到组件，会渲染成点不动的未知标签
+const NuxtLink = resolveComponent('NuxtLink')
 const cards = computed(() => {
-  const raw = tm('community.cards') as any[]
+  const [org, docs, demo] = rows<'title' | 'desc' | 'cta'>('community.cards')
   return [
-    { title: rt(raw[0].title), desc: rt(raw[0].desc), cta: rt(raw[0].cta), href: links.org, external: true },
-    { title: rt(raw[1].title), desc: rt(raw[1].desc), cta: rt(raw[1].cta), href: localePath('/docs'), external: false },
-    { title: rt(raw[2].title), desc: rt(raw[2].desc), cta: rt(raw[2].cta), href: links.demo, external: true },
+    { ...org!, href: links.org, external: true },
+    { ...docs!, href: localePath('/docs'), external: false },
+    { ...demo!, href: links.demo, external: true },
   ]
 })
 </script>
@@ -18,7 +21,7 @@ const cards = computed(() => {
       <SectionHead :eyebrow="t('community.eyebrow')" :title="t('community.title')" :subtitle="t('community.subtitle')" center />
       <div class="grid gap-4 md:grid-cols-3">
         <component
-          :is="c.external ? 'a' : 'NuxtLink'"
+          :is="c.external ? 'a' : NuxtLink"
           v-for="c in cards"
           :key="c.title"
           class="card group p-6"

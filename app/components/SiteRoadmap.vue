@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
-const cols = computed(() => (tm('roadmap.cols') as any[]).map(c => ({ title: rt(c.title), items: (c.items as any[]).map(rt) })))
+const { t } = useI18n()
+const { groups } = useI18nRows()
+const cols = computed(() => groups('roadmap.cols'))
 </script>
 
 <template>

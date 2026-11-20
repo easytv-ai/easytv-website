@@ -13,6 +13,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
+    // marked 只在文档页用到，不预打包的话首次进文档会整页重载
+    optimizeDeps: { include: ['marked'] },
   },
   app: {
     head: {
@@ -49,14 +51,14 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: SITE_LOCALES.flatMap((l) => {
+      routes: ['/sitemap.xml', '/robots.txt', ...SITE_LOCALES.flatMap((l) => {
         const prefix = localePrefix(l.code)
         return [
           prefix || '/',
           `${prefix}/docs`,
           ...DOC_PAGES.map(p => `${prefix}/docs/${p.slug}`),
         ]
-      }),
+      })],
     },
   },
   routeRules: Object.fromEntries(

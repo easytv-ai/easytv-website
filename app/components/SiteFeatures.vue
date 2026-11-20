@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
-const items = computed(() => (tm('features.items') as any[]).map(i => ({ title: rt(i.title), desc: rt(i.desc) })))
+const { t } = useI18n()
+const { rows } = useI18nRows()
+const items = computed(() => rows<'title' | 'desc'>('features.items'))
 const icons = [
   'M4 6h16M4 12h16M4 18h10', 'M5 12h14M12 5l7 7-7 7', 'M4 4h16v16H4zM8 8h8M8 12h8M8 16h5',
   'M12 3l9 6-9 6-9-6zM3 15l9 6 9-6', 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8 12h8', 'M3 7h18v10H3zM7 7v10M17 7v10',

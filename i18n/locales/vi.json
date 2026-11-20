@@ -464,5 +464,13 @@
       "auth_admin": "Cần quyền quản trị",
       "auth_root": "Cần quyền quản trị cấp cao"
     }
+  },
+  "error": {
+    "not_found_title": "Không tìm thấy trang",
+    "not_found_desc": "Không có trang nào ở địa chỉ này. Có thể trang đã được đổi tên hoặc chuyển đi.",
+    "failed_title": "Đã xảy ra lỗi",
+    "failed_desc": "Không tải được trang này. Vui lòng thử lại sau.",
+    "home": "Về trang chủ",
+    "docs": "Xem tài liệu"
   }
 }

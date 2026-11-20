@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
-const steps = computed(() => (tm('quickstart.steps') as any[]).map(s => ({ title: rt(s.title), desc: rt(s.desc) })))
-const tabs = computed(() => (tm('quickstart.tabs') as any[]).map(x => rt(x)))
+const { t } = useI18n()
+const { rows, list } = useI18nRows()
+const steps = computed(() => rows<'title' | 'desc'>('quickstart.steps'))
+const tabs = computed(() => list('quickstart.tabs'))
 const active = ref(0)
 // 注释行走多语言；命令本身不翻译
 const snippets = computed(() => [

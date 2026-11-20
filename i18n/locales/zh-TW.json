@@ -464,5 +464,13 @@
       "auth_admin": "需要管理員",
       "auth_root": "需要超級管理員"
     }
+  },
+  "error": {
+    "not_found_title": "頁面不存在",
+    "not_found_desc": "這個網址沒有對應的頁面，可能已經改名或被移走。",
+    "failed_title": "頁面發生錯誤",
+    "failed_desc": "載入這個頁面時發生問題，請稍後再試。",
+    "home": "回到首頁",
+    "docs": "查看文件"
   }
 }

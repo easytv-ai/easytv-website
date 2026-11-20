@@ -464,5 +464,13 @@
       "auth_admin": "需要管理员",
       "auth_root": "需要超级管理员"
     }
+  },
+  "error": {
+    "not_found_title": "页面不存在",
+    "not_found_desc": "这个地址没有对应的页面，可能已经改名或被移走。",
+    "failed_title": "页面出错了",
+    "failed_desc": "加载这个页面时出了问题，请稍后再试。",
+    "home": "回到首页",
+    "docs": "查看文档"
   }
 }

@@ -90,6 +90,7 @@ useSeoMeta({
     </div>
     <p v-if="doc.description" class="docs-lead">{{ doc.description }}</p>
     <ApiGroupLinks v-if="group" :group="group" />
+    <!-- eslint-disable-next-line vue/no-v-html -- 正文由仓库内的 Markdown 渲染，不含用户输入 -->
     <div class="docs-body" v-html="doc.html" />
     <p class="mt-10 text-sm" style="color: var(--fg-3)">
       <a

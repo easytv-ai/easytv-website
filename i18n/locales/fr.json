@@ -464,5 +464,13 @@
       "auth_admin": "Administrateur requis",
       "auth_root": "Super-administrateur requis"
     }
+  },
+  "error": {
+    "not_found_title": "Page introuvable",
+    "not_found_desc": "Aucune page ne correspond à cette adresse. Elle a peut-être été renommée ou déplacée.",
+    "failed_title": "Une erreur est survenue",
+    "failed_desc": "Le chargement de cette page a échoué. Veuillez réessayer plus tard.",
+    "home": "Retour à l'accueil",
+    "docs": "Lire la documentation"
   }
 }

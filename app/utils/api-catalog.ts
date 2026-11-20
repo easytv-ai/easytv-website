@@ -1,3 +1,5 @@
+import { SITE_LOCALES, localePrefix } from './locales'
+
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 export type AuthKind = 'none' | 'user' | 'admin' | 'root'
 export type LocText = { zh: string; en: string }
@@ -1030,10 +1032,10 @@ export function groupEntrySlug(g: ApiGroup) {
 export function apiGroupRedirects() {
   return API_GROUPS.filter(g => g.endpoints.length).flatMap((g) => {
     const to = `/docs/${groupEntrySlug(g)}`
-    return [
-      { from: `/docs/${g.slug}`, to },
-      { from: `/en/docs/${g.slug}`, to: `/en${to}` },
-    ]
+    return SITE_LOCALES.map((l) => {
+      const prefix = localePrefix(l.code)
+      return { from: `${prefix}/docs/${g.slug}`, to: `${prefix}${to}` }
+    })
   })
 }
 
@@ -1045,6 +1047,33 @@ export function apiNavPages(): { slug: string; section: 'api' }[] {
     for (const e of g.endpoints) pages.push({ slug: e.slug, section: 'api' })
   }
   return pages
+}
+
+// 错误 message 是后端原样返回的中文。非中文语种在旁边附一句英文释义，方便对照。
+const ERROR_GLOSS_EN: Record<string, string> = {
+  '无效的参数': 'Invalid parameters',
+  '资源不存在': 'Resource not found',
+  '用户名或密码错误': 'Wrong username or password',
+  '权限不足': 'Insufficient permissions',
+  '积分不足，还需 N 积分': 'Not enough credits; N more needed',
+  '模型暂未接入': 'Model not connected yet',
+  '手机号格式不正确': 'Invalid mobile number format',
+  '验证码发送失败': 'Failed to send the verification code',
+  '发送过于频繁，请稍后再试': 'Sent too often; try again later',
+  '验证码错误或已过期': 'Verification code is wrong or expired',
+  '登录失败，请稍后重试': 'Login failed; try again later',
+  '邮箱格式不正确': 'Invalid email format',
+  '该邮箱已被注册': 'This email is already registered',
+  '用户不存在': 'User does not exist',
+  '昵称过长': 'Nickname is too long',
+  '画布已在其他地方修改，请刷新': 'Canvas was modified elsewhere; refresh',
+  '模型 X 未定价': 'Model X has no price',
+  '缺少模型标识 model': 'Missing model identifier "model"',
+  '模型不存在或未上架': 'Model does not exist or is not listed',
+}
+
+export function errorGloss(message: string, locale: string) {
+  return locale.startsWith('zh') ? '' : (ERROR_GLOSS_EN[message] || '')
 }
 
 export function buildCurl(ep: ApiEndpoint) {
@@ -1145,7 +1174,8 @@ export function buildEndpointMarkdown(ep: ApiEndpoint, locale: string, labels: E
   if (ep.errors?.length) {
     lines.push('', `## ${labels.errors}`, '')
     for (const err of ep.errors) {
-      lines.push(`- **${err.message}** — ${pick(err.desc, locale)}`)
+      const gloss = errorGloss(err.message, locale)
+      lines.push(`- **${err.message}**${gloss ? ` (${gloss})` : ''} — ${pick(err.desc, locale)}`)
     }
   }
   return `${lines.join('\n').trim()}\n`

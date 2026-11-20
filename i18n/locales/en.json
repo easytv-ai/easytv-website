@@ -464,5 +464,13 @@
       "auth_admin": "Admin auth",
       "auth_root": "Root auth"
     }
+  },
+  "error": {
+    "not_found_title": "Page not found",
+    "not_found_desc": "There is no page at this address. It may have been renamed or moved.",
+    "failed_title": "Something went wrong",
+    "failed_desc": "This page failed to load. Please try again later.",
+    "home": "Back to home",
+    "docs": "Read the docs"
   }
 }

@@ -50,7 +50,7 @@ const explore = computed(() => [
   { to: '/docs/canvas', title: t('docs.hub.guide_t'), desc: t('docs.hub.guide_d') },
   { to: '/docs/billing', title: t('docs.hub.bill_t'), desc: t('docs.hub.bill_d') },
   { to: '/docs/architecture', title: t('docs.hub.arch_t'), desc: t('docs.hub.arch_d') },
-  { to: '/docs/admin', title: t('docs.hub.prod_t'), desc: t('docs.hub.prod_d') },
+  { to: '/docs/deploy', title: t('docs.hub.prod_t'), desc: t('docs.hub.prod_d') },
   { to: '/docs/partner', title: t('docs.hub.partner_t'), desc: t('docs.hub.partner_d') },
   { to: '/docs/faq', title: t('docs.hub.help_t'), desc: t('docs.hub.help_d') },
 ])

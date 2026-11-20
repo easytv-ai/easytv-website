@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
-const rows = computed(() => (tm('compare.rows') as any[]).map(r => ({ k: rt(r.k), a: rt(r.a), b: rt(r.b) })))
+const { t } = useI18n()
+const { rows: i18nRows } = useI18nRows()
+const rows = computed(() => i18nRows<'k' | 'a' | 'b'>('compare.rows'))
 </script>
 
 <template>

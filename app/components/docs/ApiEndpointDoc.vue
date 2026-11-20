@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ApiEndpoint, ApiField } from '~/utils/api-catalog'
-import { buildCurl, buildEndpointMarkdown, findApiGroup, pick } from '~/utils/api-catalog'
+import { buildCurl, buildEndpointMarkdown, findApiGroup, pick, errorGloss } from '~/utils/api-catalog'
 import { docPath } from '~/utils/docs'
 import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
 
@@ -155,6 +155,7 @@ function loc(field: ApiField) {
             <div v-for="err in endpoint.errors" :key="err.message" class="docs-field">
               <div class="docs-field-head">
                 <span class="docs-field-name">{{ err.message }}</span>
+                <span v-if="errorGloss(err.message, locale)" class="docs-field-gloss">{{ errorGloss(err.message, locale) }}</span>
                 <span class="docs-field-type">message</span>
               </div>
               <p class="docs-field-desc">{{ pick(err.desc, locale) }}</p>

@@ -91,6 +91,7 @@ function toGroup(g: ApiGroup) {
 
     <section id="overview">
       <h2>{{ t('docs.api.overview') }}</h2>
+      <!-- eslint-disable-next-line vue/no-v-html -- 正文由仓库内的 Markdown 渲染，不含用户输入 -->
       <div class="docs-body" v-html="html" />
     </section>
 

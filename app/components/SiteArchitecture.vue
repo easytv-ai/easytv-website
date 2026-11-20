@@ -1,8 +1,9 @@
 <script setup lang="ts">
 withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
-const { t, tm, rt } = useI18n()
+const { t } = useI18n()
+const { rows } = useI18nRows()
 const links = useSiteLinks()
-const repos = computed(() => (tm('arch.repos') as any[]).map(r => ({ name: rt(r.name), stack: rt(r.stack), desc: rt(r.desc) })))
+const repos = computed(() => rows<'name' | 'stack' | 'desc'>('arch.repos'))
 const repoLink: Record<string, string> = { 'easytv-web': links.web, 'easytv-api': links.api, 'easytv-manage': links.manage, 'easytv-partner': links.partner }
 </script>
 

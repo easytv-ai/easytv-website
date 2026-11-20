@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
-const cards = computed(() => (tm('why.cards') as any[]).map(c => ({ k: rt(c.k), title: rt(c.title), desc: rt(c.desc) })))
+const { t } = useI18n()
+const { rows } = useI18nRows()
+const cards = computed(() => rows<'k' | 'title' | 'desc'>('why.cards'))
 </script>
 
 <template>
