@@ -1155,15 +1155,90 @@ code.docs-ep-path {
 }
 @keyframes tv-led { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
 
-/* 流水线节点小图 */
-.hero-art { width: 100%; height: 100%; padding: 6px 4px; }
-.hero-art .art-card { fill: color-mix(in srgb, var(--panel) 70%, transparent); stroke: color-mix(in srgb, var(--fg) 22%, transparent); stroke-width: 1.5; }
-.hero-art .art-card--on { stroke: var(--accent); }
-.hero-art .art-line { stroke: color-mix(in srgb, var(--fg) 30%, transparent); }
-.hero-art .art-accent { stroke: var(--accent); }
-.hero-art .art-fill { fill: color-mix(in srgb, var(--fg) 26%, transparent); }
-.hero-art .art-dot { fill: var(--accent); }
+/* ---------- 流水线节点示意图 ---------- */
+.node-art {
+  position: relative; height: 96px; overflow: hidden; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--fg) 9%, transparent);
+  background: color-mix(in srgb, var(--fg) 4%, var(--panel));
+}
+.node-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.node-art .na-bg { position: absolute; inset: 0; }
+
+/* 剧本 */
+.node-art--script { display: flex; flex-direction: column; justify-content: space-between; padding: 9px 10px; }
+.na-prompt {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: 11.5px; line-height: 1.45; color: var(--fg);
+}
+.na-caret { display: inline-block; width: 1.5px; height: 11px; margin-left: 2px; vertical-align: -1px; background: var(--accent); animation: na-blink 1.1s steps(2) infinite; }
+@keyframes na-blink { 50% { opacity: 0 } }
+.na-scenes { display: flex; flex-direction: column; gap: 4px; }
+.na-scenes span { display: flex; align-items: center; gap: 6px; }
+.na-scenes b { font: 500 9px/1 "Geist Mono", ui-monospace, monospace; color: var(--accent); }
+.na-scenes i { height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--fg) 16%, transparent); }
+
+/* 主体与风格 */
+.node-art--subject { display: flex; gap: 8px; padding: 8px; }
+.na-subject { position: relative; flex: 1; min-width: 0; overflow: hidden; border-radius: 7px; }
+.na-subject img { transform: scale(1.9); transform-origin: 60% 34%; }
+.na-subject svg {
+  position: absolute; right: 4px; top: 4px; width: 16px; height: 16px; padding: 3px; border-radius: 5px;
+  color: #fff; background: rgba(0, 0, 0, .55);
+}
+.na-styles { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 42%; }
+.na-styles span { border-radius: 6px; border: 1px solid rgba(255, 255, 255, .08); }
+.na-styles .is-on { outline: 1.5px solid var(--accent); outline-offset: 1.5px; }
+
+/* 分镜 */
+.node-art--shot { display: flex; gap: 5px; padding: 8px; align-items: center; }
+.node-art--shot figure { position: relative; flex: 1; height: 62%; overflow: hidden; border-radius: 5px; opacity: .78; }
+.node-art--shot figure.is-on { flex: 1.5; height: 100%; opacity: 1; outline: 1.5px solid var(--accent); outline-offset: 1px; border-radius: 6px; }
+.node-art--shot figcaption {
+  position: absolute; left: 3px; bottom: 3px; padding: 1px 4px; border-radius: 3px;
+  font: 500 8.5px/1.3 "Geist Mono", ui-monospace, monospace; color: #fff; background: rgba(0, 0, 0, .55);
+}
+
+/* 配音与字幕 */
+.node-art--voice::after, .node-art--work::after {
+  content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, .05) 30%, rgba(0, 0, 0, .7));
+}
+.na-sub {
+  position: absolute; left: 50%; bottom: 30px; z-index: 1; max-width: 88%; transform: translateX(-50%);
+  padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 500; line-height: 1.4;
+  color: #fff; background: rgba(0, 0, 0, .55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.na-wave { position: absolute; left: 8px; right: 8px; bottom: 7px; z-index: 1; display: flex; align-items: center; justify-content: space-between; height: 18px; }
+.na-wave i { width: 2.5px; border-radius: 2px; background: var(--accent); }
+
+/* 时间线 */
+.node-art--compose { display: flex; flex-direction: column; justify-content: center; gap: 5px; padding: 9px 8px; }
+.na-track { display: flex; gap: 3px; }
+.na-track--video { height: 34px; }
+.na-track--video span { overflow: hidden; border-radius: 4px; }
+.na-track--audio {
+  align-items: center; justify-content: space-between; height: 14px; padding: 0 5px; border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+.na-track--audio i { width: 2px; border-radius: 2px; background: var(--accent); }
+.na-track--sub { height: 8px; padding: 0 10%; }
+.na-track--sub span { border-radius: 3px; background: color-mix(in srgb, var(--accent-3) 65%, transparent); }
+.na-playhead { position: absolute; top: 4px; bottom: 4px; left: 44%; width: 1.5px; border-radius: 2px; background: var(--fg); }
+.na-playhead::before { content: ""; position: absolute; left: -3.25px; top: 0; border: 4px solid transparent; border-top-color: var(--fg); }
+
+/* 成片 */
+.na-play {
+  position: absolute; left: 50%; top: 46%; z-index: 1; display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 50%; transform: translate(-50%, -50%);
+  color: #111; background: rgba(255, 255, 255, .92); box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+}
+.na-play svg { width: 12px; height: 12px; margin-left: 1px; }
+.na-badge {
+  position: absolute; right: 6px; top: 6px; z-index: 1; padding: 1px 5px; border-radius: 4px;
+  font: 500 9px/1.4 "Geist Mono", ui-monospace, monospace; color: #fff; background: rgba(0, 0, 0, .55);
+}
+.na-progress { position: absolute; left: 8px; right: 8px; bottom: 8px; z-index: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .3); }
+.na-progress i { display: block; width: 100%; height: 100%; border-radius: 2px; background: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
-  .tv-sweep, .tv-led { animation: none; }
+  .tv-sweep, .tv-led, .na-caret { animation: none; }
 }

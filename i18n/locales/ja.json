@@ -44,7 +44,9 @@
       "voice": "ナレーション & 字幕",
       "compose": "タイムライン合成",
       "work": "作品を公開"
-    }
+    },
+    "demo_prompt": "雨の夜の東京、茶トラの猫が家への道を探している",
+    "demo_subtitle": "「もう帰ろう。」"
   },
   "showcase": {
     "eyebrow": "ギャラリー",

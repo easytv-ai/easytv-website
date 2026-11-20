@@ -44,7 +44,9 @@
       "voice": "Voix et sous-titres",
       "compose": "Montage sur timeline",
       "work": "Publication"
-    }
+    },
+    "demo_prompt": "Sous la pluie de Tokyo, un chat roux cherche le chemin de la maison",
+    "demo_subtitle": "« Il est temps de rentrer. »"
   },
   "showcase": {
     "eyebrow": "Galerie",

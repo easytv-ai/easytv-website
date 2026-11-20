@@ -44,7 +44,9 @@
       "voice": "配音 & 字幕",
       "compose": "時間軸合成",
       "work": "發布成片"
-    }
+    },
+    "demo_prompt": "雨夜的東京街頭，一隻橘貓在找回家的路",
+    "demo_subtitle": "「該回家了。」"
   },
   "showcase": {
     "eyebrow": "成片畫廊",

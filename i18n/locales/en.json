@@ -44,7 +44,9 @@
       "voice": "Voice & subtitles",
       "compose": "Timeline compose",
       "work": "Publish"
-    }
+    },
+    "demo_prompt": "A ginger cat looks for its way home on a rainy Tokyo street",
+    "demo_subtitle": "“Time to go home.”"
   },
   "showcase": {
     "eyebrow": "Gallery",

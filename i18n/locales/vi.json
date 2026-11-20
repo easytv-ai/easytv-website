@@ -44,7 +44,9 @@
       "voice": "Lồng tiếng & phụ đề",
       "compose": "Dựng trên timeline",
       "work": "Xuất bản phim"
-    }
+    },
+    "demo_prompt": "Đêm mưa Tokyo, chú mèo cam đi tìm đường về nhà",
+    "demo_subtitle": "“Về nhà thôi.”"
   },
   "showcase": {
     "eyebrow": "Thư viện phim",

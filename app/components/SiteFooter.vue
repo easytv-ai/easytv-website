@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
         </div>
       </div>
       <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm" style="color: var(--fg-2)">
-        <NuxtLink :to="localePath('/docs')">{{ t('footer.links.docs') }}</NuxtLink>
+        <NuxtLink :to="localePath('/docs')" target="_blank">{{ t('footer.links.docs') }}</NuxtLink>
         <a :href="links.web" target="_blank" rel="noopener">{{ t('footer.links.web') }}</a>
         <a :href="links.api" target="_blank" rel="noopener">{{ t('footer.links.api') }}</a>
         <a :href="links.manage" target="_blank" rel="noopener">{{ t('footer.links.manage') }}</a>

@@ -25,7 +25,7 @@ const cards = computed(() => {
           v-for="c in cards"
           :key="c.title"
           class="card group p-6"
-          v-bind="c.external ? { href: c.href, target: '_blank', rel: 'noopener' } : { to: c.href }"
+          v-bind="c.external ? { href: c.href, target: '_blank', rel: 'noopener' } : { to: c.href, target: '_blank' }"
         >
           <h3 class="text-lg font-semibold">{{ c.title }}</h3>
           <p class="mt-2 text-sm leading-relaxed" style="color: var(--fg-2)">{{ c.desc }}</p>

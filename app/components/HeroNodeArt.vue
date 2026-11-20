@@ -1,68 +1,67 @@
 <script setup lang="ts">
-// 首屏流水线六个节点的示意小图。纯 SVG，颜色跟主题变量走。
+// 首屏流水线六个节点的示意图：用同一条示例片（雨夜街头的橘猫）的真实画面，
+// 拼成各环节的小界面。图片在 public/images/hero/，裁自作品页的演示作品。
 defineProps<{ kind: 'script' | 'subject' | 'shot' | 'voice' | 'compose' | 'work' }>()
+const { t } = useI18n()
+const bars = [5, 9, 14, 8, 17, 11, 6, 13, 18, 9, 15, 7, 12, 16, 8, 5, 11, 14, 7, 10]
 </script>
 
 <template>
-  <svg class="hero-art" viewBox="0 0 160 64" fill="none" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-    <!-- 剧本：一页带标题和场次标记的稿纸 -->
-    <g v-if="kind === 'script'" stroke-linecap="round">
-      <rect x="40" y="7" width="80" height="50" rx="6" class="art-card" />
-      <path d="M50 18h28" class="art-accent" stroke-width="3" />
-      <path d="M50 28h60M50 36h52M50 44h58" class="art-line" stroke-width="2.5" />
-      <circle cx="108" cy="18" r="3" class="art-dot" />
-    </g>
+  <div class="node-art" :class="`node-art--${kind}`" aria-hidden="true">
+    <!-- 剧本：一句话输入 + 拆出来的三场戏 -->
+    <template v-if="kind === 'script'">
+      <p class="na-prompt">{{ t('hero.demo_prompt') }}<i class="na-caret" /></p>
+      <div class="na-scenes">
+        <span v-for="n in 3" :key="n"><b>S{{ n }}</b><i :style="{ width: `${[72, 54, 64][n - 1]}%` }" /></span>
+      </div>
+    </template>
 
-    <!-- 主体与风格：角色卡 + 三个风格色板 -->
-    <g v-else-if="kind === 'subject'">
-      <rect x="28" y="8" width="48" height="48" rx="8" class="art-card" />
-      <circle cx="52" cy="26" r="8" class="art-fill" />
-      <path d="M36 52c2-10 8-14 16-14s14 4 16 14" class="art-fill" />
-      <circle cx="96" cy="20" r="8" fill="var(--accent)" opacity=".9" />
-      <circle cx="118" cy="20" r="8" fill="var(--accent-2)" opacity=".9" />
-      <circle cx="96" cy="42" r="8" fill="var(--accent-3)" opacity=".9" />
-      <circle cx="118" cy="42" r="8" class="art-card" stroke-dasharray="3 3" />
-    </g>
+    <!-- 主体与风格：锁定的角色卡 + 风格色板 -->
+    <template v-else-if="kind === 'subject'">
+      <div class="na-subject">
+        <img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="7" height="5" rx="1.2" /><path d="M4 5.5V4a2 2 0 0 1 4 0v1.5" /></svg>
+      </div>
+      <div class="na-styles">
+        <span class="is-on" style="background: linear-gradient(135deg, #1f4b57, #b96a1c)" />
+        <span style="background: linear-gradient(135deg, #d86bd0, #4d8ff0)" />
+        <span style="background: linear-gradient(135deg, #5b5750, #bdb7ac)" />
+        <span style="background: linear-gradient(135deg, #3a332f, #a3261f)" />
+      </div>
+    </template>
 
-    <!-- 分镜：三格画面，中间一格是当前镜头 -->
-    <g v-else-if="kind === 'shot'" stroke-linejoin="round">
-      <rect x="12" y="14" width="40" height="36" rx="5" class="art-card" />
-      <path d="M16 44l10-12 8 8 6-6 8 10z" class="art-fill" />
-      <rect x="60" y="10" width="44" height="44" rx="6" class="art-card art-card--on" />
-      <circle cx="92" cy="22" r="4" fill="var(--accent)" />
-      <path d="M64 48l12-16 9 10 6-6 9 12z" fill="var(--accent)" opacity=".55" />
-      <rect x="112" y="14" width="40" height="36" rx="5" class="art-card" />
-      <circle cx="132" cy="28" r="6" class="art-fill" />
-      <path d="M120 46c2-6 6-8 12-8s10 2 12 8" class="art-fill" />
-    </g>
+    <!-- 分镜：同一场戏的三个镜头，中间是正在生成的一镜 -->
+    <template v-else-if="kind === 'shot'">
+      <figure><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async" style="object-position: 20% 20%; transform: scale(1.9); transform-origin: 20% 15%"><figcaption>01</figcaption></figure>
+      <figure class="is-on"><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async"><figcaption>02</figcaption></figure>
+      <figure><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async" style="transform: scale(2.6); transform-origin: 62% 34%"><figcaption>03</figcaption></figure>
+    </template>
 
-    <!-- 配音与字幕：声波 + 底部字幕条 -->
-    <g v-else-if="kind === 'voice'" stroke-linecap="round">
-      <path d="M30 26v6M38 20v18M46 14v30M54 22v14M62 10v38M70 18v22M78 24v10M86 14v30M94 20v18M102 8v42M110 22v14M118 16v26M126 24v10" class="art-accent" stroke-width="3.5" />
-      <rect x="42" y="52" width="76" height="7" rx="3.5" class="art-fill" />
-    </g>
+    <!-- 配音与字幕：画面上压字幕，底部是声波 -->
+    <template v-else-if="kind === 'voice'">
+      <img class="na-bg" src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async" style="transform: scale(1.7); transform-origin: 62% 30%">
+      <span class="na-sub">{{ t('hero.demo_subtitle') }}</span>
+      <div class="na-wave"><i v-for="(h, i) in bars" :key="i" :style="{ height: `${h}px` }" /></div>
+    </template>
 
-    <!-- 时间线：三条轨道、若干片段和播放头 -->
-    <g v-else-if="kind === 'compose'">
-      <rect x="14" y="10" width="46" height="11" rx="3" fill="var(--accent)" opacity=".85" />
-      <rect x="64" y="10" width="34" height="11" rx="3" class="art-fill" />
-      <rect x="102" y="10" width="44" height="11" rx="3" fill="var(--accent-2)" opacity=".8" />
-      <rect x="14" y="27" width="76" height="11" rx="3" class="art-fill" />
-      <rect x="94" y="27" width="52" height="11" rx="3" fill="var(--accent-3)" opacity=".8" />
-      <rect x="30" y="44" width="38" height="11" rx="3" class="art-fill" />
-      <rect x="84" y="44" width="48" height="11" rx="3" class="art-fill" />
-      <path d="M80 4v56" stroke="var(--fg)" stroke-width="2" stroke-linecap="round" />
-      <path d="M75 4h10l-5 6z" fill="var(--fg)" />
-    </g>
+    <!-- 时间线：画面轨、配音轨、字幕轨和播放头 -->
+    <template v-else-if="kind === 'compose'">
+      <div class="na-track na-track--video">
+        <span style="flex: 3"><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async" style="transform: scale(1.9); transform-origin: 20% 15%"></span>
+        <span style="flex: 4"><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async"></span>
+        <span style="flex: 3"><img src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async" style="transform: scale(2.6); transform-origin: 62% 34%"></span>
+      </div>
+      <div class="na-track na-track--audio"><i v-for="(h, i) in bars" :key="i" :style="{ height: `${Math.max(3, h / 2)}px` }" /></div>
+      <div class="na-track na-track--sub"><span style="flex: 2" /><span style="flex: 3" /><span style="flex: 2" /></div>
+      <i class="na-playhead" />
+    </template>
 
-    <!-- 成片：播放按钮 + 走完的进度条 -->
-    <g v-else>
-      <rect x="34" y="6" width="92" height="52" rx="8" class="art-card art-card--on" />
-      <circle cx="80" cy="28" r="13" fill="var(--accent)" />
-      <path d="M76 21.5v13l11-6.5z" fill="#fff" />
-      <rect x="44" y="48" width="72" height="4" rx="2" class="art-fill" />
-      <rect x="44" y="48" width="72" height="4" rx="2" fill="var(--accent)" opacity=".9" />
-      <circle cx="116" cy="50" r="4" fill="#fff" stroke="var(--accent)" stroke-width="2" />
-    </g>
-  </svg>
+    <!-- 成片：播放器 -->
+    <template v-else>
+      <img class="na-bg" src="/images/hero/cat.jpg" alt="" loading="lazy" decoding="async">
+      <span class="na-play"><svg viewBox="0 0 12 12"><path d="M4 2.5v7l6-3.5z" fill="currentColor" /></svg></span>
+      <span class="na-badge">0:30</span>
+      <span class="na-progress"><i /></span>
+    </template>
+  </div>
 </template>

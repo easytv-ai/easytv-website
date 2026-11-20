@@ -32,7 +32,7 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
               <p class="lead mx-auto mt-6 max-w-2xl">{{ t('hero.subtitle') }}</p>
               <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a :href="links.org" target="_blank" rel="noopener" class="btn btn-primary">{{ t('hero.cta_github') }}</a>
-                <NuxtLink :to="localePath('/docs/quickstart')" class="btn btn-ghost">{{ t('hero.cta_deploy') }}</NuxtLink>
+                <NuxtLink :to="localePath('/docs/quickstart')" target="_blank" class="btn btn-ghost">{{ t('hero.cta_deploy') }} ↗</NuxtLink>
                 <a :href="links.demo" target="_blank" rel="noopener" class="btn btn-ghost">{{ t('hero.cta_demo') }} ↗</a>
               </div>
             </div>
@@ -63,9 +63,7 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
               </span>
             </div>
             <div class="mt-2 text-sm font-medium">{{ t(`hero.flow.${k}`) }}</div>
-            <div class="mt-3 flex h-20 items-center justify-center overflow-hidden rounded-lg" :style="{ background: `linear-gradient(135deg, color-mix(in srgb, var(--accent) ${10 + i * 4}%, var(--panel)), color-mix(in srgb, var(--accent-3) ${8 + i * 4}%, var(--panel)))` }">
-              <HeroNodeArt :kind="k" />
-            </div>
+            <HeroNodeArt :kind="k" class="mt-3" />
             <svg v-if="i < flow.length - 1" class="absolute -right-3 top-1/2 hidden h-3 w-3 -translate-y-1/2 lg:block" viewBox="0 0 12 12" style="color: var(--fg-3)"><path d="M0 6h9M6 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" class="anim-dash" /></svg>
           </div>
         </div>
