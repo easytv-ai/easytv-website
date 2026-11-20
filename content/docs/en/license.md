@@ -23,5 +23,5 @@ Email [leida@easyapi.com](mailto:leida@easyapi.com) with `[LICENSE] easytv-api` 
 ## Third parties
 
 - The director stage is a port of [open-director](https://github.com/x1n9/open-director) (MIT)
-- User / payment / object-storage structure in the API follows [One API](https://github.com/songquanpeng/one-api) and other upstream open-source projects. **A commercial license does not relicense those parts**
+- User / payment / object-storage structure in the API follows upstream open-source projects; their names and licenses are listed in the NOTICE file of `easytv-api`. **A commercial license does not relicense those parts**
 - npm / Go dependencies keep their own licenses

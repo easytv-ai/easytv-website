@@ -23,5 +23,5 @@ description: AGPL-3.0 與商業授權怎麼選，哪些儲存庫有商業條款�
 ## 第三方
 
 - 導演台移植自 [open-director](https://github.com/x1n9/open-director)（MIT）
-- API 的使用者 / 金流 / 物件儲存結構參考 [One API](https://github.com/songquanpeng/one-api) 等上游開源專案。**商業授權不能改變這些部分**
+- API 的使用者 / 金流 / 物件儲存結構參考了上游開源專案，名稱與各自的授權見 `easytv-api` 儲存庫的 NOTICE。**商業授權不能改變這些部分**
 - npm / Go 相依套件各依原授權條款

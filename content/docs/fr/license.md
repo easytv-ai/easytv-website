@@ -23,5 +23,5 @@ Un produit à code fermé, ou une version modifiée hébergée ou en marque blan
 ## Composants tiers
 
 - Le plateau de réalisation est un portage d'[open-director](https://github.com/x1n9/open-director) (MIT)
-- La structure utilisateurs / paiements / stockage objet de l'API suit [One API](https://github.com/songquanpeng/one-api) et d'autres projets open source amont. **Une licence commerciale ne change pas la licence de ces parties**
+- La structure utilisateurs / paiements / stockage objet de l'API suit des projets open source amont ; leurs noms et licences figurent dans le fichier NOTICE de `easytv-api`. **Une licence commerciale ne change pas la licence de ces parties**
 - Les dépendances npm / Go conservent leurs propres licences

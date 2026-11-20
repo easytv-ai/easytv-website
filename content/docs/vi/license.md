@@ -23,5 +23,5 @@ Gửi email tới [leida@easyapi.com](mailto:leida@easyapi.com) với `[LICENSE]
 ## Bên thứ ba
 
 - Sân khấu đạo diễn là bản chuyển từ [open-director](https://github.com/x1n9/open-director) (MIT)
-- Cấu trúc người dùng / thanh toán / lưu trữ đối tượng trong API tham khảo [One API](https://github.com/songquanpeng/one-api) và các dự án mã nguồn mở thượng nguồn khác. **Giấy phép thương mại không cấp lại quyền cho những phần đó**
+- Cấu trúc người dùng / thanh toán / lưu trữ đối tượng trong API tham khảo các dự án mã nguồn mở thượng nguồn; tên và giấy phép của chúng được liệt kê trong tệp NOTICE của `easytv-api`. **Giấy phép thương mại không cấp lại quyền cho những phần đó**
 - Các phụ thuộc npm / Go giữ giấy phép riêng của chúng

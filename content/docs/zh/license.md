@@ -23,5 +23,5 @@ description: AGPL-3.0 与商业许可怎么选，哪些仓库有商业条款。
 ## 第三方
 
 - 导演台移植自 [open-director](https://github.com/x1n9/open-director)（MIT）
-- API 的用户 / 支付 / 对象存储结构参考 [One API](https://github.com/songquanpeng/one-api) 等上游开源项目。**商业许可不能改变这些部分**
+- API 的用户 / 支付 / 对象存储结构参考了上游开源项目，名称与各自的协议见 `easytv-api` 仓库的 NOTICE。**商业许可不能改变这些部分**
 - npm / Go 依赖各跟原许可证
