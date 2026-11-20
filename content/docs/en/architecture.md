@@ -11,7 +11,7 @@ easytv-manage   ──┼──▶  easytv-api (Gin)  ── MySQL / Redis
 easytv-partner  ──┘           │            ── object storage (local / OSS / Qiniu)
                               │            ── ffmpeg
                               ▼
-                    New API-compatible gateway
+                    OpenAI-compatible gateway
                               ▼
                     Kling · Jimeng · Seedance · Sora · GPT · …
 ```

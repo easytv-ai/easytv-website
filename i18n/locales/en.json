@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "EasyTV · Open-source AI short drama studio",
-    "description": "EasyTV is an open-source, self-hosted AI short drama platform: node canvas, one-prompt film, 3D director stage, server-side compositing, with built-in credits billing, model pricing and an admin console. The New API of short drama."
+    "description": "EasyTV is an open-source, self-hosted AI short drama platform: node canvas, one-prompt film, 3D director stage, server-side compositing, with built-in credits billing, model pricing and an admin console."
   },
   "nav": {
     "features": "Features",
@@ -19,8 +19,8 @@
   },
   "hero": {
     "eyebrow": "Open source · Self-hosted · AGPL-3.0",
-    "title1": "The New API of",
-    "title2": "short drama",
+    "title1": "From script to final cut",
+    "title2": "on one canvas",
     "subtitle": "Plug any video, image or voice model into one canvas and go from script to final cut in one place. Credits billing, model pricing, payments and an admin console are built in. Deploy on your own servers.",
     "cta_github": "View on GitHub",
     "cta_demo": "Live demo",
@@ -114,9 +114,9 @@
     ]
   },
   "why": {
-    "eyebrow": "Why \"the New API of short drama\"",
-    "title": "New API unified LLMs. EasyTV unifies short drama production.",
-    "p1": "New API gathers every LLM behind one gateway: one interface, one billing model, one admin console. EasyTV does the same thing one layer up: it gathers video, image and voice models into one creation and operations platform, and talks to any New API / One API gateway through OpenAI-compatible endpoints.",
+    "eyebrow": "Why EasyTV",
+    "title": "Model gateways unified LLMs. EasyTV unifies short drama production.",
+    "p1": "A model gateway gathers every LLM behind one entry point: one interface, one billing model, one admin console. EasyTV does the same thing one layer up: it gathers video, image and voice models into one creation and operations platform, and talks to your model gateway through OpenAI-compatible endpoints.",
     "p2": "You don't negotiate with every model vendor, and you don't write billing or an admin console. Connect a gateway, import the model list, set prices, and a paid short drama studio is running.",
     "cards": [
       {
@@ -156,7 +156,7 @@
       "db": "MySQL / Redis",
       "oss": "Object storage",
       "oss_d": "OSS · Qiniu · local",
-      "gateway": "New API gateway",
+      "gateway": "Model gateway",
       "models": "Kling · Jimeng · Seedance · Hailuo",
       "ffmpeg": "ffmpeg render",
       "models2": "Sora · GPT · Qwen · MiniMax …"
@@ -243,7 +243,7 @@
   "quickstart": {
     "eyebrow": "Quick start",
     "title": "Running in five minutes",
-    "subtitle": "Bring a MySQL instance and a token for a New API-compatible gateway. Everything else has defaults.",
+    "subtitle": "Bring a MySQL instance and a token for an OpenAI-compatible gateway. Everything else has defaults.",
     "steps": [
       {
         "title": "Backend",
@@ -332,7 +332,7 @@
   },
   "footer": {
     "tagline": "Open-source AI short drama studio",
-    "license": "AGPL-3.0 · Architecture inspired by New API / One API",
+    "license": "AGPL-3.0 licensed",
     "links": {
       "web": "Studio",
       "api": "Backend",
@@ -363,7 +363,7 @@
       "nav": "Get started",
       "title": "Get started with EasyTV",
       "subtitle": "Deploy EasyTV, connect a model gateway, and make the first film.",
-      "intro": "EasyTV is an open-source AI short-drama studio. Four repos share one backend: the studio makes films, admin runs people and money, partner handles rebates. Model calls go to your own New API / One API compatible gateway.",
+      "intro": "EasyTV is an open-source AI short-drama studio. Four repos share one backend: the studio makes films, admin runs people and money, partner handles rebates. Model calls go to your own OpenAI-compatible gateway.",
       "repos": "The four repositories",
       "web_t": "Studio",
       "web_d": "easytv-web · canvas, one-prompt film, director stage, community. Local :3005.",
@@ -377,7 +377,7 @@
       "step1_t": "Deploy an instance",
       "step1_d": "Start the API, studio and admin with Docker Compose or from source.",
       "step2_t": "Connect a model gateway",
-      "step2_d": "Point at a New API / One API compatible gateway, pull models and import credit prices.",
+      "step2_d": "Point at an OpenAI-compatible gateway, pull models and import credit prices.",
       "step3_t": "Make the first film",
       "step3_d": "Open the studio and run one-prompt film or the canvas for the first generation.",
       "deploys": "Choose a deploy path",
@@ -426,7 +426,7 @@
       "arch_t": "Architecture",
       "arch_d": "How four repositories share one backend.",
       "gw_t": "Gateway",
-      "gw_d": "Point EasyTV at a New API-compatible gateway and import prices.",
+      "gw_d": "Point EasyTV at an OpenAI-compatible gateway and import prices.",
       "prod_t": "Production",
       "prod_d": "Subdomains, Nginx, Cloudflare, multi-node workers.",
       "help_t": "Help",

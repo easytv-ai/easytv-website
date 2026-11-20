@@ -3,7 +3,7 @@ title: Install
 description: What you need to deploy EasyTV, and when to pick Docker versus source.
 ---
 
-The minimum stack is **API + MySQL + a New API-compatible gateway**. The studio and admin console can come later; `/healthz` is enough to prove the backend is up.
+The minimum stack is **API + MySQL + an OpenAI-compatible gateway**. The studio and admin console can come later; `/healthz` is enough to prove the backend is up.
 
 ## You need
 
@@ -12,7 +12,7 @@ The minimum stack is **API + MySQL + a New API-compatible gateway**. The studio 
 | MySQL 8.x | Required. First boot AutoMigrates the schema |
 | Redis | Recommended. Without it, rate limits and OTP fall back to memory |
 | ffmpeg / ffprobe | Compose, frame extract, audio split |
-| New API-compatible gateway | Entry for text / image / video / audio models |
+| OpenAI-compatible gateway | Entry for text / image / video / audio models |
 | Node.js 22.21+ and pnpm 10+ | Only if you run the front ends from source |
 
 ## Which path

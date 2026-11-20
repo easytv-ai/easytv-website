@@ -25,7 +25,7 @@ easytv-web      ──┐
 easytv-manage   ──┼──▶  easytv-api  ── MySQL / Redis / 对象存储
 easytv-partner  ──┘         │
                             ▼
-                    New API 兼容网关
+                    OpenAI 兼容网关
 ```
 
 三端都用 `Authorization: Bearer` + `EasyTV-User`。运营后台再加 `role ≥ 10`。模型请求不直连厂商，一律走你配置的网关。

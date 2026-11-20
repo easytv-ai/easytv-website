@@ -29,4 +29,4 @@ description: 画布、一句话成片、导演台、计费和运营后台各自�
 
 ## 不做什么
 
-EasyTV **不是**模型网关。没有 New API / One API 兼容地址时，页面能开，生成跑不起来。对接见 [网关](/docs/gateway)。
+EasyTV **不是**模型网关。没有 OpenAI 兼容网关地址时，页面能开，生成跑不起来。对接见 [网关](/docs/gateway)。

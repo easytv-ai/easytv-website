@@ -25,7 +25,7 @@ easytv-web      ──┐
 easytv-manage   ──┼──▶  easytv-api  ── MySQL / Redis / object storage
 easytv-partner  ──┘         │
                             ▼
-                    New API compatible gateway
+                    OpenAI-compatible gateway
 ```
 
 All three clients send `Authorization: Bearer` + `EasyTV-User`. Admin also needs `role ≥ 10`. Model calls never go to vendors directly.

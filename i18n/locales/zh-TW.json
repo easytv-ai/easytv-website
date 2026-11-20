@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "EasyTV · 開源 AI 短劇創作平台",
-    "description": "EasyTV 是開源、可自架的 AI 短劇創作平台：節點畫布、一句話成片、3D 導演台、伺服器端合成，內建積分計費、模型定價與營運後台。短劇創作版的 New API。"
+    "description": "EasyTV 是開源、可自架的 AI 短劇創作平台：節點畫布、一句話成片、3D 導演台、伺服器端合成，內建積分計費、模型定價與營運後台。"
   },
   "nav": {
     "features": "能力",
@@ -19,8 +19,8 @@
   },
   "hero": {
     "eyebrow": "開源 · 自架 · AGPL-3.0",
-    "title1": "短劇創作版的",
-    "title2": "New API",
+    "title1": "從劇本到成片",
+    "title2": "一張畫布完成",
     "subtitle": "把任意影片、圖像、語音模型接進同一張畫布，從劇本到成片一站完成。內建積分計費、模型定價、金流與營運後台，部署到你自己的伺服器。",
     "cta_github": "在 GitHub 查看",
     "cta_demo": "線上體驗",
@@ -114,9 +114,9 @@
     ]
   },
   "why": {
-    "eyebrow": "為什麼叫短劇版 New API",
-    "title": "New API 統一了大模型，EasyTV 統一了短劇生產",
-    "p1": "New API 把各家 LLM 收進一個閘道：統一介面、統一計費、統一營運。EasyTV 做的是同一件事的下一層：把各家影片、圖像、語音模型收進一個創作與營運平台，並且直接以 OpenAI 相容介面接在任何 New API / One API 閘道之後。",
+    "eyebrow": "為什麼做 EasyTV",
+    "title": "模型閘道統一了大模型，EasyTV 統一短劇生產",
+    "p1": "模型閘道把各家 LLM 收進一個入口：統一介面、統一計費、統一營運。EasyTV 做的是同一件事的下一層：把各家影片、圖像、語音模型收進一個創作與營運平台，並且直接以 OpenAI 相容介面接在你的模型閘道之後。",
     "p2": "你不需要和每家模型廠商談合作，也不需要自己寫計費與後台。接上閘道、匯入模型清單、設好定價，一個可收費的短劇創作站就跑起來了。",
     "cards": [
       {
@@ -156,7 +156,7 @@
       "db": "MySQL / Redis",
       "oss": "物件儲存",
       "oss_d": "OSS · 七牛 · 本機",
-      "gateway": "New API 閘道",
+      "gateway": "模型閘道",
       "models": "Kling · 即夢 · Seedance · Hailuo",
       "ffmpeg": "ffmpeg 合成",
       "models2": "Sora · GPT · Qwen · MiniMax …"
@@ -243,7 +243,7 @@
   "quickstart": {
     "eyebrow": "快速開始",
     "title": "五分鐘跑起來",
-    "subtitle": "準備一個 MySQL 和一組 New API 相容閘道的權杖，其餘都有預設值。",
+    "subtitle": "準備一個 MySQL 和一組 OpenAI 相容閘道的權杖，其餘都有預設值。",
     "steps": [
       {
         "title": "後端",
@@ -332,7 +332,7 @@
   },
   "footer": {
     "tagline": "開源 AI 短劇創作平台",
-    "license": "AGPL-3.0 授權 · 架構致敬 New API / One API",
+    "license": "AGPL-3.0 授權",
     "links": {
       "web": "創作台",
       "api": "後端",
@@ -363,7 +363,7 @@
       "nav": "開始使用",
       "title": "開始使用 EasyTV",
       "subtitle": "部署 EasyTV，接上模型閘道，完成第一次出片。",
-      "intro": "EasyTV 是開源的 AI 短劇創作平台。四個儲存庫共用一個後端：創作台出片，營運後台管人管錢，通路後台做返佣。模型請求會轉發到你自己的 New API / One API 相容閘道。",
+      "intro": "EasyTV 是開源的 AI 短劇創作平台。四個儲存庫共用一個後端：創作台出片，營運後台管人管錢，通路後台做返佣。模型請求會轉發到你自己的 OpenAI 相容閘道。",
       "repos": "儲存庫一覽",
       "web_t": "創作台",
       "web_d": "easytv-web · 畫布、一句話成片、導演台、社群。本機 :3005。",
@@ -377,7 +377,7 @@
       "step1_t": "部署實例",
       "step1_d": "用 Docker Compose 或原始碼啟動 API、創作台和營運後台。",
       "step2_t": "對接模型閘道",
-      "step2_d": "填入 New API / One API 相容閘道，拉取模型並匯入積分定價。",
+      "step2_d": "填入 OpenAI 相容閘道，拉取模型並匯入積分定價。",
       "step3_t": "出第一支片",
       "step3_d": "開啟創作台，用一句話成片或畫布跑通第一次生成。",
       "deploys": "選擇部署方式",
@@ -426,7 +426,7 @@
       "arch_t": "架構",
       "arch_d": "四個儲存庫如何接到同一個後端。",
       "gw_t": "對接閘道",
-      "gw_d": "把 New API 相容閘道接上並匯入定價。",
+      "gw_d": "把 OpenAI 相容閘道接上並匯入定價。",
       "prod_t": "正式環境部署",
       "prod_d": "子網域、Nginx、Cloudflare、多節點 worker。",
       "help_t": "說明",

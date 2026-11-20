@@ -5,7 +5,7 @@ description: What EasyTV is, how the four repositories split work, and who shoul
 
 EasyTV is an open-source, self-hosted AI short-drama studio. In the browser you turn a one-line idea into a finished film: a node canvas for scripts, storyboards, images, video and audio; a 3D director stage for blocking and cameras; a one-prompt pipeline that plans, generates and composes. Credits, model pricing, payments and an admin console are built in.
 
-Think of it as the **New API of short-drama creation**: models still go through your [New API](https://github.com/QuantumNous/new-api)-compatible gateway. EasyTV owns the creative workflow and operations.
+Models still go through your own OpenAI-compatible gateway. EasyTV owns the creative workflow and operations.
 
 ## Four repositories
 
@@ -21,7 +21,7 @@ The marketing site is [easytv-website](https://github.com/easytv-ai/easytv-websi
 ## Who it is for
 
 - You want a self-hosted AI short-drama / short-video workbench and you keep the models and data
-- You already run (or will run) a New API / One API style gateway
+- You already run (or will run) an OpenAI-compatible model gateway
 - You need credits, plans, payments and moderation, not just a few generate calls
 
 ## Creator surface

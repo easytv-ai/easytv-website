@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "EasyTV · Nền tảng mã nguồn mở sáng tác phim ngắn bằng AI",
-    "description": "EasyTV là nền tảng sáng tác phim ngắn bằng AI, mã nguồn mở và tự triển khai được: canvas dạng nút, một câu thành phim, sân khấu đạo diễn 3D, dựng phim phía máy chủ, tích hợp sẵn tính phí bằng điểm, định giá mô hình và trang quản trị. New API dành cho phim ngắn."
+    "description": "EasyTV là nền tảng sáng tác phim ngắn bằng AI, mã nguồn mở và tự triển khai được: canvas dạng nút, một câu thành phim, sân khấu đạo diễn 3D, dựng phim phía máy chủ, tích hợp sẵn tính phí bằng điểm, định giá mô hình và trang quản trị."
   },
   "nav": {
     "features": "Tính năng",
@@ -19,8 +19,8 @@
   },
   "hero": {
     "eyebrow": "Mã nguồn mở · Tự triển khai · AGPL-3.0",
-    "title1": "New API dành cho",
-    "title2": "phim ngắn",
+    "title1": "Từ kịch bản đến thành phim",
+    "title2": "trên một canvas",
     "subtitle": "Kết nối mọi mô hình video, hình ảnh, giọng nói vào cùng một canvas và đi từ kịch bản đến bản phim hoàn chỉnh ở một nơi. Tích hợp sẵn tính phí bằng điểm, định giá mô hình, thanh toán và trang quản trị. Triển khai trên máy chủ của chính bạn.",
     "cta_github": "Xem trên GitHub",
     "cta_demo": "Dùng thử",
@@ -114,9 +114,9 @@
     ]
   },
   "why": {
-    "eyebrow": "Vì sao gọi là New API của phim ngắn",
-    "title": "New API thống nhất các LLM, EasyTV thống nhất việc sản xuất phim ngắn",
-    "p1": "New API gom LLM của các hãng về một gateway: chung giao diện, chung cách tính phí, chung cách vận hành. EasyTV làm điều tương tự ở tầng tiếp theo: gom các mô hình video, hình ảnh, giọng nói về một nền tảng sáng tác và vận hành, đồng thời kết nối trực tiếp phía sau bất kỳ gateway New API / One API nào qua giao diện tương thích OpenAI.",
+    "eyebrow": "Vì sao có EasyTV",
+    "title": "Gateway mô hình thống nhất các LLM, EasyTV thống nhất việc sản xuất phim ngắn",
+    "p1": "Gateway mô hình gom LLM của các hãng về một đầu mối: chung giao diện, chung cách tính phí, chung cách vận hành. EasyTV làm điều tương tự ở tầng tiếp theo: gom các mô hình video, hình ảnh, giọng nói về một nền tảng sáng tác và vận hành, đồng thời kết nối trực tiếp phía sau gateway mô hình của bạn qua giao diện tương thích OpenAI.",
     "p2": "Bạn không cần đàm phán với từng nhà cung cấp mô hình, cũng không cần tự viết phần tính phí và trang quản trị. Kết nối gateway, nhập danh sách mô hình, đặt giá, thế là một trang sáng tác phim ngắn có thu phí đã chạy.",
     "cards": [
       {
@@ -156,7 +156,7 @@
       "db": "MySQL / Redis",
       "oss": "Lưu trữ đối tượng",
       "oss_d": "OSS · Qiniu · cục bộ",
-      "gateway": "Gateway New API",
+      "gateway": "Gateway mô hình",
       "models": "Kling · Jimeng · Seedance · Hailuo",
       "ffmpeg": "dựng phim ffmpeg",
       "models2": "Sora · GPT · Qwen · MiniMax …"
@@ -243,7 +243,7 @@
   "quickstart": {
     "eyebrow": "Bắt đầu nhanh",
     "title": "Chạy được trong năm phút",
-    "subtitle": "Chuẩn bị một MySQL và một token của gateway tương thích New API, còn lại đều có giá trị mặc định.",
+    "subtitle": "Chuẩn bị một MySQL và một token của gateway tương thích OpenAI, còn lại đều có giá trị mặc định.",
     "steps": [
       {
         "title": "Backend",
@@ -332,7 +332,7 @@
   },
   "footer": {
     "tagline": "Nền tảng mã nguồn mở sáng tác phim ngắn bằng AI",
-    "license": "Giấy phép AGPL-3.0 · Kiến trúc lấy cảm hứng từ New API / One API",
+    "license": "Giấy phép AGPL-3.0",
     "links": {
       "web": "Studio",
       "api": "Backend",
@@ -363,7 +363,7 @@
       "nav": "Bắt đầu sử dụng",
       "title": "Bắt đầu với EasyTV",
       "subtitle": "Triển khai EasyTV, kết nối gateway mô hình và làm bộ phim đầu tiên.",
-      "intro": "EasyTV là nền tảng mã nguồn mở sáng tác phim ngắn bằng AI. Bốn kho mã dùng chung một backend: studio làm phim, trang quản trị lo người dùng và tiền, trang đối tác lo hoa hồng. Yêu cầu tới mô hình được chuyển tiếp đến gateway tương thích New API / One API của chính bạn.",
+      "intro": "EasyTV là nền tảng mã nguồn mở sáng tác phim ngắn bằng AI. Bốn kho mã dùng chung một backend: studio làm phim, trang quản trị lo người dùng và tiền, trang đối tác lo hoa hồng. Yêu cầu tới mô hình được chuyển tiếp đến gateway tương thích OpenAI của chính bạn.",
       "repos": "Các kho mã",
       "web_t": "Studio",
       "web_d": "easytv-web · canvas, một câu thành phim, sân khấu đạo diễn, cộng đồng. Cục bộ :3005.",
@@ -377,7 +377,7 @@
       "step1_t": "Triển khai hệ thống",
       "step1_d": "Khởi động API, studio và trang quản trị bằng Docker Compose hoặc từ mã nguồn.",
       "step2_t": "Kết nối gateway mô hình",
-      "step2_d": "Điền gateway tương thích New API / One API, lấy danh sách mô hình và nhập giá theo điểm.",
+      "step2_d": "Điền gateway tương thích OpenAI, lấy danh sách mô hình và nhập giá theo điểm.",
       "step3_t": "Làm bộ phim đầu tiên",
       "step3_d": "Mở studio, dùng một câu thành phim hoặc canvas để chạy lần tạo đầu tiên.",
       "deploys": "Chọn cách triển khai",
@@ -426,7 +426,7 @@
       "arch_t": "Kiến trúc",
       "arch_d": "Bốn kho mã kết nối với cùng một backend như thế nào.",
       "gw_t": "Kết nối gateway",
-      "gw_d": "Kết nối gateway tương thích New API và nhập bảng giá.",
+      "gw_d": "Kết nối gateway tương thích OpenAI và nhập bảng giá.",
       "prod_t": "Triển khai chính thức",
       "prod_d": "Tên miền con, Nginx, Cloudflare, worker nhiều nút.",
       "help_t": "Trợ giúp",

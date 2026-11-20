@@ -21,7 +21,7 @@ description: 文档站和四个产品仓库最近在补什么。完整记录在�
 ## 后端 easytv-api
 
 - 契约仍以仓库里的 `API.md` 为准（目前写到第 38 章）
-- 生成只走 EasyAPI / New API 兼容网关，不直连厂商
+- 生成只走 OpenAI 兼容网关，不直连厂商
 - 积分按 `model_price` 预扣，失败或取消退回
 
 未发布项以各仓库 `CHANGELOG.md` 的 `[Unreleased]` 为准。

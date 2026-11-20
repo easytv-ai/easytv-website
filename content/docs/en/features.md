@@ -29,4 +29,4 @@ Features are aligned with commercial short-drama workbenches. Canvas, director a
 
 ## What it is not
 
-EasyTV is **not** a model gateway. Without a New API / One API compatible URL, pages open but generation does not run. See [gateway](/docs/gateway).
+EasyTV is **not** a model gateway. Without an OpenAI-compatible gateway URL, pages open but generation does not run. See [gateway](/docs/gateway).

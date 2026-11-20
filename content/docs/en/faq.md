@@ -53,4 +53,4 @@ Personal space looks at *your* active membership. Team space looks at the **owne
 
 ## Can I use this closed-source commercially?
 
-Yes under AGPL-3.0 if you publish corresponding source when you offer a modified version as a network service. You do not need to buy a license for that. Closed-source or white-label without those obligations needs the [commercial license](/docs/license). New API-inspired modules in `easytv-api` stay AGPL.
+Yes under AGPL-3.0 if you publish corresponding source when you offer a modified version as a network service. You do not need to buy a license for that. Closed-source or white-label without those obligations needs the [commercial license](/docs/license). Modules in `easytv-api` derived from upstream AGPL projects stay AGPL.

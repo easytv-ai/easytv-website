@@ -13,7 +13,7 @@ const cards = computed(() => rows<'k' | 'title' | 'desc'>('why.cards'))
         <p class="lead mt-6">{{ t('why.p1') }}</p>
         <p class="lead mt-4">{{ t('why.p2') }}</p>
         <div class="code mt-8 p-4 font-mono">
-          <div class="cm"># new-api → tokens</div>
+          <div class="cm"># gateway → tokens</div>
           <div><span class="kw">POST</span> /v1/chat/completions</div>
           <div class="cm mt-3"># easytv → credits</div>
           <div><span class="kw">POST</span> /v1/videos        <span class="cm">→ 25 pts / s</span></div>

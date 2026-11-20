@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "EasyTV · Studio open source de séries courtes par IA",
-    "description": "EasyTV est une plateforme open source et auto-hébergée de création de séries courtes par IA : canevas de nœuds, film en une phrase, plateau de réalisation 3D, montage côté serveur, avec facturation en crédits, tarification des modèles et console d'administration intégrées. Le New API de la série courte."
+    "description": "EasyTV est une plateforme open source et auto-hébergée de création de séries courtes par IA : canevas de nœuds, film en une phrase, plateau de réalisation 3D, montage côté serveur, avec facturation en crédits, tarification des modèles et console d'administration intégrées."
   },
   "nav": {
     "features": "Fonctionnalités",
@@ -19,8 +19,8 @@
   },
   "hero": {
     "eyebrow": "Open source · Auto-hébergé · AGPL-3.0",
-    "title1": "Le New API de",
-    "title2": "la série courte",
+    "title1": "Du scénario au film,",
+    "title2": "sur un seul canevas",
     "subtitle": "Branchez n'importe quel modèle vidéo, image ou voix sur un même canevas et passez du scénario au montage final au même endroit. Facturation en crédits, tarification des modèles, paiements et console d'administration sont intégrés. Déployez sur vos propres serveurs.",
     "cta_github": "Voir sur GitHub",
     "cta_demo": "Démo en ligne",
@@ -114,9 +114,9 @@
     ]
   },
   "why": {
-    "eyebrow": "Pourquoi « le New API de la série courte »",
-    "title": "New API a unifié les LLM. EasyTV unifie la production de séries courtes.",
-    "p1": "New API rassemble tous les LLM derrière une seule passerelle : une interface, une facturation, une administration. EasyTV fait la même chose un niveau au-dessus : il réunit les modèles vidéo, image et voix dans une seule plateforme de création et d'exploitation, et se connecte à n'importe quelle passerelle New API / One API via des interfaces compatibles OpenAI.",
+    "eyebrow": "Pourquoi EasyTV",
+    "title": "Les passerelles de modèles ont unifié les LLM. EasyTV unifie la production de séries courtes.",
+    "p1": "Une passerelle de modèles rassemble tous les LLM derrière un seul point d'entrée : une interface, une facturation, une administration. EasyTV fait la même chose un niveau au-dessus : il réunit les modèles vidéo, image et voix dans une seule plateforme de création et d'exploitation, et se connecte à votre passerelle de modèles via des interfaces compatibles OpenAI.",
     "p2": "Vous n'avez pas à négocier avec chaque fournisseur de modèles, ni à écrire la facturation ou la console d'administration. Branchez une passerelle, importez la liste des modèles, fixez les prix : un studio de séries courtes payant est en ligne.",
     "cards": [
       {
@@ -156,7 +156,7 @@
       "db": "MySQL / Redis",
       "oss": "Stockage objet",
       "oss_d": "OSS · Qiniu · local",
-      "gateway": "Passerelle New API",
+      "gateway": "Passerelle de modèles",
       "models": "Kling · Jimeng · Seedance · Hailuo",
       "ffmpeg": "rendu ffmpeg",
       "models2": "Sora · GPT · Qwen · MiniMax …"
@@ -243,7 +243,7 @@
   "quickstart": {
     "eyebrow": "Démarrage rapide",
     "title": "Opérationnel en cinq minutes",
-    "subtitle": "Prévoyez une instance MySQL et un jeton pour une passerelle compatible New API. Tout le reste a des valeurs par défaut.",
+    "subtitle": "Prévoyez une instance MySQL et un jeton pour une passerelle compatible OpenAI. Tout le reste a des valeurs par défaut.",
     "steps": [
       {
         "title": "Backend",
@@ -332,7 +332,7 @@
   },
   "footer": {
     "tagline": "Studio open source de séries courtes par IA",
-    "license": "Licence AGPL-3.0 · Architecture inspirée de New API / One API",
+    "license": "Licence AGPL-3.0",
     "links": {
       "web": "Studio",
       "api": "Backend",
@@ -363,7 +363,7 @@
       "nav": "Premiers pas",
       "title": "Premiers pas avec EasyTV",
       "subtitle": "Déployez EasyTV, connectez une passerelle de modèles et réalisez votre premier film.",
-      "intro": "EasyTV est une plateforme open source de création de séries courtes par IA. Quatre dépôts partagent un même backend : le studio produit les films, la console d'administration gère les utilisateurs et l'argent, la console partenaires gère les commissions. Les appels aux modèles sont transmis à votre propre passerelle compatible New API / One API.",
+      "intro": "EasyTV est une plateforme open source de création de séries courtes par IA. Quatre dépôts partagent un même backend : le studio produit les films, la console d'administration gère les utilisateurs et l'argent, la console partenaires gère les commissions. Les appels aux modèles sont transmis à votre propre passerelle compatible OpenAI.",
       "repos": "Les dépôts",
       "web_t": "Studio",
       "web_d": "easytv-web · canevas, film en une phrase, plateau de réalisation, communauté. En local : :3005.",
@@ -377,7 +377,7 @@
       "step1_t": "Déployer une instance",
       "step1_d": "Lancez l'API, le studio et la console d'administration avec Docker Compose ou depuis les sources.",
       "step2_t": "Connecter une passerelle de modèles",
-      "step2_d": "Renseignez une passerelle compatible New API / One API, récupérez les modèles et importez les tarifs en crédits.",
+      "step2_d": "Renseignez une passerelle compatible OpenAI, récupérez les modèles et importez les tarifs en crédits.",
       "step3_t": "Réaliser le premier film",
       "step3_d": "Ouvrez le studio et lancez une première génération avec le film en une phrase ou le canevas.",
       "deploys": "Choisir un mode de déploiement",
@@ -426,7 +426,7 @@
       "arch_t": "Architecture",
       "arch_d": "Comment quatre dépôts partagent un même backend.",
       "gw_t": "Connexion à la passerelle",
-      "gw_d": "Raccordez une passerelle compatible New API et importez les tarifs.",
+      "gw_d": "Raccordez une passerelle compatible OpenAI et importez les tarifs.",
       "prod_t": "Mise en production",
       "prod_d": "Sous-domaines, Nginx, Cloudflare, workers multi-nœuds.",
       "help_t": "Aide",

@@ -3,7 +3,7 @@ title: Quick start
 description: Empty machine to first film: Docker, admin sign-in, gateway, one-prompt film.
 ---
 
-Aim for a finished clip in **about 15 minutes**. You need Docker 24+ and a [New API](https://github.com/QuantumNous/new-api)-compatible token that can call text, image and video models.
+Aim for a finished clip in **about 15 minutes**. You need Docker 24+ and an OpenAI-compatible gateway token that can call text, image and video models.
 
 More install options: [Install](/docs/install). Feature tour: [Studio](/docs/studio).
 
@@ -40,7 +40,7 @@ Open http://localhost:3006 with `admin` and your `ROOT_PASSWORD`.
 Change settings in this order (all under **System**, applied immediately):
 
 1. **Site**: public studio URL `http://localhost:3005` (invites and payment callbacks)
-2. **Gateway**: New API-compatible Base URL and Key → pull models → **import prices**
+2. **Gateway**: OpenAI-compatible gateway Base URL and Key → pull models → **import prices**
 3. **Model pricing**: check text / image / video unit prices (unpriced models cannot generate)
 
 Details: [Connect a gateway](/docs/gateway).

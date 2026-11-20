@@ -11,4 +11,4 @@ State: `pending` → `running` → `succeeded` / `failed` / `cancelled`.
 - `params.count` must be 1.
 - Unknown `model` returns `模型暂未接入` and stores nothing.
 - Short balance returns `积分不足，还需 N 积分`.
-- Generation only goes through an EasyAPI / New API compatible gateway.
+- Generation only goes through an OpenAI-compatible gateway.

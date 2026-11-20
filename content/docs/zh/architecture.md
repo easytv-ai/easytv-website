@@ -11,7 +11,7 @@ easytv-manage   ──┼──▶  easytv-api (Gin)  ── MySQL / Redis
 easytv-partner  ──┘           │            ── 对象存储（本地 / OSS / 七牛）
                               │            ── ffmpeg
                               ▼
-                    New API 兼容网关
+                    OpenAI 兼容网关
                               ▼
                     Kling · 即梦 · Seedance · Sora · GPT · …
 ```

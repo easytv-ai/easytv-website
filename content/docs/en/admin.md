@@ -24,7 +24,7 @@ System settings (super-admin only) are tabbed: site, SMS, invoices, payments, ga
 
 ## First-run checklist
 
-1. **System → Gateway**: New API-compatible URL and key, pull models, import prices
+1. **System → Gateway**: OpenAI-compatible gateway URL and key, pull models, import prices
 2. **System → Site**: public studio URL (invites and callbacks)
 3. **System → Payments**: WeChat Pay / Alipay if you sell plans or credits
 4. **Model pricing**: per-model credit prices

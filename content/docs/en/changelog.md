@@ -21,7 +21,7 @@ This page is the docs-visible slice. Each product repo keeps its own `CHANGELOG.
 ## API easytv-api
 
 - Contract is still `API.md` in that repo (through chapter 38)
-- Generation only talks to an EasyAPI / New API compatible gateway
+- Generation only talks to an OpenAI-compatible gateway
 - Credits reserved from `model_price`, refunded on fail or cancel
 
 Unreleased work is the `[Unreleased]` section of each repo changelog.

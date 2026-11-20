@@ -449,7 +449,7 @@ const asset: ApiEndpoint[] = [
 ]
 
 const task: ApiEndpoint[] = [
-  ep('task', 'api-task-create', 'POST', '/user/task', L('创建生成任务', 'Create task'), L('积分按 model_price 先预扣（freeze），成功 settle，失败 / 取消 unfreeze。params.count 只能是 1。生成只走 EasyAPI / New API 兼容网关。', 'Credits freeze on create, settle on success, unfreeze on fail/cancel. params.count must be 1. Generation goes only through an EasyAPI / New API compatible gateway.'), 'user', {
+  ep('task', 'api-task-create', 'POST', '/user/task', L('创建生成任务', 'Create task'), L('积分按 model_price 先预扣（freeze），成功 settle，失败 / 取消 unfreeze。params.count 只能是 1。生成只走 OpenAI 兼容网关。', 'Credits freeze on create, settle on success, unfreeze on fail/cancel. params.count must be 1. Generation only goes through an OpenAI-compatible gateway.'), 'user', {
     headers: headersFor('user', true, [hdrTeam]),
     body: [
       f('type', 'string', 'body', 'text / image / video / audio', 'text / image / video / audio', true),
@@ -924,7 +924,7 @@ const adminPrice: ApiEndpoint[] = [
       f('api_key', 'string', 'body', '令牌', 'API key'),
       f('enabled', 'boolean', 'body', '是否启用', 'Enabled'),
     ],
-    requestExample: '{"base_url":"https://api.newapi.pro","enabled":true}',
+    requestExample: '{"base_url":"https://gateway.example.com","enabled":true}',
     responseJson: ok('null'),
     errors: [errPerm],
   }),

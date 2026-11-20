@@ -1,6 +1,6 @@
 ---
 title: 对接网关
-description: 把 New API / One API 兼容网关接到 EasyTV，拉取模型并导入积分定价。
+description: 把 OpenAI 兼容网关接到 EasyTV，拉取模型并导入积分定价。
 ---
 
 EasyTV 通过 OpenAI 兼容接口调用模型：`/v1/chat`、`/v1/images`、`/v1/videos`（以及网关提供的音频能力）。**先有网关，再谈生成。**
@@ -11,7 +11,7 @@ EasyTV 通过 OpenAI 兼容接口调用模型：`/v1/chat`、`/v1/images`、`/v1
 
 ## 第一次接通
 
-1. 准备一个已在跑的 [New API](https://github.com/QuantumNous/new-api)（或其它兼容网关）令牌，该令牌能调你要用的文本 / 图像 / 视频模型。
+1. 准备一个已在跑的 OpenAI 兼容网关的令牌，该令牌能调你要用的文本 / 图像 / 视频模型。
 2. 用 `admin` 登录运营后台 → **系统 → 网关**。
 3. 填网关 Base URL 与 Key，保存。
 4. 拉取模型清单，把要用的模型 **导入定价**。

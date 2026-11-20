@@ -16,4 +16,4 @@ EasyTV keeps the production line on your machines. Models still go through your 
 | Locales | Seven bundled | Varies |
 | Forks | Public contract, you can extend | Closed |
 
-License limits are on [license](/docs/license). `easytv-api` derives from New API / One API and cannot be closed-source on its own.
+License limits are on [license](/docs/license). Parts of `easytv-api` derive from upstream AGPL-3.0 projects, so it cannot be closed-source on its own.
