@@ -23,5 +23,5 @@ description: AGPL-3.0 と商用ライセンスのどちらを選ぶか、どの�
 ## サードパーティ
 
 - ディレクターステージは [open-director](https://github.com/x1n9/open-director)（MIT）からの移植です
-- API のユーザー / 決済 / オブジェクトストレージの構造は、[One API](https://github.com/songquanpeng/one-api) などの上流オープンソースプロジェクト（AGPL-3.0）を参考にしています。**商用ライセンスでもこれらの部分のライセンスは変わりません**
+- API のユーザー / 決済 / オブジェクトストレージの構造は、[One API](https://github.com/songquanpeng/one-api) などの上流オープンソースプロジェクトを参考にしています。**商用ライセンスでもこれらの部分のライセンスは変わりません**
 - npm / Go の依存パッケージは、それぞれ元のライセンスに従います
