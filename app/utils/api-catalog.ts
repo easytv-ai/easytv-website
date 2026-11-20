@@ -1,4 +1,19 @@
 import { SITE_LOCALES, localePrefix } from './locales'
+import zhTW from './api-i18n/zh-tw.json'
+import fr from './api-i18n/fr.json'
+import ja from './api-i18n/ja.json'
+import ru from './api-i18n/ru.json'
+import vi from './api-i18n/vi.json'
+
+// 目录里的文案只写简体和英文两份（LocText）。其余语种放在 api-i18n/<code>.json，
+// 以原文为 key：繁体以简体原文为 key，其它语种以英文原文为 key；缺条目时退回原文。
+const API_DICTS: Record<string, Record<string, string>> = { 'zh-tw': zhTW, fr, ja, ru, vi }
+
+/** 该语种的接口说明是否有译文（简体、英文是原文，恒为 true） */
+export function hasCatalogLocale(locale: string) {
+  if (locale === 'zh' || locale === 'en') return true
+  return Object.keys(API_DICTS[locale] || {}).length > 0
+}
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 export type AuthKind = 'none' | 'user' | 'admin' | 'root'
@@ -50,8 +65,10 @@ export function L(zh: string, en: string): LocText {
 }
 
 export function pick(text: LocText, locale: string) {
-  // 目录只有 zh / en 两份文案：中文系（含繁体）取 zh，其余语种取 en
-  return locale.startsWith('zh') ? text.zh : text.en
+  if (locale === 'zh') return text.zh
+  if (locale === 'en') return text.en
+  const base = locale.startsWith('zh') ? text.zh : text.en
+  return API_DICTS[locale]?.[base] || base
 }
 
 function f(name: string, type: string, loc: ApiField['loc'], zh: string, en: string, required = false, example?: string): ApiField {
@@ -1050,7 +1067,7 @@ export function apiNavPages(): { slug: string; section: 'api' }[] {
 }
 
 // 错误 message 是后端原样返回的中文。非中文语种在旁边附一句英文释义，方便对照。
-const ERROR_GLOSS_EN: Record<string, string> = {
+export const ERROR_GLOSS_EN: Record<string, string> = {
   '无效的参数': 'Invalid parameters',
   '资源不存在': 'Resource not found',
   '用户名或密码错误': 'Wrong username or password',
@@ -1073,7 +1090,9 @@ const ERROR_GLOSS_EN: Record<string, string> = {
 }
 
 export function errorGloss(message: string, locale: string) {
-  return locale.startsWith('zh') ? '' : (ERROR_GLOSS_EN[message] || '')
+  if (locale.startsWith('zh')) return ''
+  const gloss = ERROR_GLOSS_EN[message] || ''
+  return API_DICTS[locale]?.[gloss] || gloss
 }
 
 export function buildCurl(ep: ApiEndpoint) {

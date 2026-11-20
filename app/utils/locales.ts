@@ -20,15 +20,10 @@ export function localePrefix(code: string) {
 }
 
 /**
- * 文档正文与 API 目录目前只有简体中文和英文两份。
- * 其余语种的取文顺序：繁体先退到简体，其它退到英文，最后兜底简体。
+ * 文档正文按语种放在 content/docs/<code>/。某一页还没有译文时的取文顺序：
+ * 繁体先退到简体，其它退到英文，最后兜底简体。
  */
 export function contentLocales(locale: string): string[] {
   const chain = [locale, locale.startsWith('zh') ? 'zh' : 'en', 'zh']
   return [...new Set(chain)]
-}
-
-/** API 目录（LocText 只有 zh / en）是否有该语种的原生文案 */
-export function hasCatalogLocale(locale: string) {
-  return locale === 'zh' || locale === 'en'
 }
