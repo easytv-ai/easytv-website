@@ -56,6 +56,17 @@ body {
 }
 .nav-link:hover,
 .nav-link:focus-visible { background: var(--panel-2); color: var(--fg); }
+/* 新窗口打开的提示箭头：平时半透明，悬停时变亮并向右上轻移 */
+.nav-ext {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  flex-shrink: 0;
+  opacity: .7;
+  transition: opacity .15s, transform .15s;
+}
+a:hover > .nav-ext,
+a:focus-visible > .nav-ext { opacity: 1; transform: translate(1px, -1px); }
 .nav-icon-btn {
   @apply inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors;
   color: var(--fg-2);
@@ -1066,3 +1077,93 @@ code.docs-ep-path {
 
 /* 接口错误 message 的英文释义 */
 .docs-field-gloss { font-size: 12.5px; color: var(--fg-2); }
+
+/* ---------- 首屏：电视机 ---------- */
+.tv { position: relative; margin: 0 auto; max-width: 1080px; padding-top: 44px; }
+.tv-antenna {
+  position: absolute; top: 0; left: 50%; width: 170px; height: 46px;
+  transform: translateX(-50%); color: color-mix(in srgb, var(--fg) 22%, transparent);
+}
+.tv-body {
+  position: relative; display: flex; gap: 14px; padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  border-radius: 32px;
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+  box-shadow: 0 30px 80px -40px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.tv-screen {
+  position: relative; flex: 1; min-width: 0; overflow: hidden;
+  padding: 44px 18px 48px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+    radial-gradient(80% 70% at 85% 100%, color-mix(in srgb, var(--accent-3) 12%, transparent), transparent 65%),
+    var(--bg);
+  box-shadow: inset 0 0 60px color-mix(in srgb, #000 22%, transparent);
+}
+/* 扫描线 */
+.tv-scan {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom, color-mix(in srgb, var(--fg) 5%, transparent) 0 1px, transparent 1px 4px);
+  mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, #000 40%, transparent 100%);
+}
+/* 一道缓慢下移的亮带 */
+.tv-sweep {
+  position: absolute; left: 0; right: 0; top: 0; height: 38%; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--fg) 5%, transparent) 60%, transparent);
+  animation: tv-sweep 9s linear infinite;
+}
+@keyframes tv-sweep { from { transform: translateY(-110%) } to { transform: translateY(290%) } }
+.tv-panel { display: none; }
+.tv-feet { display: flex; justify-content: space-between; padding: 0 12%; }
+.tv-feet span {
+  width: 54px; height: 10px; border-radius: 0 0 8px 8px;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); border-top: 0;
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+}
+@media (min-width: 640px) {
+  .tv { padding-top: 58px; }
+  .tv-antenna { width: 230px; height: 62px; }
+  .tv-body { padding: 18px; border-radius: 44px; }
+  .tv-screen { padding: 64px 32px 68px; border-radius: 30px; }
+}
+@media (min-width: 1024px) {
+  .tv-panel {
+    display: flex; flex-direction: column; align-items: center; gap: 18px;
+    width: 96px; flex-shrink: 0; padding: 22px 0 18px;
+  }
+  .tv-knob {
+    position: relative; width: 50px; height: 50px; border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--fg) 14%, transparent);
+    background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--fg) 10%, var(--panel)), var(--panel));
+  }
+  .tv-knob::after {
+    content: ""; position: absolute; left: 50%; top: 7px; width: 2px; height: 13px; border-radius: 2px;
+    background: color-mix(in srgb, var(--fg) 45%, transparent); transform-origin: 50% 18px; transform: translateX(-50%) rotate(-35deg);
+  }
+  .tv-knob--b::after { transform: translateX(-50%) rotate(50deg); }
+  .tv-grille {
+    flex: 1; width: 54px; min-height: 60px; border-radius: 8px;
+    background-image: repeating-linear-gradient(to bottom, color-mix(in srgb, var(--fg) 14%, transparent) 0 2px, transparent 2px 9px);
+  }
+  .tv-led {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--accent) 60%, transparent);
+    animation: tv-led 2.4s ease-in-out infinite;
+  }
+}
+@keyframes tv-led { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+
+/* 流水线节点小图 */
+.hero-art { width: 100%; height: 100%; padding: 6px 4px; }
+.hero-art .art-card { fill: color-mix(in srgb, var(--panel) 70%, transparent); stroke: color-mix(in srgb, var(--fg) 22%, transparent); stroke-width: 1.5; }
+.hero-art .art-card--on { stroke: var(--accent); }
+.hero-art .art-line { stroke: color-mix(in srgb, var(--fg) 30%, transparent); }
+.hero-art .art-accent { stroke: var(--accent); }
+.hero-art .art-fill { fill: color-mix(in srgb, var(--fg) 26%, transparent); }
+.hero-art .art-dot { fill: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tv-sweep, .tv-led { animation: none; }
+}

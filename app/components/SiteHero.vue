@@ -8,26 +8,47 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
 
 <template>
   <section id="top" class="relative overflow-hidden">
-    <div class="grid-bg pointer-events-none absolute inset-0" />
     <div class="pointer-events-none absolute left-1/2 top-[-10rem] h-[32rem] w-[48rem] -translate-x-1/2 rounded-full blur-3xl" style="background: radial-gradient(closest-side, var(--glow), transparent)" />
 
-    <div class="container-x relative pt-20 pb-16 sm:pt-28 sm:pb-24">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="eyebrow">{{ t('hero.eyebrow') }}</span>
-        <h1 class="h-display mt-6">
-          {{ t('hero.title1') }}<br>
-          <span class="gradient-text">{{ t('hero.title2') }}</span>
-        </h1>
-        <p class="lead mx-auto mt-6 max-w-2xl">{{ t('hero.subtitle') }}</p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <a :href="links.org" target="_blank" rel="noopener" class="btn btn-primary">{{ t('hero.cta_github') }}</a>
-          <NuxtLink :to="localePath('/docs/quickstart')" class="btn btn-ghost">{{ t('hero.cta_deploy') }}</NuxtLink>
-          <a :href="links.demo" target="_blank" rel="noopener" class="btn btn-ghost">{{ t('hero.cta_demo') }} ↗</a>
+    <div class="container-x relative pt-16 pb-16 sm:pt-24 sm:pb-24">
+      <!-- 首屏主体是一台电视：文案放在屏幕里，右侧是旋钮和扬声器，上面两根天线 -->
+      <div class="tv">
+        <svg class="tv-antenna" viewBox="0 0 240 64" fill="none" aria-hidden="true">
+          <path d="M104 62 34 8M136 62l70-54" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <circle cx="32" cy="6" r="4" fill="currentColor" />
+          <circle cx="208" cy="6" r="4" fill="currentColor" />
+          <path d="M92 64a28 14 0 0 1 56 0" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+        <div class="tv-body">
+          <div class="tv-screen">
+            <div class="tv-scan" />
+            <div class="tv-sweep" />
+            <div class="relative mx-auto max-w-3xl text-center">
+              <span class="eyebrow">{{ t('hero.eyebrow') }}</span>
+              <h1 class="h-display mt-6">
+                {{ t('hero.title1') }}<br>
+                <span class="gradient-text">{{ t('hero.title2') }}</span>
+              </h1>
+              <p class="lead mx-auto mt-6 max-w-2xl">{{ t('hero.subtitle') }}</p>
+              <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a :href="links.org" target="_blank" rel="noopener" class="btn btn-primary">{{ t('hero.cta_github') }}</a>
+                <NuxtLink :to="localePath('/docs/quickstart')" class="btn btn-ghost">{{ t('hero.cta_deploy') }}</NuxtLink>
+                <a :href="links.demo" target="_blank" rel="noopener" class="btn btn-ghost">{{ t('hero.cta_demo') }} ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="tv-panel" aria-hidden="true">
+            <span class="tv-knob" />
+            <span class="tv-knob tv-knob--b" />
+            <span class="tv-grille" />
+            <span class="tv-led" />
+          </div>
         </div>
+        <div class="tv-feet" aria-hidden="true"><span /><span /></div>
       </div>
 
       <!-- 流水线示意 -->
-      <div class="card relative mx-auto mt-16 max-w-6xl overflow-hidden p-4 sm:p-6" style="background: color-mix(in srgb, var(--panel) 85%, transparent)">
+      <div class="card relative mx-auto mt-14 max-w-6xl overflow-hidden p-4 sm:mt-16 sm:p-6" style="background: color-mix(in srgb, var(--panel) 85%, transparent)">
         <div class="flex items-center gap-1.5 pb-4" style="color: var(--fg-3)">
           <span class="h-2.5 w-2.5 rounded-full" style="background: #ff5f57" /><span class="h-2.5 w-2.5 rounded-full" style="background: #febc2e" /><span class="h-2.5 w-2.5 rounded-full" style="background: #28c840" />
           <span class="ml-3 font-mono text-[11px]">easytv-web / canvas</span>
@@ -42,7 +63,9 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
               </span>
             </div>
             <div class="mt-2 text-sm font-medium">{{ t(`hero.flow.${k}`) }}</div>
-            <div class="mt-3 h-14 rounded-lg" :style="{ background: `linear-gradient(135deg, color-mix(in srgb, var(--accent) ${12 + i * 6}%, var(--panel)), color-mix(in srgb, var(--accent-3) ${10 + i * 5}%, var(--panel)))` }" />
+            <div class="mt-3 flex h-20 items-center justify-center overflow-hidden rounded-lg" :style="{ background: `linear-gradient(135deg, color-mix(in srgb, var(--accent) ${10 + i * 4}%, var(--panel)), color-mix(in srgb, var(--accent-3) ${8 + i * 4}%, var(--panel)))` }">
+              <HeroNodeArt :kind="k" />
+            </div>
             <svg v-if="i < flow.length - 1" class="absolute -right-3 top-1/2 hidden h-3 w-3 -translate-y-1/2 lg:block" viewBox="0 0 12 12" style="color: var(--fg-3)"><path d="M0 6h9M6 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" class="anim-dash" /></svg>
           </div>
         </div>

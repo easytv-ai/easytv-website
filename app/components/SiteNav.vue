@@ -25,7 +25,8 @@ const items = [
 
       <nav class="hidden items-center gap-1 xl:flex">
         <a v-for="it in items" :key="it.id" :href="`#${it.id}`" class="nav-link">{{ t(it.key) }}</a>
-        <NuxtLink :to="localePath('/docs')" class="nav-link">{{ t('nav.docs') }}</NuxtLink>
+        <!-- 文档在新窗口打开，右上箭头是提示 -->
+        <NuxtLink :to="localePath('/docs')" target="_blank" class="nav-link">{{ t('nav.docs') }}<svg class="nav-ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4" /></svg></NuxtLink>
       </nav>
 
       <div class="flex shrink-0 items-center gap-1 sm:gap-1.5">
@@ -46,7 +47,7 @@ const items = [
     <div v-if="open" class="border-t xl:hidden" style="border-color: var(--line-2); background: var(--bg)">
       <div class="container-x flex flex-col py-2">
         <a v-for="it in items" :key="it.id" :href="`#${it.id}`" class="-mx-2 rounded-lg px-2 py-3 text-[15px] transition-colors hover:bg-[var(--panel-2)]" style="color: var(--fg-2)" @click="open = false">{{ t(it.key) }}</a>
-        <NuxtLink :to="localePath('/docs')" class="-mx-2 rounded-lg px-2 py-3 text-[15px] transition-colors hover:bg-[var(--panel-2)]" style="color: var(--fg-2)" @click="open = false">{{ t('nav.docs') }}</NuxtLink>
+        <NuxtLink :to="localePath('/docs')" target="_blank" class="-mx-2 rounded-lg px-2 py-3 text-[15px] transition-colors hover:bg-[var(--panel-2)] inline-flex items-center gap-1.5" style="color: var(--fg-2)" @click="open = false">{{ t('nav.docs') }}<svg class="nav-ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4" /></svg></NuxtLink>
         <a :href="links.org" target="_blank" rel="noopener" class="-mx-2 rounded-lg px-2 py-3 text-[15px] font-semibold transition-colors hover:bg-[var(--panel-2)]">{{ t('nav.github') }}</a>
       </div>
     </div>
