@@ -27,7 +27,7 @@ const stats = ['repos', 'locales', 'api', 'models'] as const
       </div>
 
       <!-- 流水线示意 -->
-      <div class="card relative mx-auto mt-16 max-w-5xl overflow-hidden p-4 sm:p-6" style="background: color-mix(in srgb, var(--panel) 85%, transparent)">
+      <div class="card relative mx-auto mt-16 max-w-6xl overflow-hidden p-4 sm:p-6" style="background: color-mix(in srgb, var(--panel) 85%, transparent)">
         <div class="flex items-center gap-1.5 pb-4" style="color: var(--fg-3)">
           <span class="h-2.5 w-2.5 rounded-full" style="background: #ff5f57" /><span class="h-2.5 w-2.5 rounded-full" style="background: #febc2e" /><span class="h-2.5 w-2.5 rounded-full" style="background: #28c840" />
           <span class="ml-3 font-mono text-[11px]">easytv-web / canvas</span>
