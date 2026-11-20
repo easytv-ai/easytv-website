@@ -7,7 +7,7 @@ Trang này là phần liên quan đến tài liệu. Mỗi kho mã sản phẩm 
 
 ## Trang tài liệu easytv-website
 
-- Tài liệu song ngữ tại `/docs` và `/en/docs`: Bắt đầu, Cài đặt, Hướng dẫn, Tham chiếu API, Trợ giúp
+- Tài liệu bằng bảy ngôn ngữ (Trung giản thể, phồn thể, Anh, Pháp, Nhật, Nga, Việt), mặc định tại `/docs`, các ngôn ngữ khác có tiền tố như `/vi/docs`: Bắt đầu, Cài đặt, Hướng dẫn, Tham chiếu API, Trợ giúp
 - Giao diện đi theo trang chủ; tài liệu không còn ép dùng nền tối
 - Nhãn trong sơ đồ kiến trúc không còn đè lên các ô API / gateway
 - pnpm, AGPL-3.0, ghi chú về đóng góp và bảo mật
@@ -20,7 +20,7 @@ Trang này là phần liên quan đến tài liệu. Mỗi kho mã sản phẩm 
 
 ## API easytv-api
 
-- Quy ước vẫn là `API.md` trong kho mã đó (đến chương 38)
+- Quy ước vẫn là `API.md` trong kho mã đó (đến chương 40)
 - Việc tạo nội dung chỉ trao đổi với gateway tương thích OpenAI
 - Điểm được tạm trừ theo `model_price`, hoàn lại khi thất bại hoặc bị hủy
 

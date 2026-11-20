@@ -7,7 +7,7 @@ This page is the docs-visible slice. Each product repo keeps its own `CHANGELOG.
 
 ## Docs site easytv-website
 
-- Bilingual docs at `/docs` and `/en/docs`: Start, Install, Guides, API reference, Reference
+- Docs in seven languages (Simplified and Traditional Chinese, English, French, Japanese, Russian, Vietnamese), at `/docs` by default and under a prefix such as `/en/docs` for the others: Start, Install, Guides, API reference, Reference
 - Theme follows the homepage; docs no longer force dark
 - Architecture labels no longer overlap the API / gateway boxes
 - pnpm, AGPL-3.0, contributing and security notes
@@ -20,7 +20,7 @@ This page is the docs-visible slice. Each product repo keeps its own `CHANGELOG.
 
 ## API easytv-api
 
-- Contract is still `API.md` in that repo (through chapter 38)
+- Contract is still `API.md` in that repo (through chapter 40)
 - Generation only talks to an OpenAI-compatible gateway
 - Credits reserved from `model_price`, refunded on fail or cancel
 

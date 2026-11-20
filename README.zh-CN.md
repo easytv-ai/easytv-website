@@ -12,7 +12,7 @@
 
 </div>
 
-一个静态的中英双语介绍页，外加 `/docs` 文档站：安装、四个产品仓库、网关对接与接口约定。基于 Nuxt 4、Tailwind CSS 4 与 `@nuxtjs/i18n`，部署在 Cloudflare。
+一个静态的七语种介绍页（简体、繁体、英、法、日、俄、越），外加 `/docs` 文档站：安装、四个产品仓库、网关对接与接口约定。基于 Nuxt 4、Tailwind CSS 4 与 `@nuxtjs/i18n`，部署在 Cloudflare。
 
 ## 开发
 

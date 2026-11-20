@@ -12,7 +12,9 @@
 
 </div>
 
-A static, bilingual (中文 / English) landing page and docs site for EasyTV.
+A static landing page and docs site for EasyTV, available in seven languages
+(Simplified and Traditional Chinese, English, French, Japanese, Russian and
+Vietnamese).
 The home page explains the product; `/docs` covers install, the four product
 repositories, gateway setup and the API contract. Built with Nuxt 4, Tailwind
 CSS 4 and `@nuxtjs/i18n`, deployed to Cloudflare.

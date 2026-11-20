@@ -7,7 +7,7 @@ Cette page ne présente que la partie visible depuis la documentation. Chaque d�
 
 ## Site de documentation easytv-website
 
-- Documentation bilingue sur `/docs` et `/en/docs` : Démarrer, Installation, Guides, Référence API, Aide
+- Documentation en sept langues (chinois simplifié et traditionnel, anglais, français, japonais, russe, vietnamien), sur `/docs` par défaut et sous un préfixe tel que `/fr/docs` pour les autres : Démarrer, Installation, Guides, Référence API, Aide
 - Le thème suit celui de la page d'accueil ; la documentation n'impose plus le mode sombre
 - Les libellés du schéma d'architecture ne chevauchent plus les blocs API / passerelle
 - pnpm, AGPL-3.0, guide de contribution et notes de sécurité
@@ -20,7 +20,7 @@ Cette page ne présente que la partie visible depuis la documentation. Chaque d�
 
 ## API easytv-api
 
-- Le contrat reste le fichier `API.md` de ce dépôt (jusqu'au chapitre 38)
+- Le contrat reste le fichier `API.md` de ce dépôt (jusqu'au chapitre 40)
 - La génération ne dialogue qu'avec une passerelle compatible OpenAI
 - Les crédits sont pré-débités d'après `model_price` et remboursés en cas d'échec ou d'annulation
 
