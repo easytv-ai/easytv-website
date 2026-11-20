@@ -48,7 +48,8 @@ export function L(zh: string, en: string): LocText {
 }
 
 export function pick(text: LocText, locale: string) {
-  return locale.startsWith('en') ? text.en : text.zh
+  // 目录只有 zh / en 两份文案：中文系（含繁体）取 zh，其余语种取 en
+  return locale.startsWith('zh') ? text.zh : text.en
 }
 
 function f(name: string, type: string, loc: ApiField['loc'], zh: string, en: string, required = false, example?: string): ApiField {

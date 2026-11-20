@@ -14,7 +14,8 @@
     "github": "GitHub",
     "demo": "在线体验",
     "theme": "切换主题",
-    "lang": "English"
+    "language": "切换语言",
+    "menu": "菜单"
   },
   "hero": {
     "eyebrow": "开源 · 自托管 · AGPL-3.0",
@@ -33,7 +34,7 @@
     "stats_v": {
       "repos": "4",
       "locales": "7",
-      "api": "38 章",
+      "api": "40 章",
       "models": "OpenAI 兼容"
     },
     "flow": {
@@ -263,7 +264,16 @@
       "easytv-manage",
       "easytv-partner"
     ],
-    "note": "完整安装、网关对接与 systemd 见文档站。"
+    "note": "完整安装、网关对接与 systemd 见文档站。",
+    "code": {
+      "api_env": "填 SQL_DSN / ROOT_PASSWORD，Redis 可选",
+      "api_run": "首次启动自动 AutoMigrate 并创建 root",
+      "api_seed": "可选：灌入演示作品与技能",
+      "web_env": ".env.development 里填 NUXT_PUBLIC_API_BASE_URL",
+      "manage_login": "用 ROOT_USERNAME / ROOT_PASSWORD 登录",
+      "manage_gateway": "系统设置 · 网关 → 填网关地址与密钥 → 拉取模型 → 导入定价",
+      "partner_login": "用普通 EasyTV 账号登录后申请入驻"
+    }
   },
   "roadmap": {
     "eyebrow": "路线图",
@@ -339,6 +349,8 @@
     "search": "搜索文档",
     "edit": "在 GitHub 上编辑此页",
     "empty": "没有匹配的页面",
+    "untranslated": "本页暂时没有当前语言的译文，显示的是原文。",
+    "untranslated_cta": "参与翻译",
     "sections": {
       "start": "开始",
       "install": "安装部署",

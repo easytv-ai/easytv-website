@@ -61,7 +61,7 @@ export function slugifyHeading(text: string) {
     .replace(/<[^>]+>/g, '')
     .trim()
     .toLowerCase()
-    .replace(/[^\w\u4e00-\u9fff-]+/g, '-')
+    .replace(/[^\p{L}\p{N}_-]+/gu, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
 }

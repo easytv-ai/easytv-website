@@ -1,0 +1,468 @@
+{
+  "meta": {
+    "title": "EasyTV · Nền tảng mã nguồn mở sáng tác phim ngắn bằng AI",
+    "description": "EasyTV là nền tảng sáng tác phim ngắn bằng AI, mã nguồn mở và tự triển khai được: canvas dạng nút, một câu thành phim, sân khấu đạo diễn 3D, dựng phim phía máy chủ, tích hợp sẵn tính phí bằng điểm, định giá mô hình và trang quản trị. New API dành cho phim ngắn."
+  },
+  "nav": {
+    "features": "Tính năng",
+    "why": "Vì sao",
+    "arch": "Kiến trúc",
+    "compare": "So sánh",
+    "quickstart": "Triển khai",
+    "roadmap": "Lộ trình",
+    "docs": "Tài liệu",
+    "github": "GitHub",
+    "demo": "Dùng thử",
+    "theme": "Đổi giao diện",
+    "language": "Đổi ngôn ngữ",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Mã nguồn mở · Tự triển khai · AGPL-3.0",
+    "title1": "New API dành cho",
+    "title2": "phim ngắn",
+    "subtitle": "Kết nối mọi mô hình video, hình ảnh, giọng nói vào cùng một canvas và đi từ kịch bản đến bản phim hoàn chỉnh ở một nơi. Tích hợp sẵn tính phí bằng điểm, định giá mô hình, thanh toán và trang quản trị. Triển khai trên máy chủ của chính bạn.",
+    "cta_github": "Xem trên GitHub",
+    "cta_demo": "Dùng thử",
+    "cta_deploy": "Triển khai trong 5 phút",
+    "stats": {
+      "repos": "Kho mã nguồn mở",
+      "locales": "Ngôn ngữ tích hợp",
+      "api": "Quy ước API",
+      "models": "Cách kết nối mô hình"
+    },
+    "stats_v": {
+      "repos": "4",
+      "locales": "7",
+      "api": "40 chương",
+      "models": "Tương thích OpenAI"
+    },
+    "flow": {
+      "script": "Kịch bản / đề cương",
+      "subject": "Nhân vật & phong cách",
+      "shot": "Tạo phân cảnh",
+      "voice": "Lồng tiếng & phụ đề",
+      "compose": "Dựng trên timeline",
+      "work": "Xuất bản phim"
+    }
+  },
+  "showcase": {
+    "eyebrow": "Thư viện phim",
+    "title": "Một canvas, nối liền cả dây chuyền làm phim ngắn"
+  },
+  "features": {
+    "eyebrow": "Tính năng cốt lõi",
+    "title": "Bộ công cụ đầy đủ, sánh ngang các nền tảng thương mại",
+    "subtitle": "Tính năng được đối chiếu từng mục với LibTV và các nền tảng thương mại tương tự. Thao tác canvas, sân khấu đạo diễn và dựng phim thông minh đã hoàn thiện; phần còn thiếu được ghi trong lộ trình.",
+    "items": [
+      {
+        "title": "Canvas vô hạn · quy trình dạng nút",
+        "desc": "Năm loại nút gồm văn bản, hình ảnh, video, âm thanh và nhóm phân cảnh, nối lại là chạy. Sao chép và dán giữa các canvas, cắt theo lưới, bổ sung prompt dọc theo đường nối."
+      },
+      {
+        "title": "Một câu thành phim",
+        "desc": "Tạo cả quy trình qua hội thoại: tự lập đề cương, nhân vật và bối cảnh, phân cảnh và lồng tiếng. Một câu là có bản nháp, sau đó tinh chỉnh từng cảnh."
+      },
+      {
+        "title": "Hồ sơ series & đề cương",
+        "desc": "Tiểu sử nhân vật, thế giới quan, danh mục tập và các bản sửa. Canvas ghi lại nó được dựng từ bản thảo nào và đánh dấu những cảnh bị ảnh hưởng sau khi sửa."
+      },
+      {
+        "title": "Sân khấu đạo diễn 3D",
+        "desc": "Xếp vị trí nhân vật, đặt máy quay và chuyển động máy ngay trong trình duyệt, rồi xuất mô tả cảnh quay đưa thẳng cho mô hình video."
+      },
+      {
+        "title": "Thư viện nhân vật & phong cách",
+        "desc": "Bản vẽ ba góc nhìn và khóa ảnh chụp nhanh giúp giữ tính nhất quán. Phong cách chính thức cùng phong cách tùy chỉnh suy ra từ ảnh bất kỳ, được chia sẻ toàn trang sau khi duyệt."
+      },
+      {
+        "title": "Phương án cảnh quay & dựng timeline",
+        "desc": "Nhiều phương án cho mỗi cảnh, điểm vào, điểm ra và âm lượng theo từng cảnh, trộn tiếng gốc với lồng tiếng, phụ đề SRT, xuất phim bằng ffmpeg phía máy chủ."
+      },
+      {
+        "title": "Công cụ media",
+        "desc": "Cắt, tách, trích khung hình, tách âm thanh, bỏ khoảng lặng, chuyển giọng nói thành phụ đề. Chạy bằng ffmpeg.wasm trên trình duyệt và ffmpeg trên máy chủ."
+      },
+      {
+        "title": "Làm lại phim hot",
+        "desc": "Tác phẩm có thể công khai quá trình thực hiện. Sao chép canvas chỉ với một cú nhấp để làm bản tương tự, phần thưởng quay về cho tác giả."
+      },
+      {
+        "title": "Thư viện Skill & Agent",
+        "desc": "Mẫu quy trình dùng lại được và trợ lý hội thoại hiểu ngữ cảnh của canvas hiện tại."
+      },
+      {
+        "title": "Không gian nhóm",
+        "desc": "Chuyển đổi giữa không gian cá nhân và nhóm, với phân quyền theo vai trò, cổng phê duyệt, quỹ điểm dùng chung và hạn mức hằng tháng cho từng thành viên."
+      },
+      {
+        "title": "Điểm · hội viên · định giá mô hình",
+        "desc": "Định giá theo mô hình và theo đơn vị, giá hội viên và giá khuyến mãi ra mắt, tạm trừ rồi hoàn phần chênh lệch, cập nhật ngay từ trang quản trị."
+      },
+      {
+        "title": "Thanh toán · hóa đơn · tiếp thị liên kết",
+        "desc": "WeChat Pay / Alipay, yêu cầu hóa đơn, thưởng giới thiệu và rút tiền cho đối tác, các cơ chế tăng trưởng dùng được ngay."
+      },
+      {
+        "title": "Trang quản trị",
+        "desc": "Người dùng, tác phẩm, kiểm duyệt cộng đồng, đơn hàng, tình trạng mô hình, kiểm tra số dư gateway và nhật ký kiểm toán, hơn hai mươi trang quản trị độc lập."
+      },
+      {
+        "title": "Bảy ngôn ngữ",
+        "desc": "Tích hợp tiếng Trung giản thể, phồn thể, Anh, Pháp, Nhật, Nga và Việt, được bảo đảm bằng khóa văn bản có cấu trúc và kiểm thử độ phủ bản dịch."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "Vì sao gọi là New API của phim ngắn",
+    "title": "New API thống nhất các LLM, EasyTV thống nhất việc sản xuất phim ngắn",
+    "p1": "New API gom LLM của các hãng về một gateway: chung giao diện, chung cách tính phí, chung cách vận hành. EasyTV làm điều tương tự ở tầng tiếp theo: gom các mô hình video, hình ảnh, giọng nói về một nền tảng sáng tác và vận hành, đồng thời kết nối trực tiếp phía sau bất kỳ gateway New API / One API nào qua giao diện tương thích OpenAI.",
+    "p2": "Bạn không cần đàm phán với từng nhà cung cấp mô hình, cũng không cần tự viết phần tính phí và trang quản trị. Kết nối gateway, nhập danh sách mô hình, đặt giá, thế là một trang sáng tác phim ngắn có thu phí đã chạy.",
+    "cards": [
+      {
+        "k": "Kết nối",
+        "title": "Mọi gateway tương thích OpenAI",
+        "desc": "/v1/chat, /v1/images, /v1/videos theo cùng một quy ước. Lấy danh sách mô hình từ gateway rồi nhập kèm giá chỉ với một cú nhấp."
+      },
+      {
+        "k": "Tính phí",
+        "title": "Điểm = Token của thế giới phim ngắn",
+        "desc": "Định giá theo giây, theo ảnh hoặc theo lượt. Hệ số lợi nhuận tự đề xuất số điểm; tạm trừ và hoàn lại khi thất bại đều tự động."
+      },
+      {
+        "k": "Vận hành",
+        "title": "Trải nghiệm quản trị cấp gateway",
+        "desc": "Tình trạng mô hình, cảnh báo tỷ lệ lỗi, gợi ý gỡ mô hình và kiểm tra số dư gateway, người vận hành không cần đọc log."
+      },
+      {
+        "k": "Hệ sinh thái",
+        "title": "Tác phẩm · Skill · đối tác",
+        "desc": "Tác phẩm mở để làm lại, mẫu Skill và đối tác phân phối giúp nền tảng tự phát triển nội dung."
+      }
+    ]
+  },
+  "arch": {
+    "eyebrow": "Kiến trúc",
+    "title": "Bốn kho mã, một bản quy ước API",
+    "subtitle": "Tách frontend và backend, xác thực bằng token, quy ước ghi trong API.md, muốn đổi API thì sửa quy ước trước.",
+    "nodes": {
+      "web": "easytv-web",
+      "web_d": "Studio Nuxt 4",
+      "web_d2": "canvas / đạo diễn / cộng đồng",
+      "manage": "easytv-manage",
+      "manage_d": "SPA quản trị Nuxt 4",
+      "api": "easytv-api",
+      "api_d": "Go · Gin · GORM · lập lịch tác vụ",
+      "db": "MySQL / Redis",
+      "oss": "Lưu trữ đối tượng",
+      "oss_d": "OSS · Qiniu · cục bộ",
+      "gateway": "Gateway New API",
+      "models": "Kling · Jimeng · Seedance · Hailuo",
+      "ffmpeg": "dựng phim ffmpeg",
+      "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "edges": {
+      "web1": "Bearer",
+      "web2": "EasyTV-User",
+      "manage": "/admin/*",
+      "gateway1": "OpenAI",
+      "gateway2": "tương thích"
+    },
+    "repos": [
+      {
+        "name": "easytv-web",
+        "stack": "Nuxt 4 · Vue Flow · TresJS · ffmpeg.wasm",
+        "desc": "Studio sáng tác: canvas, một câu thành phim, sân khấu đạo diễn, cộng đồng tác phẩm, trang bảng giá. Triển khai trên Cloudflare Workers."
+      },
+      {
+        "name": "easytv-api",
+        "stack": "Go 1.22+ · Gin · GORM · MySQL · Redis",
+        "desc": "Backend: người dùng, điểm, thanh toán, hàng đợi tác vụ, dựng phim, bộ chuyển đổi gateway. Tạo bảng bằng AutoMigrate, smoke test bằng sqlmock."
+      },
+      {
+        "name": "easytv-manage",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "Trang quản trị: người dùng, tác phẩm, kiểm duyệt, đơn hàng, định giá mô hình, cài đặt hệ thống."
+      },
+      {
+        "name": "easytv-partner",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "Trang tự phục vụ cho đối tác: bảng hoa hồng, khách hàng được ghi nhận, rút tiền, tài liệu quảng bá."
+      }
+    ]
+  },
+  "compare": {
+    "eyebrow": "So sánh",
+    "title": "Mã nguồn mở tự triển khai, không phải thuê một SaaS",
+    "subtitle": "Cột nền tảng thương mại được tổng hợp từ tài liệu công khai của từng hãng; hãy lấy thông tin chính thức làm chuẩn.",
+    "col_easytv": "EasyTV",
+    "col_saas": "Nền tảng SaaS thương mại (LibTV…)",
+    "rows": [
+      {
+        "k": "Mã nguồn và triển khai",
+        "a": "Mã nguồn mở AGPL-3.0, chạy trên máy chủ của bạn",
+        "b": "Mã đóng, nền tảng lưu trữ"
+      },
+      {
+        "k": "Nguồn mô hình",
+        "a": "Mọi gateway tương thích OpenAI, tự chọn nhà cung cấp và giá",
+        "b": "Mô hình và giá do nền tảng chỉ định"
+      },
+      {
+        "k": "Tính phí và định giá",
+        "a": "Điểm, hội viên, giá khuyến mãi đều do bạn quyết định",
+        "b": "Nền tảng định giá, không điều chỉnh được"
+      },
+      {
+        "k": "Thanh toán và đối soát",
+        "a": "Kết nối trực tiếp WeChat / Alipay, hóa đơn, tiếp thị liên kết, rút tiền",
+        "b": "Nền tảng thu hộ"
+      },
+      {
+        "k": "Quyền sở hữu dữ liệu",
+        "a": "Tư liệu, canvas và phim nằm trên kho lưu trữ của bạn",
+        "b": "Lưu trên nền tảng"
+      },
+      {
+        "k": "Cộng tác nhóm",
+        "a": "Tích hợp sẵn không gian nhóm, vai trò và cổng phê duyệt",
+        "b": "Thường là gói nhóm trả phí"
+      },
+      {
+        "k": "Đa ngôn ngữ",
+        "a": "Tích hợp 7 ngôn ngữ, có thể thêm tiếp",
+        "b": "Tùy nền tảng"
+      },
+      {
+        "k": "Phát triển tùy biến",
+        "a": "Quy ước API công khai, sửa và mở rộng tùy ý",
+        "b": "Không mở"
+      }
+    ]
+  },
+  "quickstart": {
+    "eyebrow": "Bắt đầu nhanh",
+    "title": "Chạy được trong năm phút",
+    "subtitle": "Chuẩn bị một MySQL và một token của gateway tương thích New API, còn lại đều có giá trị mặc định.",
+    "steps": [
+      {
+        "title": "Backend",
+        "desc": "Sao chép tệp biến môi trường mẫu, điền SQL_DSN và ROOT_PASSWORD. Lần khởi động đầu tiên sẽ tự tạo bảng và tài khoản quản trị."
+      },
+      {
+        "title": "Studio",
+        "desc": "Chỉ cần trỏ tới địa chỉ backend, cổng mặc định là 3005."
+      },
+      {
+        "title": "Trang quản trị",
+        "desc": "Đăng nhập bằng tài khoản root, điền địa chỉ và khóa gateway tại «Cài đặt hệ thống · Gateway», lấy danh sách mô hình rồi nhập bảng giá."
+      }
+    ],
+    "tabs": [
+      "easytv-api",
+      "easytv-web",
+      "easytv-manage",
+      "easytv-partner"
+    ],
+    "note": "Cài đặt đầy đủ, kết nối gateway và systemd xem tại trang tài liệu.",
+    "code": {
+      "api_env": "Điền SQL_DSN / ROOT_PASSWORD, Redis là tùy chọn",
+      "api_run": "lần chạy đầu tự AutoMigrate và tạo root",
+      "api_seed": "tùy chọn: nạp tác phẩm và Skill mẫu",
+      "web_env": "điền NUXT_PUBLIC_API_BASE_URL trong .env.development",
+      "manage_login": "đăng nhập bằng ROOT_USERNAME / ROOT_PASSWORD",
+      "manage_gateway": "Cài đặt hệ thống · Gateway → điền địa chỉ và khóa → lấy mô hình → nhập bảng giá",
+      "partner_login": "đăng nhập bằng tài khoản EasyTV thông thường rồi đăng ký tham gia"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "Lộ trình",
+    "title": "Sắp tới làm gì",
+    "cols": [
+      {
+        "title": "Phát hành mã nguồn mở",
+        "items": [
+          "LICENSE và hướng dẫn đóng góp cho bốn kho mã",
+          "Khởi động bằng một lệnh docker compose",
+          "Tra cứu quy ước API trực quan",
+          "CI GitHub Actions cho mọi kho mã"
+        ]
+      },
+      {
+        "title": "Năng lực sáng tác",
+        "items": [
+          "Nhân bản giọng nói và hội thoại nhiều nhân vật",
+          "Video siêu dài viết tiếp theo từng đoạn",
+          "Bản nháp phân cảnh 9–25 ô",
+          "Cộng tác nhiều người trên canvas theo thời gian thực"
+        ]
+      },
+      {
+        "title": "Hệ sinh thái",
+        "items": [
+          "Nhà cung cấp mô hình dạng plugin",
+          "Chợ Skill / mẫu",
+          "API mở và điều phối Agent",
+          "Giám sát lỗi và khả năng quan sát"
+        ]
+      }
+    ]
+  },
+  "community": {
+    "eyebrow": "Tham gia",
+    "title": "Cùng mở mã nguồn cho dây chuyền sản xuất phim ngắn",
+    "subtitle": "Tạo Issue, gửi PR, dịch văn bản, hoặc cứ triển khai một trang để dùng.",
+    "cards": [
+      {
+        "title": "GitHub",
+        "desc": "Cả bốn kho mã sản phẩm đều nằm trong tổ chức easytv-ai.",
+        "cta": "Đến tổ chức"
+      },
+      {
+        "title": "Tài liệu",
+        "desc": "Cài đặt, gateway, ba trang quản trị và quy ước API đều có trong tài liệu.",
+        "cta": "Mở tài liệu"
+      },
+      {
+        "title": "Dùng thử",
+        "desc": "Chưa muốn triển khai thì thử trang chính thức trước.",
+        "cta": "Mở EasyTV"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Nền tảng mã nguồn mở sáng tác phim ngắn bằng AI",
+    "license": "Giấy phép AGPL-3.0 · Kiến trúc lấy cảm hứng từ New API / One API",
+    "links": {
+      "web": "Studio",
+      "api": "Backend",
+      "manage": "Quản trị",
+      "partner": "Đối tác",
+      "docs": "Tài liệu",
+      "demo": "Trang chính thức"
+    }
+  },
+  "docs": {
+    "toc": "Trong trang này",
+    "prev": "Trang trước",
+    "next": "Trang sau",
+    "search": "Tìm trong tài liệu",
+    "edit": "Sửa trang này trên GitHub",
+    "empty": "Không có trang phù hợp",
+    "untranslated": "Trang này chưa có bản tiếng Việt nên đang hiển thị bản gốc tiếng Anh.",
+    "untranslated_cta": "Góp sức dịch",
+    "sections": {
+      "start": "Bắt đầu",
+      "install": "Cài đặt",
+      "guide": "Hướng dẫn",
+      "api": "Tham chiếu API",
+      "ref": "Trợ giúp"
+    },
+    "hub": {
+      "eyebrow": "Tài liệu",
+      "nav": "Bắt đầu sử dụng",
+      "title": "Bắt đầu với EasyTV",
+      "subtitle": "Triển khai EasyTV, kết nối gateway mô hình và làm bộ phim đầu tiên.",
+      "intro": "EasyTV là nền tảng mã nguồn mở sáng tác phim ngắn bằng AI. Bốn kho mã dùng chung một backend: studio làm phim, trang quản trị lo người dùng và tiền, trang đối tác lo hoa hồng. Yêu cầu tới mô hình được chuyển tiếp đến gateway tương thích New API / One API của chính bạn.",
+      "repos": "Các kho mã",
+      "web_t": "Studio",
+      "web_d": "easytv-web · canvas, một câu thành phim, sân khấu đạo diễn, cộng đồng. Cục bộ :3005.",
+      "api_repo_t": "Backend API",
+      "api_repo_d": "easytv-api · xác thực, tác vụ, tính phí, lưu trữ. Cục bộ :8383. Quy ước nằm trong API.md.",
+      "manage_t": "Trang quản trị",
+      "manage_d": "easytv-manage · người dùng, kiểm duyệt, định giá, gateway. Cục bộ :3006.",
+      "open": "Mở",
+      "all": "Tất cả các trang",
+      "steps": "Ba bước để chạy",
+      "step1_t": "Triển khai hệ thống",
+      "step1_d": "Khởi động API, studio và trang quản trị bằng Docker Compose hoặc từ mã nguồn.",
+      "step2_t": "Kết nối gateway mô hình",
+      "step2_d": "Điền gateway tương thích New API / One API, lấy danh sách mô hình và nhập giá theo điểm.",
+      "step3_t": "Làm bộ phim đầu tiên",
+      "step3_d": "Mở studio, dùng một câu thành phim hoặc canvas để chạy lần tạo đầu tiên.",
+      "deploys": "Chọn cách triển khai",
+      "docker_t": "Triển khai bằng Docker Compose",
+      "docker_d": "Điều phối API, MySQL và Redis, có thể khởi động thêm studio và trang quản trị.",
+      "source_t": "Chạy từ mã nguồn",
+      "source_d": "Dùng Go và pnpm để khởi động riêng bốn kho mã trên máy của bạn.",
+      "explore": "Khám phá thêm",
+      "shot_arch": "Bốn kho mã kết nối với easytv-api và gateway mô hình như thế nào",
+      "api_ref": "Tham chiếu API",
+      "api_ref_d": "Chia theo tài nguyên: phương thức, tham số, curl và phản hồi. Quy ước vẫn lấy API.md của easytv-api làm chuẩn.",
+      "auth_t": "Xác thực và đăng nhập",
+      "auth_d": "Bearer + EasyTV-User, đăng nhập bằng email / SMS, định dạng lỗi thống nhất.",
+      "canvas_api_t": "Canvas",
+      "canvas_api_d": "graph, khóa lạc quan version, lịch sử phiên bản, chia sẻ.",
+      "task_t": "Tác vụ tạo nội dung",
+      "task_d": "Tạo, thăm dò, hủy, thử lại; tạm trừ điểm.",
+      "models_t": "Mô hình",
+      "models_d": "Danh sách khả dụng và chi tiết, là danh sách trắng khi tạo tác vụ.",
+      "wallet_t": "Ví",
+      "wallet_d": "Số dư, lô điểm, lịch sử giao dịch, hội viên.",
+      "order_t": "Đơn hàng",
+      "order_d": "Báo giá, đặt hàng, WeChat / Alipay, thăm dò.",
+      "price_t": "Định giá và gateway",
+      "price_d": "model_price, lấy mô hình, nhập, hoàn tiền và điều chỉnh.",
+      "user_t": "Tổng hợp API người dùng",
+      "user_d": "Toàn bộ /user/* của studio; xem ví dụ trong từng trang tài nguyên.",
+      "admin_t": "API quản trị",
+      "admin_d": "Người dùng, kiểm duyệt, định giá, đơn hàng. Trang quản trị dùng các API này.",
+      "pub_t": "API công khai và tính phí",
+      "pub_d": "Bảng tin, danh sách mô hình, ví và đặt hàng.",
+      "ptn_t": "API đối tác",
+      "ptn_d": "Bảng điều khiển đối tác, khách hàng, mã thưởng.",
+      "partner_t": "Trang đối tác",
+      "partner_d": "Bảng hoa hồng, rút tiền và tài liệu quảng bá.",
+      "start_t": "Bắt đầu nhanh",
+      "start_d": "15 phút: Docker, trang quản trị, gateway, bộ phim đầu tiên.",
+      "install_t": "Cài đặt",
+      "install_d": "Docker, mã nguồn, biến môi trường, lưu trữ và tên miền chính thức.",
+      "guide_t": "Hướng dẫn sáng tác",
+      "guide_d": "Canvas, một câu thành phim, sân khấu đạo diễn, công cụ media.",
+      "bill_t": "Tính phí và vận hành",
+      "bill_d": "Điểm, hội viên, thanh toán, không gian nhóm, hoa hồng đối tác.",
+      "api_t": "Tổng quan API",
+      "api_d": "Base URL, gói phản hồi và mục lục theo tài nguyên.",
+      "arch_t": "Kiến trúc",
+      "arch_d": "Bốn kho mã kết nối với cùng một backend như thế nào.",
+      "gw_t": "Kết nối gateway",
+      "gw_d": "Kết nối gateway tương thích New API và nhập bảng giá.",
+      "prod_t": "Triển khai chính thức",
+      "prod_d": "Tên miền con, Nginx, Cloudflare, worker nhiều nút.",
+      "help_t": "Trợ giúp",
+      "help_d": "Câu hỏi thường gặp và giấy phép AGPL / thương mại."
+    },
+    "api": {
+      "headers": "Header Parameters",
+      "query": "Query Parameters",
+      "path": "Path Parameters",
+      "body": "Request Body",
+      "responses": "Responses",
+      "errors": "Errors",
+      "copy": "Sao chép",
+      "copied": "Đã sao chép",
+      "copy_md": "Sao chép Markdown",
+      "overview": "Tổng quan",
+      "callout": "Gỡ lỗi cục bộ",
+      "callout_d": "Base URL mặc định là http://127.0.0.1:8383. Quy ước đầy đủ lấy easytv-api/API.md làm chuẩn, muốn đổi API thì sửa tệp đó trước.",
+      "cat_studio": "Sáng tác và người dùng",
+      "cat_studio_d": "Studio, API công khai và API của người dùng đã đăng nhập. Mở từng nhóm để xem từng endpoint.",
+      "cat_ops": "Quản trị và đối tác",
+      "cat_ops_d": "Trang quản trị easytv-manage và trang đối tác easytv-partner.",
+      "crumb": "Tham chiếu API",
+      "copied_md": "Đã sao chép",
+      "md_name": "Tên",
+      "md_type": "Kiểu",
+      "md_required": "Bắt buộc",
+      "md_desc": "Mô tả",
+      "md_yes": "có",
+      "md_no": "không",
+      "md_curl": "cURL",
+      "md_response": "200 JSON",
+      "auth_none": "Không cần xác thực",
+      "auth_user": "Cần đăng nhập",
+      "auth_admin": "Cần quyền quản trị",
+      "auth_root": "Cần quyền quản trị cấp cao"
+    }
+  }
+}

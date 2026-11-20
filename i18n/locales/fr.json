@@ -1,0 +1,468 @@
+{
+  "meta": {
+    "title": "EasyTV · Studio open source de séries courtes par IA",
+    "description": "EasyTV est une plateforme open source et auto-hébergée de création de séries courtes par IA : canevas de nœuds, film en une phrase, plateau de réalisation 3D, montage côté serveur, avec facturation en crédits, tarification des modèles et console d'administration intégrées. Le New API de la série courte."
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "why": "Pourquoi",
+    "arch": "Architecture",
+    "compare": "Comparatif",
+    "quickstart": "Déploiement",
+    "roadmap": "Feuille de route",
+    "docs": "Docs",
+    "github": "GitHub",
+    "demo": "Démo en ligne",
+    "theme": "Changer de thème",
+    "language": "Changer de langue",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Open source · Auto-hébergé · AGPL-3.0",
+    "title1": "Le New API de",
+    "title2": "la série courte",
+    "subtitle": "Branchez n'importe quel modèle vidéo, image ou voix sur un même canevas et passez du scénario au montage final au même endroit. Facturation en crédits, tarification des modèles, paiements et console d'administration sont intégrés. Déployez sur vos propres serveurs.",
+    "cta_github": "Voir sur GitHub",
+    "cta_demo": "Démo en ligne",
+    "cta_deploy": "Déployer en 5 minutes",
+    "stats": {
+      "repos": "Dépôts open source",
+      "locales": "Langues intégrées",
+      "api": "Contrat d'API",
+      "models": "Accès aux modèles"
+    },
+    "stats_v": {
+      "repos": "4",
+      "locales": "7",
+      "api": "40 chapitres",
+      "models": "Compatible OpenAI"
+    },
+    "flow": {
+      "script": "Scénario / note d'intention",
+      "subject": "Personnages et styles",
+      "shot": "Génération des plans",
+      "voice": "Voix et sous-titres",
+      "compose": "Montage sur timeline",
+      "work": "Publication"
+    }
+  },
+  "showcase": {
+    "eyebrow": "Galerie",
+    "title": "Un seul canevas pour toute la chaîne de production"
+  },
+  "features": {
+    "eyebrow": "Fonctionnalités",
+    "title": "Un studio complet, au niveau des plateformes commerciales",
+    "subtitle": "Les fonctionnalités ont été comparées point par point avec LibTV et les plateformes similaires. Les interactions du canevas, le plateau de réalisation et le montage intelligent sont livrés ; les écarts restants figurent dans la feuille de route.",
+    "items": [
+      {
+        "title": "Canevas infini · workflow en nœuds",
+        "desc": "Cinq types de nœuds (texte, image, vidéo, audio, groupe de storyboard) à relier pour lancer la génération. Copier-coller entre canevas, découpe en grille, ajout de prompt le long des liaisons."
+      },
+      {
+        "title": "Film en une phrase",
+        "desc": "Génération conversationnelle de tout le workflow : note d'intention, personnages, décors, découpage et voix off à partir d'une seule phrase, puis retouche plan par plan."
+      },
+      {
+        "title": "Bible de série et note d'intention",
+        "desc": "Fiches personnages, univers, liste des épisodes et versions révisées. Chaque canevas mémorise la version dont il est issu et signale les plans touchés après une réécriture."
+      },
+      {
+        "title": "Plateau de réalisation 3D",
+        "desc": "Placez les personnages, réglez les caméras et leurs mouvements dans le navigateur, puis exportez la description des plans directement vers les modèles vidéo."
+      },
+      {
+        "title": "Bibliothèques de personnages et de styles",
+        "desc": "Planches trois vues et verrouillage par instantané garantissent la continuité. Styles officiels et styles personnalisés déduits de n'importe quelle image, partagés avec tout le site après modération."
+      },
+      {
+        "title": "Prises alternatives et montage sur timeline",
+        "desc": "Plusieurs prises par plan, points d'entrée et de sortie et volume par clip, mixage du son d'origine et de la voix off, sous-titres SRT, rendu ffmpeg côté serveur."
+      },
+      {
+        "title": "Outils média",
+        "desc": "Rogner, découper, extraire des images, isoler la piste audio, supprimer les silences, transcrire en sous-titres. ffmpeg.wasm dans le navigateur et ffmpeg côté serveur."
+      },
+      {
+        "title": "Reprendre les succès",
+        "desc": "Les œuvres peuvent rendre public leur processus de création. Dupliquez le canevas en un clic pour en faire votre version ; les récompenses reviennent à l'auteur."
+      },
+      {
+        "title": "Bibliothèque de skills et agent",
+        "desc": "Des modèles de workflow réutilisables et un assistant conversationnel qui comprend le contexte du canevas en cours."
+      },
+      {
+        "title": "Espaces d'équipe",
+        "desc": "Basculez entre espace personnel et espace d'équipe : rôles, validations obligatoires, réserve de crédits partagée et plafond mensuel par membre."
+      },
+      {
+        "title": "Crédits · abonnements · tarification des modèles",
+        "desc": "Prix par modèle et par unité, tarif abonné et tarif de lancement, pré-débit avec remboursement de la différence, mise à jour à chaud depuis la console d'administration."
+      },
+      {
+        "title": "Paiements · factures · affiliation",
+        "desc": "WeChat Pay / Alipay, demandes de facture, récompenses de parrainage et retraits des partenaires : les mécanismes de croissance sont prêts à l'emploi."
+      },
+      {
+        "title": "Console d'administration",
+        "desc": "Utilisateurs, œuvres, modération de la communauté, commandes, santé des modèles, contrôle du solde de la passerelle et journaux d'audit, sur plus de vingt pages."
+      },
+      {
+        "title": "Sept langues intégrées",
+        "desc": "Chinois simplifié et traditionnel, anglais, français, japonais, russe et vietnamien, garantis par des clés structurées et des tests de couverture des traductions."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "Pourquoi « le New API de la série courte »",
+    "title": "New API a unifié les LLM. EasyTV unifie la production de séries courtes.",
+    "p1": "New API rassemble tous les LLM derrière une seule passerelle : une interface, une facturation, une administration. EasyTV fait la même chose un niveau au-dessus : il réunit les modèles vidéo, image et voix dans une seule plateforme de création et d'exploitation, et se connecte à n'importe quelle passerelle New API / One API via des interfaces compatibles OpenAI.",
+    "p2": "Vous n'avez pas à négocier avec chaque fournisseur de modèles, ni à écrire la facturation ou la console d'administration. Branchez une passerelle, importez la liste des modèles, fixez les prix : un studio de séries courtes payant est en ligne.",
+    "cards": [
+      {
+        "k": "Connexion",
+        "title": "Toute passerelle compatible OpenAI",
+        "desc": "/v1/chat, /v1/images et /v1/videos suivent la même convention. Récupérez la liste des modèles depuis la passerelle et importez-la avec ses tarifs en un clic."
+      },
+      {
+        "k": "Facturation",
+        "title": "Les crédits sont les tokens de la série courte",
+        "desc": "Tarif à la seconde, à l'image ou à l'appel. Un coefficient de marge propose automatiquement un nombre de crédits ; le pré-débit et le remboursement en cas d'échec sont automatiques."
+      },
+      {
+        "k": "Exploitation",
+        "title": "Une administration digne d'une passerelle",
+        "desc": "Santé des modèles, alertes sur le taux d'échec, suggestions de retrait et contrôle du solde de la passerelle : plus besoin de lire les logs."
+      },
+      {
+        "k": "Écosystème",
+        "title": "Œuvres · skills · partenaires",
+        "desc": "Œuvres ouvertes à reprendre, modèles de skills et affiliation des partenaires : la plateforme fait grandir son propre contenu."
+      }
+    ]
+  },
+  "arch": {
+    "eyebrow": "Architecture",
+    "title": "Quatre dépôts, un seul contrat d'API",
+    "subtitle": "Front et back séparés, authentification par jeton, et un contrat écrit dans API.md, que l'on modifie avant le code.",
+    "nodes": {
+      "web": "easytv-web",
+      "web_d": "Studio Nuxt 4",
+      "web_d2": "canevas / réalisation / communauté",
+      "manage": "easytv-manage",
+      "manage_d": "SPA d'administration Nuxt 4",
+      "api": "easytv-api",
+      "api_d": "Go · Gin · GORM · ordonnanceur",
+      "db": "MySQL / Redis",
+      "oss": "Stockage objet",
+      "oss_d": "OSS · Qiniu · local",
+      "gateway": "Passerelle New API",
+      "models": "Kling · Jimeng · Seedance · Hailuo",
+      "ffmpeg": "rendu ffmpeg",
+      "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "edges": {
+      "web1": "Bearer",
+      "web2": "EasyTV-User",
+      "manage": "/admin/*",
+      "gateway1": "OpenAI",
+      "gateway2": "compatible"
+    },
+    "repos": [
+      {
+        "name": "easytv-web",
+        "stack": "Nuxt 4 · Vue Flow · TresJS · ffmpeg.wasm",
+        "desc": "Le studio : canevas, film en une phrase, plateau de réalisation, communauté et page de tarifs. Déployé sur Cloudflare Workers."
+      },
+      {
+        "name": "easytv-api",
+        "stack": "Go 1.22+ · Gin · GORM · MySQL · Redis",
+        "desc": "Le backend : utilisateurs, crédits, paiements, file de tâches, montage et adaptateurs de passerelle. Schéma créé par AutoMigrate, tests de fumée avec sqlmock."
+      },
+      {
+        "name": "easytv-manage",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "La console d'administration : utilisateurs, œuvres, modération, commandes, tarification des modèles et réglages système."
+      },
+      {
+        "name": "easytv-partner",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "La console en libre-service des partenaires : tableau des commissions, clients rattachés, retraits et supports promotionnels."
+      }
+    ]
+  },
+  "compare": {
+    "eyebrow": "Comparatif",
+    "title": "De l'open source auto-hébergé, pas un SaaS en location",
+    "subtitle": "La colonne des plateformes commerciales s'appuie sur des informations publiques ; référez-vous à chaque éditeur pour le détail.",
+    "col_easytv": "EasyTV",
+    "col_saas": "SaaS commerciaux (LibTV, etc.)",
+    "rows": [
+      {
+        "k": "Code source et hébergement",
+        "a": "Open source AGPL-3.0, sur vos propres serveurs",
+        "b": "Code fermé, hébergé par l'éditeur"
+      },
+      {
+        "k": "Origine des modèles",
+        "a": "Toute passerelle compatible OpenAI, vos fournisseurs et vos prix",
+        "b": "Modèles et prix imposés par l'éditeur"
+      },
+      {
+        "k": "Facturation et tarifs",
+        "a": "Crédits, abonnements et promotions : c'est vous qui décidez",
+        "b": "Fixés par l'éditeur, non modifiables"
+      },
+      {
+        "k": "Paiements et règlement",
+        "a": "WeChat Pay / Alipay en direct, factures, affiliation, retraits",
+        "b": "Encaissés par l'éditeur"
+      },
+      {
+        "k": "Propriété des données",
+        "a": "Médias, canevas et films stockés dans votre propre stockage",
+        "b": "Stockés chez l'éditeur"
+      },
+      {
+        "k": "Travail en équipe",
+        "a": "Espaces d'équipe, rôles et validations intégrés",
+        "b": "Souvent une offre équipe payante"
+      },
+      {
+        "k": "Langues",
+        "a": "7 langues intégrées, extensible",
+        "b": "Variable selon l'éditeur"
+      },
+      {
+        "k": "Personnalisation",
+        "a": "Contrat d'API public, à modifier et étendre",
+        "b": "Non disponible"
+      }
+    ]
+  },
+  "quickstart": {
+    "eyebrow": "Démarrage rapide",
+    "title": "Opérationnel en cinq minutes",
+    "subtitle": "Prévoyez une instance MySQL et un jeton pour une passerelle compatible New API. Tout le reste a des valeurs par défaut.",
+    "steps": [
+      {
+        "title": "Backend",
+        "desc": "Copiez l'exemple de variables d'environnement, renseignez SQL_DSN et ROOT_PASSWORD. Le premier démarrage crée les tables et l'administrateur."
+      },
+      {
+        "title": "Studio",
+        "desc": "Indiquez simplement l'adresse du backend. Port par défaut : 3005."
+      },
+      {
+        "title": "Console d'administration",
+        "desc": "Connectez-vous avec le compte root, saisissez l'adresse et la clé de la passerelle dans « Réglages système · Passerelle », récupérez la liste des modèles et importez les tarifs."
+      }
+    ],
+    "tabs": [
+      "easytv-api",
+      "easytv-web",
+      "easytv-manage",
+      "easytv-partner"
+    ],
+    "note": "L'installation complète, la connexion à la passerelle et systemd sont décrits dans la documentation.",
+    "code": {
+      "api_env": "Renseignez SQL_DSN / ROOT_PASSWORD ; Redis est facultatif",
+      "api_run": "le premier démarrage lance AutoMigrate et crée root",
+      "api_seed": "facultatif : charger des œuvres et skills de démonstration",
+      "web_env": "renseignez NUXT_PUBLIC_API_BASE_URL dans .env.development",
+      "manage_login": "connectez-vous avec ROOT_USERNAME / ROOT_PASSWORD",
+      "manage_gateway": "Réglages système · Passerelle → adresse et clé → récupérer les modèles → importer les tarifs",
+      "partner_login": "connectez-vous avec un compte EasyTV ordinaire, puis faites votre demande"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "Feuille de route",
+    "title": "La suite",
+    "cols": [
+      {
+        "title": "Publication open source",
+        "items": [
+          "LICENSE et guide de contribution dans les quatre dépôts",
+          "Démarrage en une commande avec docker compose",
+          "Contrat d'API consultable et interrogeable",
+          "CI GitHub Actions sur tous les dépôts"
+        ]
+      },
+      {
+        "title": "Création",
+        "items": [
+          "Clonage de voix et dialogues à plusieurs personnages",
+          "Vidéos très longues par segments enchaînés",
+          "Brouillons de storyboard de 9 à 25 cases",
+          "Canevas collaboratif en temps réel"
+        ]
+      },
+      {
+        "title": "Écosystème",
+        "items": [
+          "Fournisseurs de modèles sous forme de plugins",
+          "Place de marché de skills et de modèles",
+          "API ouverte et orchestration d'agents",
+          "Suivi des erreurs et observabilité"
+        ]
+      }
+    ]
+  },
+  "community": {
+    "eyebrow": "Participer",
+    "title": "Ouvrons ensemble la chaîne de production de séries courtes",
+    "subtitle": "Ouvrez une issue, proposez une PR, traduisez les textes, ou déployez simplement un site pour l'utiliser.",
+    "cards": [
+      {
+        "title": "GitHub",
+        "desc": "Les quatre dépôts du produit sont dans l'organisation easytv-ai.",
+        "cta": "Voir l'organisation"
+      },
+      {
+        "title": "Docs",
+        "desc": "Installation, passerelle, les trois consoles et le contrat d'API.",
+        "cta": "Ouvrir la documentation"
+      },
+      {
+        "title": "Démo en ligne",
+        "desc": "Essayez le site officiel avant de déployer.",
+        "cta": "Ouvrir EasyTV"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Studio open source de séries courtes par IA",
+    "license": "Licence AGPL-3.0 · Architecture inspirée de New API / One API",
+    "links": {
+      "web": "Studio",
+      "api": "Backend",
+      "manage": "Admin",
+      "partner": "Partenaires",
+      "docs": "Docs",
+      "demo": "Site officiel"
+    }
+  },
+  "docs": {
+    "toc": "Sur cette page",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "search": "Rechercher dans la doc",
+    "edit": "Modifier cette page sur GitHub",
+    "empty": "Aucune page correspondante",
+    "untranslated": "Cette page n'est pas encore traduite en français ; la version anglaise est affichée.",
+    "untranslated_cta": "Aider à traduire",
+    "sections": {
+      "start": "Démarrer",
+      "install": "Installation",
+      "guide": "Guides",
+      "api": "Référence API",
+      "ref": "Aide"
+    },
+    "hub": {
+      "eyebrow": "Docs",
+      "nav": "Premiers pas",
+      "title": "Premiers pas avec EasyTV",
+      "subtitle": "Déployez EasyTV, connectez une passerelle de modèles et réalisez votre premier film.",
+      "intro": "EasyTV est une plateforme open source de création de séries courtes par IA. Quatre dépôts partagent un même backend : le studio produit les films, la console d'administration gère les utilisateurs et l'argent, la console partenaires gère les commissions. Les appels aux modèles sont transmis à votre propre passerelle compatible New API / One API.",
+      "repos": "Les dépôts",
+      "web_t": "Studio",
+      "web_d": "easytv-web · canevas, film en une phrase, plateau de réalisation, communauté. En local : :3005.",
+      "api_repo_t": "API backend",
+      "api_repo_d": "easytv-api · authentification, tâches, facturation, stockage. En local : :8383. Le contrat est API.md.",
+      "manage_t": "Console d'administration",
+      "manage_d": "easytv-manage · utilisateurs, modération, tarifs, passerelle. En local : :3006.",
+      "open": "Ouvrir",
+      "all": "Toutes les pages",
+      "steps": "Trois étapes pour démarrer",
+      "step1_t": "Déployer une instance",
+      "step1_d": "Lancez l'API, le studio et la console d'administration avec Docker Compose ou depuis les sources.",
+      "step2_t": "Connecter une passerelle de modèles",
+      "step2_d": "Renseignez une passerelle compatible New API / One API, récupérez les modèles et importez les tarifs en crédits.",
+      "step3_t": "Réaliser le premier film",
+      "step3_d": "Ouvrez le studio et lancez une première génération avec le film en une phrase ou le canevas.",
+      "deploys": "Choisir un mode de déploiement",
+      "docker_t": "Déploiement Docker Compose",
+      "docker_d": "Orchestre l'API, MySQL et Redis, et au besoin le studio et la console d'administration.",
+      "source_t": "Exécution depuis les sources",
+      "source_d": "Démarrez séparément les quatre dépôts en local avec Go et pnpm.",
+      "explore": "Aller plus loin",
+      "shot_arch": "Comment les quatre dépôts se raccordent à easytv-api et à la passerelle de modèles",
+      "api_ref": "Référence API",
+      "api_ref_d": "Par ressource : méthode, paramètres, curl et réponses. Le contrat de référence reste le fichier API.md d'easytv-api.",
+      "auth_t": "Authentification et connexion",
+      "auth_d": "Bearer + EasyTV-User, connexion par e-mail / SMS, format d'erreur commun.",
+      "canvas_api_t": "Canevas",
+      "canvas_api_d": "graph, verrou optimiste version, historique des versions, partage.",
+      "task_t": "Tâches de génération",
+      "task_d": "Créer, interroger, annuler, relancer ; pré-débit des crédits.",
+      "models_t": "Modèles",
+      "models_d": "Liste disponible et détail : la liste blanche pour créer des tâches.",
+      "wallet_t": "Portefeuille",
+      "wallet_d": "Solde, lots, mouvements, abonnement.",
+      "order_t": "Commandes",
+      "order_d": "Devis, commande, WeChat / Alipay, interrogation.",
+      "price_t": "Tarifs et passerelle",
+      "price_d": "model_price, récupération des modèles, import, remboursements et ajustements.",
+      "user_t": "Index de l'API utilisateur",
+      "user_d": "Tous les /user/* appelés par le studio ; exemples sur les pages de ressource.",
+      "admin_t": "API d'administration",
+      "admin_d": "Utilisateurs, modération, tarifs, commandes. Utilisée par la console d'administration.",
+      "pub_t": "API publique et facturation",
+      "pub_d": "Fil d'actualité, liste des modèles, portefeuille et commande.",
+      "ptn_t": "API partenaires",
+      "ptn_d": "Tableau de bord, clients, codes bonus.",
+      "partner_t": "Console partenaires",
+      "partner_d": "Commissions, retraits et supports promotionnels.",
+      "start_t": "Démarrage rapide",
+      "start_d": "Quinze minutes : Docker, administration, passerelle, premier film.",
+      "install_t": "Installation",
+      "install_d": "Docker, sources, variables d'environnement, stockage et domaines de production.",
+      "guide_t": "Guide de création",
+      "guide_d": "Canevas, film en une phrase, plateau de réalisation, outils média.",
+      "bill_t": "Facturation et exploitation",
+      "bill_d": "Crédits, abonnements, paiements, espaces d'équipe, commissions partenaires.",
+      "api_t": "Vue d'ensemble de l'API",
+      "api_d": "Base URL, enveloppe de réponse et index par ressource.",
+      "arch_t": "Architecture",
+      "arch_d": "Comment quatre dépôts partagent un même backend.",
+      "gw_t": "Connexion à la passerelle",
+      "gw_d": "Raccordez une passerelle compatible New API et importez les tarifs.",
+      "prod_t": "Mise en production",
+      "prod_d": "Sous-domaines, Nginx, Cloudflare, workers multi-nœuds.",
+      "help_t": "Aide",
+      "help_d": "FAQ et licences AGPL / commerciale."
+    },
+    "api": {
+      "headers": "Header Parameters",
+      "query": "Query Parameters",
+      "path": "Path Parameters",
+      "body": "Request Body",
+      "responses": "Responses",
+      "errors": "Errors",
+      "copy": "Copier",
+      "copied": "Copié",
+      "copy_md": "Copier le Markdown",
+      "overview": "Vue d'ensemble",
+      "callout": "Débogage local",
+      "callout_d": "La Base URL par défaut est http://127.0.0.1:8383. Le contrat de référence est easytv-api/API.md : modifiez d'abord ce fichier.",
+      "cat_studio": "Création et utilisateur",
+      "cat_studio_d": "Studio, routes publiques et API de l'utilisateur connecté. Ouvrez un groupe pour voir chaque endpoint.",
+      "cat_ops": "Administration et partenaires",
+      "cat_ops_d": "La console d'administration easytv-manage et la console partenaires easytv-partner.",
+      "crumb": "Référence API",
+      "copied_md": "Copié",
+      "md_name": "Nom",
+      "md_type": "Type",
+      "md_required": "Requis",
+      "md_desc": "Description",
+      "md_yes": "oui",
+      "md_no": "non",
+      "md_curl": "cURL",
+      "md_response": "200 JSON",
+      "auth_none": "Sans authentification",
+      "auth_user": "Connexion requise",
+      "auth_admin": "Administrateur requis",
+      "auth_root": "Super-administrateur requis"
+    }
+  }
+}

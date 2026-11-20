@@ -1,0 +1,468 @@
+{
+  "meta": {
+    "title": "EasyTV · 開源 AI 短劇創作平台",
+    "description": "EasyTV 是開源、可自架的 AI 短劇創作平台：節點畫布、一句話成片、3D 導演台、伺服器端合成，內建積分計費、模型定價與營運後台。短劇創作版的 New API。"
+  },
+  "nav": {
+    "features": "能力",
+    "why": "為什麼",
+    "arch": "架構",
+    "compare": "比較",
+    "quickstart": "部署",
+    "roadmap": "路線圖",
+    "docs": "文件",
+    "github": "GitHub",
+    "demo": "線上體驗",
+    "theme": "切換主題",
+    "language": "切換語言",
+    "menu": "選單"
+  },
+  "hero": {
+    "eyebrow": "開源 · 自架 · AGPL-3.0",
+    "title1": "短劇創作版的",
+    "title2": "New API",
+    "subtitle": "把任意影片、圖像、語音模型接進同一張畫布，從劇本到成片一站完成。內建積分計費、模型定價、金流與營運後台，部署到你自己的伺服器。",
+    "cta_github": "在 GitHub 查看",
+    "cta_demo": "線上體驗",
+    "cta_deploy": "五分鐘部署",
+    "stats": {
+      "repos": "開源儲存庫",
+      "locales": "內建語系",
+      "api": "介面約定",
+      "models": "模型接入方式"
+    },
+    "stats_v": {
+      "repos": "4",
+      "locales": "7",
+      "api": "40 章",
+      "models": "OpenAI 相容"
+    },
+    "flow": {
+      "script": "劇本 / 企劃案",
+      "subject": "主體 & 風格",
+      "shot": "分鏡生成",
+      "voice": "配音 & 字幕",
+      "compose": "時間軸合成",
+      "work": "發布成片"
+    }
+  },
+  "showcase": {
+    "eyebrow": "成片畫廊",
+    "title": "一張畫布，串起整條短劇產線"
+  },
+  "features": {
+    "eyebrow": "核心能力",
+    "title": "對標商業短劇平台的完整工作台",
+    "subtitle": "功能逐項對照 LibTV 等商業平台整理，畫布互動、導演台、智慧剪輯都已上線，差距項目寫在路線圖裡。",
+    "items": [
+      {
+        "title": "無限畫布 · 節點工作流",
+        "desc": "文字、圖片、影片、音訊、分鏡組五類節點連線即跑，跨畫布複製貼上、宮格切分、連線追加提示詞。"
+      },
+      {
+        "title": "一句話成片",
+        "desc": "對話式生成整條工作流：自動企劃案、角色與場景、分鏡與配音，一句話出草片，再逐鏡精修。"
+      },
+      {
+        "title": "劇集聖經 & 企劃案",
+        "desc": "人物小傳、世界觀、集數目錄與修訂版本，畫布記錄基於哪一稿建構，改稿後標出受影響的鏡頭。"
+      },
+      {
+        "title": "3D 導演台",
+        "desc": "在瀏覽器裡擺站位、定機位、推運鏡，匯出鏡頭描述直接餵給影片模型。"
+      },
+      {
+        "title": "主體庫 & 風格庫",
+        "desc": "角色三視圖與快照鎖定確保連戲；官方風格 + 從目前圖片反推自訂風格，投稿審核後全站共享。"
+      },
+      {
+        "title": "鏡頭候選 & 時間軸合成",
+        "desc": "每鏡多候選、逐鏡入出點與音量、原聲配音混合、SRT 字幕，伺服器端 ffmpeg 出片。"
+      },
+      {
+        "title": "媒體工具",
+        "desc": "裁切、分割、抽幀、分離音軌、去停頓、語音轉寫字幕，瀏覽器端 ffmpeg.wasm 與伺服器端雙通道。"
+      },
+      {
+        "title": "爆款復刻 · 做同款",
+        "desc": "作品開放製作過程，一鍵複製畫布做同款，復刻獎勵回流作者。"
+      },
+      {
+        "title": "Skill 技能庫 & Agent",
+        "desc": "可重複使用的工作流範本與對話式畫布助手，看得懂目前畫布的上下文。"
+      },
+      {
+        "title": "團隊空間",
+        "desc": "個人 / 團隊空間切換，角色權限、審批門禁、共享積分池與成員每月上限。"
+      },
+      {
+        "title": "積分 · 會員 · 模型定價",
+        "desc": "依模型依單位定價，會員價與首發促銷價，預扣退差，營運後台熱更新。"
+      },
+      {
+        "title": "金流 · 發票 · 分銷",
+        "desc": "微信支付 / 支付寶、發票申請、邀請返利、通路夥伴提領，成長機制開箱即用。"
+      },
+      {
+        "title": "營運後台",
+        "desc": "使用者、作品、社群審核、訂單、模型健康、閘道餘額巡檢、稽核日誌，二十餘頁獨立後台。"
+      },
+      {
+        "title": "七語系出海",
+        "desc": "簡體、繁體、英、法、日、俄、越內建，結構化文案 key 與翻譯覆蓋率測試把關。"
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "為什麼叫短劇版 New API",
+    "title": "New API 統一了大模型，EasyTV 統一了短劇生產",
+    "p1": "New API 把各家 LLM 收進一個閘道：統一介面、統一計費、統一營運。EasyTV 做的是同一件事的下一層：把各家影片、圖像、語音模型收進一個創作與營運平台，並且直接以 OpenAI 相容介面接在任何 New API / One API 閘道之後。",
+    "p2": "你不需要和每家模型廠商談合作，也不需要自己寫計費與後台。接上閘道、匯入模型清單、設好定價，一個可收費的短劇創作站就跑起來了。",
+    "cards": [
+      {
+        "k": "接入",
+        "title": "任意 OpenAI 相容閘道",
+        "desc": "/v1/chat、/v1/images、/v1/videos 一套約定，模型清單從閘道拉取後一鍵匯入定價。"
+      },
+      {
+        "k": "計費",
+        "title": "積分 = 短劇世界的 Token",
+        "desc": "按秒、按張、按次定價，毛利係數自動產生建議積分，預扣與失敗退回全自動。"
+      },
+      {
+        "k": "營運",
+        "title": "閘道級的後台體驗",
+        "desc": "模型健康、失敗率預警、建議下架、閘道餘額巡檢，營運不用看日誌。"
+      },
+      {
+        "k": "生態",
+        "title": "作品 · 技能 · 通路",
+        "desc": "開源作品做同款、Skill 範本、通路夥伴分銷，讓平台自己長出內容。"
+      }
+    ]
+  },
+  "arch": {
+    "eyebrow": "架構",
+    "title": "四個儲存庫，一份介面契約",
+    "subtitle": "前後端分離，Token 驗證，契約寫在 API.md 裡，改介面先改契約。",
+    "nodes": {
+      "web": "easytv-web",
+      "web_d": "Nuxt 4 創作台",
+      "web_d2": "畫布 / 導演台 / 社群",
+      "manage": "easytv-manage",
+      "manage_d": "Nuxt 4 營運後台 SPA",
+      "api": "easytv-api",
+      "api_d": "Go · Gin · GORM · 作業排程",
+      "db": "MySQL / Redis",
+      "oss": "物件儲存",
+      "oss_d": "OSS · 七牛 · 本機",
+      "gateway": "New API 閘道",
+      "models": "Kling · 即夢 · Seedance · Hailuo",
+      "ffmpeg": "ffmpeg 合成",
+      "models2": "Sora · GPT · Qwen · MiniMax …"
+    },
+    "edges": {
+      "web1": "Bearer",
+      "web2": "EasyTV-User",
+      "manage": "/admin/*",
+      "gateway1": "OpenAI",
+      "gateway2": "相容協定"
+    },
+    "repos": [
+      {
+        "name": "easytv-web",
+        "stack": "Nuxt 4 · Vue Flow · TresJS · ffmpeg.wasm",
+        "desc": "創作台：畫布、一句話成片、導演台、作品社群、定價頁。部署於 Cloudflare Workers。"
+      },
+      {
+        "name": "easytv-api",
+        "stack": "Go 1.22+ · Gin · GORM · MySQL · Redis",
+        "desc": "後端：使用者、積分、金流、任務佇列、合成、閘道適配。AutoMigrate 建表，sqlmock 冒煙測試。"
+      },
+      {
+        "name": "easytv-manage",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "營運後台：使用者、作品、審核、訂單、模型定價、系統設定。"
+      },
+      {
+        "name": "easytv-partner",
+        "stack": "Nuxt 4 SPA · Nuxt UI",
+        "desc": "通路夥伴自助後台：返佣看板、歸屬客戶、提領、推廣素材。"
+      }
+    ]
+  },
+  "compare": {
+    "eyebrow": "比較",
+    "title": "開源自架，而不是租用一個 SaaS",
+    "subtitle": "商業平台一欄依各家公開資料整理，以官方說明為準。",
+    "col_easytv": "EasyTV",
+    "col_saas": "商業 SaaS 平台（LibTV 等）",
+    "rows": [
+      {
+        "k": "原始碼與部署",
+        "a": "AGPL-3.0 開源，部署在自己的伺服器",
+        "b": "閉源，平台代管"
+      },
+      {
+        "k": "模型來源",
+        "a": "任意 OpenAI 相容閘道，自選廠商與價格",
+        "b": "平台指定模型與價格"
+      },
+      {
+        "k": "計費與定價",
+        "a": "積分 / 會員 / 促銷價全部自己定",
+        "b": "平台定價，不可調整"
+      },
+      {
+        "k": "金流與結算",
+        "a": "微信 / 支付寶直連，發票、分銷、提領",
+        "b": "平台代收"
+      },
+      {
+        "k": "資料歸屬",
+        "a": "素材、畫布、成片存在自己的 OSS",
+        "b": "存在平台"
+      },
+      {
+        "k": "團隊協作",
+        "a": "團隊空間、角色、審批門禁內建",
+        "b": "通常為付費團隊版"
+      },
+      {
+        "k": "多語言",
+        "a": "7 語系內建，可繼續加",
+        "b": "視平台而定"
+      },
+      {
+        "k": "二次開發",
+        "a": "介面契約公開，可改可擴充",
+        "b": "不開放"
+      }
+    ]
+  },
+  "quickstart": {
+    "eyebrow": "快速開始",
+    "title": "五分鐘跑起來",
+    "subtitle": "準備一個 MySQL 和一組 New API 相容閘道的權杖，其餘都有預設值。",
+    "steps": [
+      {
+        "title": "後端",
+        "desc": "複製環境變數範例，填 SQL_DSN 與 ROOT_PASSWORD，首次啟動自動建表並建立管理員。"
+      },
+      {
+        "title": "創作台",
+        "desc": "指向後端位址即可，預設連接埠 3005。"
+      },
+      {
+        "title": "營運後台",
+        "desc": "用 root 帳號登入，在「系統設定 · 閘道」填入閘道位址與金鑰，拉取模型清單並匯入定價。"
+      }
+    ],
+    "tabs": [
+      "easytv-api",
+      "easytv-web",
+      "easytv-manage",
+      "easytv-partner"
+    ],
+    "note": "完整安裝、閘道對接與 systemd 見文件站。",
+    "code": {
+      "api_env": "填 SQL_DSN / ROOT_PASSWORD，Redis 可選",
+      "api_run": "首次啟動自動 AutoMigrate 並建立 root",
+      "api_seed": "可選：灌入示範作品與技能",
+      "web_env": "在 .env.development 裡填 NUXT_PUBLIC_API_BASE_URL",
+      "manage_login": "用 ROOT_USERNAME / ROOT_PASSWORD 登入",
+      "manage_gateway": "系統設定 · 閘道 → 填閘道位址與金鑰 → 拉取模型 → 匯入定價",
+      "partner_login": "用一般 EasyTV 帳號登入後申請加入"
+    }
+  },
+  "roadmap": {
+    "eyebrow": "路線圖",
+    "title": "接下來做什麼",
+    "cols": [
+      {
+        "title": "開源發布",
+        "items": [
+          "四個儲存庫的 LICENSE 與貢獻指南",
+          "docker compose 一鍵啟動",
+          "介面契約視覺化檢索",
+          "GitHub Actions 全儲存庫 CI"
+        ]
+      },
+      {
+        "title": "創作能力",
+        "items": [
+          "聲音複製與多角色對白",
+          "超長影片分段續寫",
+          "分鏡草稿 9–25 格",
+          "即時多人畫布協作"
+        ]
+      },
+      {
+        "title": "生態",
+        "items": [
+          "模型供應商外掛化",
+          "Skill / 範本市集",
+          "開放 API 與 Agent 調度",
+          "錯誤監控與可觀測性"
+        ]
+      }
+    ]
+  },
+  "community": {
+    "eyebrow": "參與",
+    "title": "一起把短劇產線開源出來",
+    "subtitle": "提 Issue、送 PR、翻譯文案，或者直接部署一個站來用。",
+    "cards": [
+      {
+        "title": "GitHub",
+        "desc": "四個產品儲存庫都在 easytv-ai 組織底下。",
+        "cta": "前往組織"
+      },
+      {
+        "title": "文件",
+        "desc": "安裝、閘道、三端後台和介面約定都寫在文件站。",
+        "cta": "開啟文件"
+      },
+      {
+        "title": "線上體驗",
+        "desc": "不想部署，先試試官方站。",
+        "cta": "開啟 EasyTV"
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "開源 AI 短劇創作平台",
+    "license": "AGPL-3.0 授權 · 架構致敬 New API / One API",
+    "links": {
+      "web": "創作台",
+      "api": "後端",
+      "manage": "後台",
+      "partner": "通路",
+      "docs": "文件",
+      "demo": "官方站"
+    }
+  },
+  "docs": {
+    "toc": "本頁目錄",
+    "prev": "上一頁",
+    "next": "下一頁",
+    "search": "搜尋文件",
+    "edit": "在 GitHub 上編輯此頁",
+    "empty": "沒有符合的頁面",
+    "untranslated": "本頁尚未提供繁體中文版本，以下為簡體中文原文。",
+    "untranslated_cta": "參與翻譯",
+    "sections": {
+      "start": "開始",
+      "install": "安裝部署",
+      "guide": "使用指南",
+      "api": "API 參考",
+      "ref": "說明"
+    },
+    "hub": {
+      "eyebrow": "文件",
+      "nav": "開始使用",
+      "title": "開始使用 EasyTV",
+      "subtitle": "部署 EasyTV，接上模型閘道，完成第一次出片。",
+      "intro": "EasyTV 是開源的 AI 短劇創作平台。四個儲存庫共用一個後端：創作台出片，營運後台管人管錢，通路後台做返佣。模型請求會轉發到你自己的 New API / One API 相容閘道。",
+      "repos": "儲存庫一覽",
+      "web_t": "創作台",
+      "web_d": "easytv-web · 畫布、一句話成片、導演台、社群。本機 :3005。",
+      "api_repo_t": "後端 API",
+      "api_repo_d": "easytv-api · 驗證、任務、計費、儲存。本機 :8383。契約是 API.md。",
+      "manage_t": "營運後台",
+      "manage_d": "easytv-manage · 使用者、審核、定價、閘道。本機 :3006。",
+      "open": "開啟",
+      "all": "全部頁面",
+      "steps": "三步跑起來",
+      "step1_t": "部署實例",
+      "step1_d": "用 Docker Compose 或原始碼啟動 API、創作台和營運後台。",
+      "step2_t": "對接模型閘道",
+      "step2_d": "填入 New API / One API 相容閘道，拉取模型並匯入積分定價。",
+      "step3_t": "出第一支片",
+      "step3_d": "開啟創作台，用一句話成片或畫布跑通第一次生成。",
+      "deploys": "選擇部署方式",
+      "docker_t": "Docker Compose 部署",
+      "docker_d": "編排 API、MySQL 與 Redis，可選擇一併啟動創作台和營運後台。",
+      "source_t": "原始碼執行",
+      "source_d": "用 Go 和 pnpm 在本機分別啟動四個儲存庫。",
+      "explore": "繼續探索",
+      "shot_arch": "四個儲存庫如何接到 easytv-api 和模型閘道",
+      "api_ref": "介面參考",
+      "api_ref_d": "依資源拆開：方法、參數、curl 和回應。契約仍以 easytv-api 的 API.md 為準。",
+      "auth_t": "驗證與登入",
+      "auth_d": "Bearer + EasyTV-User，信箱 / 簡訊登入，統一錯誤回傳。",
+      "canvas_api_t": "畫布",
+      "canvas_api_d": "graph、樂觀鎖 version、版本歷史、分享。",
+      "task_t": "生成任務",
+      "task_d": "建立、輪詢、取消、重試；積分預扣。",
+      "models_t": "模型",
+      "models_d": "可用清單和詳情，建立任務的白名單。",
+      "wallet_t": "錢包",
+      "wallet_d": "餘額、批次、流水、會員。",
+      "order_t": "訂單",
+      "order_d": "報價、下單、微信 / 支付寶、輪詢。",
+      "price_t": "定價與閘道",
+      "price_d": "model_price、拉模型、匯入、退款調帳。",
+      "user_t": "使用者端總表",
+      "user_d": "創作台 /user/* 一覽，點進各資源頁看範例。",
+      "admin_t": "管理端",
+      "admin_d": "使用者、審核、定價、訂單。營運後台走這些介面。",
+      "pub_t": "公開與計費",
+      "pub_d": "資訊流、模型列表、錢包和下單。",
+      "ptn_t": "通路介面",
+      "ptn_d": "夥伴看板、客戶、口令紅包。",
+      "partner_t": "通路後台",
+      "partner_d": "返佣看板、提領和推廣素材。",
+      "start_t": "快速開始",
+      "start_d": "15 分鐘：Docker、後台、閘道、第一支成片。",
+      "install_t": "安裝部署",
+      "install_d": "Docker、原始碼、環境變數、儲存與正式網域。",
+      "guide_t": "創作指南",
+      "guide_d": "畫布、一句話成片、導演台、媒體工具。",
+      "bill_t": "計費與營運",
+      "bill_d": "積分、會員、金流、團隊空間、通路返佣。",
+      "api_t": "介面總覽",
+      "api_d": "Base URL、回應封包，以及依資源拆開的目錄。",
+      "arch_t": "架構",
+      "arch_d": "四個儲存庫如何接到同一個後端。",
+      "gw_t": "對接閘道",
+      "gw_d": "把 New API 相容閘道接上並匯入定價。",
+      "prod_t": "正式環境部署",
+      "prod_d": "子網域、Nginx、Cloudflare、多節點 worker。",
+      "help_t": "說明",
+      "help_d": "常見問題與 AGPL / 商業授權。"
+    },
+    "api": {
+      "headers": "Header Parameters",
+      "query": "Query Parameters",
+      "path": "Path Parameters",
+      "body": "Request Body",
+      "responses": "Responses",
+      "errors": "Errors",
+      "copy": "複製",
+      "copied": "已複製",
+      "copy_md": "複製 Markdown",
+      "overview": "概述",
+      "callout": "本機除錯",
+      "callout_d": "Base URL 預設為 http://127.0.0.1:8383。完整契約以 easytv-api/API.md 為準，改介面先改那份檔案。",
+      "cat_studio": "創作與使用者",
+      "cat_studio_d": "創作台、公開介面和登入使用者端。點進分組查看每一條介面。",
+      "cat_ops": "管理與通路",
+      "cat_ops_d": "營運後台 easytv-manage 和通路夥伴 easytv-partner。",
+      "crumb": "API 參考",
+      "copied_md": "已複製",
+      "md_name": "名稱",
+      "md_type": "型別",
+      "md_required": "必填",
+      "md_desc": "說明",
+      "md_yes": "是",
+      "md_no": "否",
+      "md_curl": "cURL",
+      "md_response": "200 JSON",
+      "auth_none": "無需驗證",
+      "auth_user": "需要登入",
+      "auth_admin": "需要管理員",
+      "auth_root": "需要超級管理員"
+    }
+  }
+}

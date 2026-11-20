@@ -3,36 +3,37 @@ const { t, tm, rt } = useI18n()
 const steps = computed(() => (tm('quickstart.steps') as any[]).map(s => ({ title: rt(s.title), desc: rt(s.desc) })))
 const tabs = computed(() => (tm('quickstart.tabs') as any[]).map(x => rt(x)))
 const active = ref(0)
-const snippets = [
+// 注释行走多语言；命令本身不翻译
+const snippets = computed(() => [
   [
     { c: 'git clone https://github.com/easytv-ai/easytv-api.git && cd easytv-api' },
     { c: 'cp .env.example .env' },
-    { m: '# 填 SQL_DSN / ROOT_PASSWORD，Redis 可选' },
+    { m: `# ${t('quickstart.code.api_env')}` },
     { c: 'go run . --port 8383' },
-    { m: '# → http://127.0.0.1:8383，首次启动自动 AutoMigrate 并创建 root' },
-    { c: 'go run ./cmd/seed', m2: '   # 可选：灌入演示作品与技能' },
+    { m: `# → http://127.0.0.1:8383 · ${t('quickstart.code.api_run')}` },
+    { c: 'go run ./cmd/seed', m2: `   # ${t('quickstart.code.api_seed')}` },
   ],
   [
     { c: 'git clone https://github.com/easytv-ai/easytv-web.git && cd easytv-web' },
     { c: 'pnpm install' },
     { c: 'pnpm dev' },
-    { m: '# → http://localhost:3005，.env.development 里填 NUXT_PUBLIC_API_BASE_URL' },
-    { c: 'pnpm deploy', m2: '      # Cloudflare Workers（wrangler）' },
+    { m: `# → http://localhost:3005 · ${t('quickstart.code.web_env')}` },
+    { c: 'pnpm deploy', m2: '      # Cloudflare Workers (wrangler)' },
   ],
   [
     { c: 'git clone https://github.com/easytv-ai/easytv-manage.git && cd easytv-manage' },
     { c: 'pnpm install' },
     { c: 'pnpm dev' },
-    { m: '# → http://localhost:3006，用 ROOT_USERNAME / ROOT_PASSWORD 登录' },
-    { m: '# 系统设置 · 网关 → 填网关地址与密钥 → 拉取模型 → 导入定价' },
+    { m: `# → http://localhost:3006 · ${t('quickstart.code.manage_login')}` },
+    { m: `# ${t('quickstart.code.manage_gateway')}` },
   ],
   [
     { c: 'git clone https://github.com/easytv-ai/easytv-partner.git && cd easytv-partner' },
     { c: 'pnpm install' },
     { c: 'pnpm dev' },
-    { m: '# → http://localhost:3010，用普通 EasyTV 账号登录后申请入驻' },
+    { m: `# → http://localhost:3010 · ${t('quickstart.code.partner_login')}` },
   ],
-]
+])
 </script>
 
 <template>

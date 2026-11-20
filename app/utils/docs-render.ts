@@ -1,7 +1,9 @@
 import { marked } from 'marked'
 import { DOC_PAGES, parseFrontmatter, slugifyHeading, type DocPageMeta } from './docs'
+import { DEFAULT_LOCALE, contentLocales } from './locales'
 
-const sources = import.meta.glob('../../content/docs/{zh,en}/*.md', {
+// 目录名即语种 code；新增译文只要放进 content/docs/<code>/ 就会被读到
+const sources = import.meta.glob('../../content/docs/*/*.md', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -15,6 +17,8 @@ export interface DocTocItem {
 
 export interface RenderedDoc {
   slug: string
+  /** 正文实际来自哪个语种目录；与当前语种不同说明是退回的原文 */
+  sourceLocale: string
   title: string
   description: string
   html: string
@@ -26,13 +30,22 @@ function keyFor(locale: string, slug: string) {
   return Object.keys(sources).find(k => k.replaceAll('\\', '/').endsWith(suffix))
 }
 
+/** 按退回顺序找到第一份存在的原文 */
+function resolveSource(locale: string, slug: string) {
+  for (const code of contentLocales(locale)) {
+    const key = keyFor(code, slug)
+    if (key) return { key, sourceLocale: code }
+  }
+  return null
+}
+
 function localizeDocLinks(html: string, locale: string) {
-  if (locale === 'zh') return html
+  if (locale === DEFAULT_LOCALE) return html
   return html.replaceAll('href="/docs/', `href="/${locale}/docs/`)
 }
 
 export function loadDocSource(locale: string, slug: string): string | null {
-  const key = keyFor(locale, slug) || keyFor('zh', slug)
+  const key = resolveSource(locale, slug)?.key
   if (!key) return null
   const { title, description, body } = parseFrontmatter(sources[key] || '')
   const parts = [`# ${title}`]
@@ -42,8 +55,9 @@ export function loadDocSource(locale: string, slug: string): string | null {
 }
 
 export function loadDoc(locale: string, slug: string): RenderedDoc | null {
-  const key = keyFor(locale, slug) || keyFor('zh', slug)
-  if (!key) return null
+  const found = resolveSource(locale, slug)
+  if (!found) return null
+  const { key, sourceLocale } = found
   const { title, description, body } = parseFrontmatter(sources[key] || '')
   const toc: DocTocItem[] = []
   let html = marked.parse(body, { gfm: true, async: false }) as string
@@ -65,7 +79,7 @@ export function loadDoc(locale: string, slug: string): RenderedDoc | null {
     return `<h${depth} id="${id}">${inner}</h${depth}>`
   })
   html = localizeDocLinks(html, locale)
-  return { slug, title, description, html, toc }
+  return { slug, sourceLocale, title, description, html, toc }
 }
 
 export function loadDocNav(locale: string) {

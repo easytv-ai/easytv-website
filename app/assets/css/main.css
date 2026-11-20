@@ -960,3 +960,69 @@ code.docs-ep-path {
 }
 .docs-ep-index-title { color: var(--fg-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .docs-ep-index .docs-method { margin-right: 0; min-width: 3.6em; }
+
+/* ---------- 语言下拉 ---------- */
+.lang-switch { position: relative; display: inline-flex; align-items: center; }
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--fg-2);
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.lang-switch-btn:hover,
+.lang-switch-btn[aria-expanded="true"] { background: var(--panel-2); color: var(--fg); }
+.lang-switch-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  min-width: 184px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .35);
+}
+.lang-switch-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+.lang-switch-item:hover { background: var(--panel-2); color: var(--fg); }
+.lang-switch-item.is-active { background: var(--panel-2); color: var(--fg); font-weight: 500; }
+
+/* 文档页头：小屏把 GitHub 让给分区标签 */
+.docs-tab.docs-tab--wide { display: none; }
+@media (min-width: 640px) {
+  .docs-tab.docs-tab--wide { display: inline-flex; }
+}
+
+/* 文档正文未翻译提示 */
+.docs-untranslated {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel-2);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+.docs-untranslated a { color: var(--accent); white-space: nowrap; }
+.docs-untranslated a:hover { text-decoration: underline; }

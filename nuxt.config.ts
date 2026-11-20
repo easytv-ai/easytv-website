@@ -2,6 +2,7 @@ import process from 'node:process'
 import tailwindcss from '@tailwindcss/vite'
 import { apiGroupRedirects } from './app/utils/api-catalog'
 import { DOC_PAGES } from './app/utils/docs'
+import { DEFAULT_LOCALE, SITE_LOCALES, localePrefix } from './app/utils/locales'
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://easytv.ai'
 
@@ -31,14 +32,11 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    defaultLocale: 'zh',
+    defaultLocale: DEFAULT_LOCALE,
     strategy: 'prefix_except_default',
     baseUrl: siteUrl,
     langDir: 'locales',
-    locales: [
-      { code: 'zh', language: 'zh-CN', name: '简体中文', file: 'zh.json' },
-      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
-    ],
+    locales: SITE_LOCALES.map(l => ({ ...l })),
     detectBrowserLanguage: false,
   },
   runtimeConfig: {
@@ -51,13 +49,14 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/',
-        '/en',
-        '/docs',
-        '/en/docs',
-        ...DOC_PAGES.flatMap(p => [`/docs/${p.slug}`, `/en/docs/${p.slug}`]),
-      ],
+      routes: SITE_LOCALES.flatMap((l) => {
+        const prefix = localePrefix(l.code)
+        return [
+          prefix || '/',
+          `${prefix}/docs`,
+          ...DOC_PAGES.map(p => `${prefix}/docs/${p.slug}`),
+        ]
+      }),
     },
   },
   routeRules: Object.fromEntries(

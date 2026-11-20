@@ -5,7 +5,6 @@ import { API_GROUPS, API_TOP_LEVEL, pick, type ApiEndpoint } from '~/utils/api-c
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
-const switchLocalePath = useSwitchLocalePath()
 const route = useRoute()
 const links = useSiteLinks()
 const { isDark, toggle } = useTheme()
@@ -16,7 +15,6 @@ const mainEl = ref<HTMLElement | null>(null)
 const isMac = ref(false)
 const toc = useDocsToc()
 const opened = useState<Record<string, boolean>>('docs-api-opened', () => ({}))
-const otherLocale = computed(() => (locale.value === 'zh' ? 'en' : 'zh'))
 const nav = computed(() => {
   const pages = loadDocNav(locale.value)
   return [
@@ -272,7 +270,7 @@ watch(() => route.path, () => {
     <div class="docs-col">
       <header class="docs-top">
         <div class="flex min-w-0 items-center gap-1">
-          <button type="button" class="docs-icon-btn docs-mobile-only" aria-label="menu" @click="open = true">
+          <button type="button" class="docs-icon-btn docs-mobile-only" :aria-label="t('nav.menu')" @click="open = true">
             <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
           </button>
           <nav class="docs-tabs">
@@ -286,8 +284,8 @@ watch(() => route.path, () => {
           </nav>
         </div>
         <div class="flex shrink-0 items-center gap-1">
-          <NuxtLink :to="switchLocalePath(otherLocale)" class="docs-tab hidden sm:inline-flex">{{ t('nav.lang') }}</NuxtLink>
-          <a :href="links.org" target="_blank" rel="noopener" class="docs-tab hidden sm:inline-flex">{{ t('nav.github') }}</a>
+          <LangSwitch compact />
+          <a :href="links.org" target="_blank" rel="noopener" class="docs-tab docs-tab--wide">{{ t('nav.github') }}</a>
         </div>
       </header>
 

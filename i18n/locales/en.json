@@ -14,7 +14,8 @@
     "github": "GitHub",
     "demo": "Live demo",
     "theme": "Toggle theme",
-    "lang": "中文"
+    "language": "Change language",
+    "menu": "Menu"
   },
   "hero": {
     "eyebrow": "Open source · Self-hosted · AGPL-3.0",
@@ -33,7 +34,7 @@
     "stats_v": {
       "repos": "4",
       "locales": "7",
-      "api": "38 chapters",
+      "api": "40 chapters",
       "models": "OpenAI-compatible"
     },
     "flow": {
@@ -263,7 +264,16 @@
       "easytv-manage",
       "easytv-partner"
     ],
-    "note": "Full install, gateway setup and systemd live in the docs."
+    "note": "Full install, gateway setup and systemd live in the docs.",
+    "code": {
+      "api_env": "Set SQL_DSN / ROOT_PASSWORD; Redis is optional",
+      "api_run": "first start runs AutoMigrate and creates root",
+      "api_seed": "optional: seed demo works and skills",
+      "web_env": "set NUXT_PUBLIC_API_BASE_URL in .env.development",
+      "manage_login": "sign in with ROOT_USERNAME / ROOT_PASSWORD",
+      "manage_gateway": "System · Gateway → enter gateway URL and key → fetch models → import pricing",
+      "partner_login": "sign in with a regular EasyTV account, then apply"
+    }
   },
   "roadmap": {
     "eyebrow": "Roadmap",
@@ -339,6 +349,8 @@
     "search": "Search docs",
     "edit": "Edit this page on GitHub",
     "empty": "No matching pages",
+    "untranslated": "This page has not been translated yet, so the original is shown.",
+    "untranslated_cta": "Help translate",
     "sections": {
       "start": "Start",
       "install": "Install",

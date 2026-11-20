@@ -2,7 +2,9 @@
 import { DOC_PAGES, docPath } from '~/utils/docs'
 import { loadDoc, loadDocSource, neighbors } from '~/utils/docs-render'
 import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
-import { API_GROUPS, findApiEndpoint, groupEntrySlug, pageTitle } from '~/utils/api-catalog'
+import { API_GROUPS, findApiEndpoint, groupEntrySlug, pageTitle, pick } from '~/utils/api-catalog'
+import { hasCatalogLocale } from '~/utils/locales'
+import DocsUntranslated from '~/components/docs/DocsUntranslated.vue'
 import ApiEndpointDoc from '~/components/docs/ApiEndpointDoc.vue'
 import ApiCatalog from '~/components/docs/ApiCatalog.vue'
 import ApiGroupLinks from '~/components/docs/ApiGroupLinks.vue'
@@ -26,6 +28,11 @@ const group = computed(() => API_GROUPS.find(g => g.slug === slug.value) || null
 const doc = computed(() => loadDoc(locale.value, slug.value))
 const docMarkdown = computed(() => loadDocSource(locale.value, slug.value) || '')
 const around = computed(() => neighbors(slug.value))
+// 接口页的文案来自目录（只有 zh / en），其余页面看正文实际取自哪个语种
+const untranslated = computed(() => {
+  if (endpoint.value) return !hasCatalogLocale(locale.value)
+  return !!doc.value && doc.value.sourceLocale !== locale.value
+})
 
 function titleOf(pageSlug?: string) {
   if (!pageSlug) return ''
@@ -59,13 +66,14 @@ onUnmounted(() => {
 useSeoMeta({
   title: () => `${endpoint.value ? pageTitle(slug.value, locale.value) : (doc.value?.title || 'Docs')} · EasyTV`,
   description: () => endpoint.value
-    ? (locale.value.startsWith('en') ? endpoint.value.summary.en : endpoint.value.summary.zh)
+    ? pick(endpoint.value.summary, locale.value)
     : (doc.value?.description || ''),
 })
 </script>
 
 <!-- eslint-disable vue/no-multiple-template-root -- 正文与翻页器并列两个根节点；本站没开页面过渡，暂不改结构 -->
 <template>
+  <DocsUntranslated v-if="untranslated" />
   <ApiCatalog
     v-if="slug === 'api' && doc"
     :title="doc.title"
@@ -85,7 +93,7 @@ useSeoMeta({
     <div class="docs-body" v-html="doc.html" />
     <p class="mt-10 text-sm" style="color: var(--fg-3)">
       <a
-        :href="`https://github.com/easytv-ai/easytv-website/edit/main/content/docs/${locale}/${slug}.md`"
+        :href="`https://github.com/easytv-ai/easytv-website/edit/main/content/docs/${doc.sourceLocale}/${slug}.md`"
         target="_blank"
         rel="noopener"
         class="hover:underline"
