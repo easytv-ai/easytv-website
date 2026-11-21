@@ -1,6 +1,17 @@
+<!-- EasyTV 标志：品牌渐变的圆角底上，两张白色画面叠在一起，前一张镂出播放键。深浅主题通用。 -->
 <template>
-  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="32" height="32" rx="9" fill="var(--fg)" />
-    <path d="M12.5 9.2v13.6L23.2 16 12.5 9.2Z" fill="var(--bg)" />
+  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="easytv-logo-g" x1="8" y1="6" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF5530" />
+        <stop offset="0.55" stop-color="#EA5EC1" />
+        <stop offset="1" stop-color="#7C5CFF" />
+      </linearGradient>
+    </defs>
+    <rect width="120" height="120" rx="27" fill="url(#easytv-logo-g)" />
+    <g transform="translate(13.2 13.2) scale(0.78)" fill="#FFFFFF">
+      <path d="M28 21H68A15 15 0 0 1 83 36V38H51A21 21 0 0 0 30 59V73H28A15 15 0 0 1 13 58V36A15 15 0 0 1 28 21Z" />
+      <path fill-rule="evenodd" d="M51 43H91A16 16 0 0 1 107 59V83A16 16 0 0 1 91 99H51A16 16 0 0 1 35 83V59A16 16 0 0 1 51 43ZM62.57 62.62Q62.57 58.68 66.02 60.59L81.30 69.09Q84.75 71.00 81.30 72.91L66.02 81.41Q62.57 83.32 62.57 79.38Z" />
+    </g>
   </svg>
 </template>
