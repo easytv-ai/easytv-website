@@ -341,7 +341,8 @@
       "manage": "Admin",
       "partner": "Partner",
       "docs": "Docs",
-      "demo": "Official site"
+      "demo": "Official site",
+      "brand": "Brand"
     }
   },
   "docs": {
@@ -474,5 +475,54 @@
     "failed_desc": "This page failed to load. Please try again later.",
     "home": "Back to home",
     "docs": "Read the docs"
+  },
+  "brand": {
+    "eyebrow": "Brand assets",
+    "title": "Logo and brand assets",
+    "subtitle": "The EasyTV logo, colors and typeface. When you write about, cover or integrate EasyTV, download the source files here.",
+    "download_all": "Download all assets",
+    "download_all_note": "ZIP · every SVG and transparent PNG",
+    "back_home": "Back to home",
+    "groups": {
+      "color": {
+        "title": "Color",
+        "desc": "The default. White mark on a rounded tile in the brand gradient; without the tile, the mark itself takes the gradient."
+      },
+      "black": {
+        "title": "Black",
+        "desc": "For light backgrounds: single-color print, document headers, alongside partner logos."
+      },
+      "white": {
+        "title": "White",
+        "desc": "For dark or photographic backgrounds: video end cards, dark interfaces, watermarks."
+      }
+    },
+    "kinds": {
+      "icon": "Icon",
+      "mark": "Mark",
+      "logo": "Mark with wordmark",
+      "logo_on_dark": "Mark with wordmark · on dark"
+    },
+    "colors": {
+      "title": "Colors",
+      "desc": "Click a swatch to copy its value. The gradient runs from top left to bottom right: orange, pink, violet.",
+      "orange": "Orange",
+      "pink": "Pink",
+      "violet": "Violet",
+      "ink": "Ink",
+      "paper": "Paper",
+      "gradient": "Brand gradient"
+    },
+    "type": {
+      "title": "Typeface",
+      "desc": "The wordmark is set in Geist SemiBold with letter spacing tightened by 3.5%. Geist is open source and free for commercial use. In the downloadable files the wordmark is outlined, so no font is needed."
+    },
+    "usage": {
+      "title": "Usage",
+      "prefer": "Use the color version by default. On busy backgrounds or in single-color print, use the black or white version.",
+      "space": "Keep clear space of at least half the icon height on every side; do not crowd it with other text or graphics.",
+      "size": "Minimum size is 16 pixels for the icon and 80 pixels wide for versions with the wordmark.",
+      "dont": "Do not stretch, rotate or recolor the logo, and do not add outlines, shadows or other effects."
+    }
   }
 }

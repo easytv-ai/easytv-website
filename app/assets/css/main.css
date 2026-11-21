@@ -67,6 +67,11 @@ body {
 }
 a:hover > .nav-ext,
 a:focus-visible > .nav-ext { opacity: 1; transform: translate(1px, -1px); }
+/* 只在较宽屏幕显示的导航项（.nav-link 自带 inline-flex，会盖过 hidden） */
+.nav-link.nav-link--wide { display: none; }
+@media (min-width: 640px) {
+  .nav-link.nav-link--wide { display: inline-flex; }
+}
 .nav-icon-btn {
   @apply inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors;
   color: var(--fg-2);
@@ -1241,4 +1246,34 @@ code.docs-ep-path {
 
 @media (prefers-reduced-motion: reduce) {
   .tv-sweep, .tv-led, .na-caret { animation: none; }
+}
+
+/* ---------- 品牌素材页 ---------- */
+.brand-section { padding: 48px 0; border-top: 1px solid var(--line-2); }
+.brand-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.brand-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
+.brand-card--wide { grid-column: span 2; }
+.brand-stage { display: flex; align-items: center; justify-content: center; height: 200px; padding: 24px; }
+.brand-stage--light { background: #F6F6F4; }
+.brand-stage--dark { background: #141416; }
+.brand-img { height: 96px; width: auto; }
+.brand-img--wide { height: 56px; width: auto; max-width: 100%; }
+.brand-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--line-2); }
+.brand-dl {
+  display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 999px;
+  border: 1px solid var(--line); font: 500 12px/1 "Geist Mono", ui-monospace, monospace; color: var(--fg-2);
+  transition: background .15s, color .15s, border-color .15s;
+}
+.brand-dl:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.brand-colors { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.brand-swatch, .brand-gradient { display: block; width: 100%; padding: 12px; text-align: left; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); transition: border-color .15s; }
+.brand-swatch:hover, .brand-gradient:hover { border-color: var(--fg-3); }
+.brand-swatch-chip { display: block; height: 88px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent); }
+.brand-gradient-bar { display: block; height: 64px; border-radius: 10px; }
+@media (min-width: 640px) {
+  .brand-colors { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .brand-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .brand-stage { height: 220px; }
 }

@@ -341,7 +341,8 @@
       "manage": "Admin",
       "partner": "Partenaires",
       "docs": "Docs",
-      "demo": "Site officiel"
+      "demo": "Site officiel",
+      "brand": "Marque"
     }
   },
   "docs": {
@@ -474,5 +475,54 @@
     "failed_desc": "Le chargement de cette page a échoué. Veuillez réessayer plus tard.",
     "home": "Retour à l'accueil",
     "docs": "Lire la documentation"
+  },
+  "brand": {
+    "eyebrow": "Ressources de marque",
+    "title": "Logo et ressources de marque",
+    "subtitle": "Le logo, les couleurs et la typographie d'EasyTV. Pour présenter, citer ou intégrer EasyTV, téléchargez ici les fichiers sources.",
+    "download_all": "Tout télécharger",
+    "download_all_note": "ZIP · tous les SVG et PNG à fond transparent",
+    "back_home": "Retour à l'accueil",
+    "groups": {
+      "color": {
+        "title": "Couleur",
+        "desc": "La version par défaut. Symbole blanc sur un carré arrondi au dégradé de la marque ; sans le fond, le symbole prend lui-même le dégradé."
+      },
+      "black": {
+        "title": "Noir",
+        "desc": "Pour les fonds clairs : impression en une couleur, en-têtes de documents, côte à côte avec des logos partenaires."
+      },
+      "white": {
+        "title": "Blanc",
+        "desc": "Pour les fonds sombres ou photographiques : fins de vidéo, interfaces sombres, filigranes."
+      }
+    },
+    "kinds": {
+      "icon": "Icône",
+      "mark": "Symbole",
+      "logo": "Symbole et logotype",
+      "logo_on_dark": "Symbole et logotype · fond sombre"
+    },
+    "colors": {
+      "title": "Couleurs",
+      "desc": "Cliquez sur une couleur pour copier sa valeur. Le dégradé va du coin supérieur gauche au coin inférieur droit : orange, rose, violet.",
+      "orange": "Orange",
+      "pink": "Rose",
+      "violet": "Violet",
+      "ink": "Encre",
+      "paper": "Papier",
+      "gradient": "Dégradé de marque"
+    },
+    "type": {
+      "title": "Typographie",
+      "desc": "Le logotype est composé en Geist SemiBold, avec un interlettrage resserré de 3,5 %. Geist est une police open source, libre pour un usage commercial. Dans les fichiers à télécharger, le logotype est vectorisé : aucune police n'est nécessaire."
+    },
+    "usage": {
+      "title": "Règles d'usage",
+      "prefer": "Utilisez la version couleur par défaut. Sur un fond chargé ou en impression une couleur, utilisez la version noire ou blanche.",
+      "space": "Laissez autour du logo un espace libre d'au moins la moitié de la hauteur de l'icône ; ne le collez pas à d'autres textes ou visuels.",
+      "size": "Taille minimale : 16 pixels pour l'icône, 80 pixels de large pour les versions avec logotype.",
+      "dont": "Ne déformez pas le logo, ne le faites pas pivoter, ne changez pas ses couleurs et n'ajoutez ni contour, ni ombre, ni autre effet."
+    }
   }
 }

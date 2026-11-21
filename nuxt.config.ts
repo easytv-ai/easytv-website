@@ -56,6 +56,7 @@ export default defineNuxtConfig({
         return [
           prefix || '/',
           `${prefix}/docs`,
+          `${prefix}/brand`,
           ...DOC_PAGES.map(p => `${prefix}/docs/${p.slug}`),
         ]
       })],

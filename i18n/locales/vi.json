@@ -341,7 +341,8 @@
       "manage": "Quản trị",
       "partner": "Đối tác",
       "docs": "Tài liệu",
-      "demo": "Trang chính thức"
+      "demo": "Trang chính thức",
+      "brand": "Thương hiệu"
     }
   },
   "docs": {
@@ -474,5 +475,54 @@
     "failed_desc": "Không tải được trang này. Vui lòng thử lại sau.",
     "home": "Về trang chủ",
     "docs": "Xem tài liệu"
+  },
+  "brand": {
+    "eyebrow": "Tài nguyên thương hiệu",
+    "title": "Logo và tài nguyên thương hiệu",
+    "subtitle": "Logo, màu sắc và phông chữ của EasyTV. Khi giới thiệu, đưa tin hoặc tích hợp EasyTV, hãy tải tệp gốc tại đây để sử dụng.",
+    "download_all": "Tải toàn bộ tài nguyên",
+    "download_all_note": "ZIP · gồm tất cả SVG và PNG nền trong suốt",
+    "back_home": "Về trang chủ",
+    "groups": {
+      "color": {
+        "title": "Màu",
+        "desc": "Phiên bản mặc định. Biểu tượng trắng trên nền bo góc với dải màu thương hiệu; khi không có nền, chính biểu tượng mang dải màu."
+      },
+      "black": {
+        "title": "Đen",
+        "desc": "Dùng trên nền sáng: in một màu, đầu trang tài liệu, đặt cạnh logo của đối tác."
+      },
+      "white": {
+        "title": "Trắng",
+        "desc": "Dùng trên nền tối hoặc nền ảnh: màn kết video, giao diện tối, hình mờ."
+      }
+    },
+    "kinds": {
+      "icon": "Biểu tượng ứng dụng",
+      "mark": "Biểu tượng",
+      "logo": "Biểu tượng kèm tên",
+      "logo_on_dark": "Biểu tượng kèm tên · nền tối"
+    },
+    "colors": {
+      "title": "Màu sắc",
+      "desc": "Nhấp vào ô màu để sao chép mã màu. Dải màu chạy từ góc trên bên trái xuống góc dưới bên phải: cam, hồng, tím.",
+      "orange": "Cam",
+      "pink": "Hồng",
+      "violet": "Tím",
+      "ink": "Đen mực",
+      "paper": "Trắng giấy",
+      "gradient": "Dải màu thương hiệu"
+    },
+    "type": {
+      "title": "Phông chữ",
+      "desc": "Tên thương hiệu dùng Geist SemiBold, khoảng cách chữ thu hẹp 3,5%. Geist là phông mã nguồn mở, được dùng miễn phí cho mục đích thương mại. Trong các tệp tải về, phần chữ đã được chuyển thành đường nét nên không cần cài phông."
+    },
+    "usage": {
+      "title": "Quy tắc sử dụng",
+      "prefer": "Ưu tiên dùng bản màu. Khi nền phức tạp hoặc chỉ in được một màu, hãy dùng bản đen hoặc bản trắng.",
+      "space": "Chừa khoảng trống quanh logo tối thiểu bằng nửa chiều cao biểu tượng; không đặt sát chữ hoặc hình khác.",
+      "size": "Kích thước tối thiểu: 16 pixel cho biểu tượng, rộng 80 pixel cho bản có tên.",
+      "dont": "Không kéo giãn, xoay hay đổi màu logo; không thêm viền, bóng đổ hoặc hiệu ứng khác."
+    }
   }
 }

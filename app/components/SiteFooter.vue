@@ -22,6 +22,7 @@ const year = new Date().getFullYear()
         <a :href="links.manage" target="_blank" rel="noopener">{{ t('footer.links.manage') }}</a>
         <a :href="links.partner" target="_blank" rel="noopener">{{ t('footer.links.partner') }}</a>
         <a :href="links.demo" target="_blank" rel="noopener">{{ t('footer.links.demo') }}</a>
+        <NuxtLink :to="localePath('/brand')">{{ t('footer.links.brand') }}</NuxtLink>
       </nav>
       <div class="text-xs" style="color: var(--fg-3)">© {{ year }} EasyTV · {{ t('footer.license') }}</div>
     </div>

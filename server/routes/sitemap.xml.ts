@@ -4,7 +4,7 @@ import { SITE_LOCALES, localePrefix } from '../../app/utils/locales'
 // 构建时预渲染成静态文件。每个地址带上全部语种的 hreflang 互指。
 export default defineEventHandler((event) => {
   const site = String(useRuntimeConfig(event).public.siteUrl).replace(/\/$/, '')
-  const paths = ['', '/docs', ...DOC_PAGES.map(p => `/docs/${p.slug}`)]
+  const paths = ['', '/docs', '/brand', ...DOC_PAGES.map(p => `/docs/${p.slug}`)]
   const loc = (code: string, path: string) => `${site}${localePrefix(code)}${path}` || site
 
   const urls = paths.flatMap(path => SITE_LOCALES.map((l) => {
