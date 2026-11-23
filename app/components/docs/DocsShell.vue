@@ -279,11 +279,13 @@ function syncActive() {
   const limit = window.innerHeight
   let current = 0
   for (let i = 0; i < nodes.length; i++) {
-    if (nodes[i].getBoundingClientRect().top <= line) current = i
+    const node = nodes[i]
+    if (node && node.getBoundingClientRect().top <= line) current = i
   }
   let end = current
   for (let i = current; i < nodes.length; i++) {
-    if (nodes[i].getBoundingClientRect().top <= limit) end = i
+    const node = nodes[i]
+    if (node && node.getBoundingClientRect().top <= limit) end = i
     else break
   }
   activeIds.value = nodes.slice(current, end + 1).map(node => node.id)
