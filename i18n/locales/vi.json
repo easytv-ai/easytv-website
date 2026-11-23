@@ -352,6 +352,18 @@
     "search": "Tìm trong tài liệu",
     "edit": "Sửa trang này trên GitHub",
     "empty": "Không có trang phù hợp",
+    "open": "Mở",
+    "feedback": "Trang này có hữu ích không?",
+    "helpful": "Hữu ích",
+    "unhelpful": "Không hữu ích",
+    "thanks": "Cảm ơn phản hồi",
+    "footer_intro": "Tìm hiểu dự án và tài liệu EasyTV",
+    "footer_about": "Giới thiệu",
+    "footer_docs": "Tài liệu",
+    "footer_repos": "Kho mã",
+    "home": "Trang chủ",
+    "copy_link": "Sao chép liên kết",
+    "link_copied": "Đã sao chép",
     "untranslated": "Trang này chưa có bản tiếng Việt nên đang hiển thị bản gốc tiếng Anh.",
     "untranslated_cta": "Góp sức dịch",
     "sections": {
@@ -360,6 +372,15 @@
       "guide": "Hướng dẫn",
       "api": "Tham chiếu API",
       "ref": "Trợ giúp"
+    },
+    "groups": {
+      "intro": "Giới thiệu",
+      "guides": "Hướng dẫn",
+      "deploy": "Cài đặt",
+      "maintain": "Cấu hình",
+      "create": "Sáng tác",
+      "ops": "Vận hành",
+      "help": "Trợ giúp"
     },
     "hub": {
       "eyebrow": "Tài liệu",

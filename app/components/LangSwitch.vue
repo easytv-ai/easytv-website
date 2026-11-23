@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // 语言下拉菜单。首页导航和文档页头共用；compact 时小屏只留地球图标。
-withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
+withDefaults(defineProps<{ compact?: boolean, iconOnly?: boolean }>(), { compact: false, iconOnly: false })
 
 const { t, locale, locales } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
@@ -34,11 +34,12 @@ onUnmounted(() => {
       :aria-label="t('nav.language')"
       aria-haspopup="menu"
       :aria-expanded="open"
+      :class="{ 'is-icon': iconOnly }"
       @click="open = !open"
     >
       <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
-      <span :class="compact ? 'hidden sm:inline' : ''">{{ current }}</span>
-      <svg class="h-3 w-3 shrink-0 opacity-60" :class="compact ? 'hidden sm:block' : ''" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 4.5 3 3 3-3" /></svg>
+      <span v-if="!iconOnly" :class="compact ? 'hidden sm:inline' : ''">{{ current }}</span>
+      <svg v-if="!iconOnly" class="h-3 w-3 shrink-0 opacity-60" :class="compact ? 'hidden sm:block' : ''" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 4.5 3 3 3-3" /></svg>
     </button>
     <div v-if="open" class="lang-switch-menu" role="menu">
       <NuxtLink

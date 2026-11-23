@@ -2,6 +2,7 @@
 import type { ApiEndpoint, ApiField } from '~/utils/api-catalog'
 import { buildCurl, buildEndpointMarkdown, findApiGroup, pick, errorGloss } from '~/utils/api-catalog'
 import { docPath } from '~/utils/docs'
+import { highlightCode } from '~/utils/docs-render'
 import DocsCopyMarkdown from '~/components/docs/DocsCopyMarkdown.vue'
 
 const props = defineProps<{ endpoint: ApiEndpoint }>()
@@ -18,6 +19,21 @@ const pathParams = computed(() => (props.endpoint.params || []).filter(f => f.lo
 const body = computed(() => props.endpoint.body || [])
 const authLabel = computed(() => t(`docs.api.auth_${props.endpoint.auth}`))
 const codeTab = ref<'curl' | 'json'>('curl')
+const curlHtml = ref('')
+const jsonHtml = ref('')
+watch(() => props.endpoint.slug, async () => {
+  const id = props.endpoint.slug
+  try {
+    const [curlBlock, jsonBlock] = await Promise.all([
+      highlightCode(curl.value, 'bash'),
+      highlightCode(props.endpoint.responseJson || '', 'json'),
+    ])
+    if (props.endpoint.slug !== id) return
+    curlHtml.value = curlBlock
+    jsonHtml.value = jsonBlock
+  }
+  catch { /* 高亮失败时保留纯文本 */ }
+}, { immediate: true })
 const markdown = computed(() => buildEndpointMarkdown(props.endpoint, locale.value, {
   auth: authLabel.value,
   headers: t('docs.api.headers'),
@@ -47,11 +63,12 @@ const toc = computed(() => {
 })
 
 const docsToc = useDocsToc()
-watchEffect(() => {
-  docsToc.value = toc.value
-})
-onUnmounted(() => {
-  docsToc.value = []
+watchEffect((onCleanup) => {
+  const items = toc.value
+  docsToc.value = items
+  onCleanup(() => {
+    if (docsToc.value === items) docsToc.value = []
+  })
 })
 
 async function copy(kind: 'curl' | 'json') {
@@ -76,20 +93,24 @@ function loc(field: ApiField) {
     <p class="docs-crumb">
       <NuxtLink :to="localePath(docPath('api'))">{{ t('docs.api.crumb') }}</NuxtLink>
       <span v-if="group && group.slug !== 'api-healthz'" aria-hidden="true">›</span>
-      <span v-if="group && group.slug !== 'api-healthz'">{{ pick(group.title, locale) }}</span>
+      <NuxtLink
+        v-if="group && group.slug !== 'api-healthz'"
+        :to="localePath(docPath(group.slug))"
+        class="is-current"
+      >{{ pick(group.title, locale) }}</NuxtLink>
     </p>
     <div class="docs-ep-title">
-      <span class="docs-method" :class="`is-${endpoint.method.toLowerCase()}`">{{ endpoint.method }}</span>
       <h1>{{ pick(endpoint.title, locale) }}</h1>
     </div>
     <p class="docs-ep-pathline">
+      <span class="docs-method" :class="`is-${endpoint.method.toLowerCase()}`">{{ endpoint.method }}</span>
       <code class="docs-ep-path">{{ endpoint.path }}</code>
       <span class="docs-ep-auth">{{ authLabel }}</span>
     </p>
+    <p class="docs-lead">{{ pick(endpoint.summary, locale) }}</p>
     <div class="docs-page-actions">
       <DocsCopyMarkdown :markdown="markdown" />
     </div>
-    <p class="docs-lead">{{ pick(endpoint.summary, locale) }}</p>
 
     <div class="docs-api">
       <div class="docs-api-spec">
@@ -176,8 +197,11 @@ function loc(field: ApiField) {
               {{ copied === codeTab ? t('docs.api.copied') : t('docs.api.copy') }}
             </button>
           </div>
-          <pre v-show="codeTab === 'curl'"><code>{{ curl }}</code></pre>
-          <pre v-show="codeTab === 'json'"><code>{{ endpoint.responseJson }}</code></pre>
+          <!-- eslint-disable vue/no-v-html -- 高亮结果由 shiki 生成，源码来自仓库内的接口目录 -->
+          <div v-if="curlHtml" v-show="codeTab === 'curl'" class="docs-code-pane" v-html="curlHtml" />
+          <pre v-else v-show="codeTab === 'curl'"><code>{{ curl }}</code></pre>
+          <div v-if="jsonHtml" v-show="codeTab === 'json'" class="docs-code-pane" v-html="jsonHtml" />
+          <pre v-else v-show="codeTab === 'json'"><code>{{ endpoint.responseJson }}</code></pre>
         </div>
         <p v-if="endpoint.responseNote" class="docs-api-note">{{ pick(endpoint.responseNote, locale) }}</p>
       </aside>

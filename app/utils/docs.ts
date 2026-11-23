@@ -40,6 +40,17 @@ export const DOC_PAGES: DocPageMeta[] = [
 
 export const DOC_SECTIONS: DocSection[] = ['start', 'install', 'guide', 'api', 'ref']
 
+/** 侧栏分组，对应参考文档里「---介绍---」这种分隔标题 */
+export const DOC_NAV_GROUPS: { section: DocSection, id: string, slugs: string[] }[] = [
+  { section: 'start', id: 'intro', slugs: ['', 'introduction', 'project', 'features', 'architecture', 'quickstart', 'compare', 'changelog'] },
+  { section: 'start', id: 'guides', slugs: ['guide-overview'] },
+  { section: 'install', id: 'deploy', slugs: ['install', 'install-docker', 'install-source'] },
+  { section: 'install', id: 'maintain', slugs: ['config', 'storage', 'deploy'] },
+  { section: 'guide', id: 'create', slugs: ['studio', 'canvas', 'create', 'director', 'media'] },
+  { section: 'guide', id: 'ops', slugs: ['billing', 'community', 'team', 'admin', 'partner', 'gateway'] },
+  { section: 'ref', id: 'help', slugs: ['faq', 'license'] },
+]
+
 export function docPath(slug: string) {
   return `/docs/${slug}`
 }

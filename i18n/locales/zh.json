@@ -346,12 +346,24 @@
     }
   },
   "docs": {
-    "toc": "本页目录",
+    "toc": "目录",
     "prev": "上一页",
     "next": "下一页",
     "search": "搜索文档",
     "edit": "在 GitHub 上编辑此页",
     "empty": "没有匹配的页面",
+    "open": "打开",
+    "feedback": "这篇文档对您有帮助吗？",
+    "helpful": "有帮助",
+    "unhelpful": "没帮助",
+    "thanks": "感谢您的反馈！",
+    "footer_intro": "了解 EasyTV 项目与文档",
+    "footer_about": "关于",
+    "footer_docs": "文档",
+    "footer_repos": "仓库",
+    "home": "首页",
+    "copy_link": "复制页面链接",
+    "link_copied": "已复制链接",
     "untranslated": "本页暂时没有当前语言的译文，显示的是原文。",
     "untranslated_cta": "参与翻译",
     "sections": {
@@ -360,6 +372,15 @@
       "guide": "使用指南",
       "api": "API 参考",
       "ref": "帮助"
+    },
+    "groups": {
+      "intro": "介绍",
+      "guides": "功能指南",
+      "deploy": "安装部署",
+      "maintain": "配置维护",
+      "create": "创作",
+      "ops": "运营",
+      "help": "帮助"
     },
     "hub": {
       "eyebrow": "文档",

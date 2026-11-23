@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DocsFeedback from '~/components/docs/DocsFeedback.vue'
+
 definePageMeta({
   scrollToTop: false,
 })
@@ -120,5 +122,6 @@ const explore = computed(() => [
           <p class="mt-1.5 text-[13px] leading-6" style="color: var(--fg-2)">{{ c.desc }}</p>
         </NuxtLink>
       </div>
+      <DocsFeedback />
     </article>
 </template>

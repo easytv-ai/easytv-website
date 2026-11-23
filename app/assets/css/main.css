@@ -696,7 +696,7 @@ code.docs-ep-path {
   color: var(--fg-3);
   flex-shrink: 0;
 }
-.docs-fold.is-open .docs-fold-chevron svg { transform: rotate(90deg); }
+.docs-fold.is-open > .docs-fold-row .docs-fold-chevron svg { transform: rotate(90deg); }
 .docs-fold-chevron svg {
   width: 14px;
   height: 14px;

@@ -58,6 +58,12 @@ export interface ApiGroup {
   title: LocText
   summary: LocText
   endpoints: ApiEndpoint[]
+  /** 侧栏父分组。有值时不出现在顶层，收进父文件夹。 */
+  parent?: string
+  /** 嵌在父文件夹里时用的短标题。 */
+  navTitle?: LocText
+  /** 父文件夹展开后的总览入口。 */
+  overview?: LocText
 }
 
 export function L(zh: string, en: string): LocText {
@@ -1023,10 +1029,10 @@ export const API_GROUPS: ApiGroup[] = [
   { id: 'team', slug: 'api-team', title: L('团队', 'Team'), summary: L('空间、邀请、用量。', 'Space, invite, usage.'), endpoints: team },
   { id: 'media', slug: 'api-media', title: L('媒体工具', 'Media'), summary: L('本地 ffmpeg 与模型动作。', 'Local ffmpeg and model actions.'), endpoints: media },
   { id: 'public', slug: 'api-public', title: L('公开接口', 'Public'), summary: L('信息流、技能、分享画布。', 'Feed, skills, shared canvas.'), endpoints: pub },
-  { id: 'admin', slug: 'api-admin', title: L('管理侧', 'Admin'), summary: L('role ≥ 10；退款调账要 role ≥ 100。', 'role ≥ 10; refunds and credit adjustments need role ≥ 100.'), endpoints: [] },
-  { id: 'admin-user', slug: 'api-admin-user', title: L('管理 · 用户', 'Admin · Users'), summary: L('列表、启用、身份、代登、注销。', 'List, enable, identity, impersonate, deactivate.'), endpoints: adminUser },
-  { id: 'admin-review', slug: 'api-admin-review', title: L('管理 · 审核', 'Admin · Review'), summary: L('作品、举报、评论、精选。', 'Works, reports, comments, featured.'), endpoints: adminReview },
-  { id: 'admin-price', slug: 'api-admin-price', title: L('管理 · 定价', 'Admin · Pricing'), summary: L('模型定价、网关、退款、调账。', 'Prices, gateway, refunds, adjustments.'), endpoints: adminPrice },
+  { id: 'admin', slug: 'api-admin', title: L('管理侧', 'Admin'), summary: L('role ≥ 10；退款调账要 role ≥ 100。', 'role ≥ 10; refunds and credit adjustments need role ≥ 100.'), overview: L('总表', 'Overview'), endpoints: [] },
+  { id: 'admin-user', parent: 'admin', navTitle: L('用户', 'Users'), slug: 'api-admin-user', title: L('管理 · 用户', 'Admin · Users'), summary: L('列表、启用、身份、代登、注销。', 'List, enable, identity, impersonate, deactivate.'), endpoints: adminUser },
+  { id: 'admin-review', parent: 'admin', navTitle: L('审核', 'Review'), slug: 'api-admin-review', title: L('管理 · 审核', 'Admin · Review'), summary: L('作品、举报、评论、精选。', 'Works, reports, comments, featured.'), endpoints: adminReview },
+  { id: 'admin-price', parent: 'admin', navTitle: L('定价', 'Pricing'), slug: 'api-admin-price', title: L('管理 · 定价', 'Admin · Pricing'), summary: L('模型定价、网关、退款、调账。', 'Prices, gateway, refunds, adjustments.'), endpoints: adminPrice },
   { id: 'partner', slug: 'api-partner', title: L('渠道', 'Partner'), summary: L('申请、看板、客户、落地页。', 'Apply, dashboard, customers, landing.'), endpoints: partner },
 ]
 

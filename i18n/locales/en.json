@@ -352,6 +352,18 @@
     "search": "Search docs",
     "edit": "Edit this page on GitHub",
     "empty": "No matching pages",
+    "open": "Open",
+    "feedback": "Was this page helpful?",
+    "helpful": "Helpful",
+    "unhelpful": "Not helpful",
+    "thanks": "Thanks for the feedback",
+    "footer_intro": "Learn about the EasyTV project and docs",
+    "footer_about": "About",
+    "footer_docs": "Docs",
+    "footer_repos": "Repositories",
+    "home": "Home",
+    "copy_link": "Copy page link",
+    "link_copied": "Link copied",
     "untranslated": "This page has not been translated yet, so the original is shown.",
     "untranslated_cta": "Help translate",
     "sections": {
@@ -360,6 +372,15 @@
       "guide": "Guides",
       "api": "API reference",
       "ref": "Help"
+    },
+    "groups": {
+      "intro": "Introduction",
+      "guides": "Guides",
+      "deploy": "Installation",
+      "maintain": "Configuration",
+      "create": "Create",
+      "ops": "Operations",
+      "help": "Help"
     },
     "hub": {
       "eyebrow": "Docs",

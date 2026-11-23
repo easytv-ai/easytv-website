@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-10-01',
   ssr: true,
   modules: ['@nuxtjs/i18n', '@nuxt/eslint'],
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/docs.css'],
   vite: {
     plugins: [tailwindcss()],
     // marked 只在文档页用到，不预打包的话首次进文档会整页重载

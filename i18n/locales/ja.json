@@ -352,6 +352,18 @@
     "search": "ドキュメントを検索",
     "edit": "GitHub でこのページを編集",
     "empty": "該当するページがありません",
+    "open": "開く",
+    "feedback": "このページは役に立ちましたか？",
+    "helpful": "役に立った",
+    "unhelpful": "役に立たなかった",
+    "thanks": "フィードバックありがとうございます",
+    "footer_intro": "EasyTV のプロジェクトとドキュメント",
+    "footer_about": "について",
+    "footer_docs": "ドキュメント",
+    "footer_repos": "リポジトリ",
+    "home": "ホーム",
+    "copy_link": "ページのリンクをコピー",
+    "link_copied": "リンクをコピーしました",
     "untranslated": "このページはまだ日本語に翻訳されていないため、英語の原文を表示しています。",
     "untranslated_cta": "翻訳に協力する",
     "sections": {
@@ -360,6 +372,15 @@
       "guide": "ガイド",
       "api": "API リファレンス",
       "ref": "ヘルプ"
+    },
+    "groups": {
+      "intro": "紹介",
+      "guides": "機能ガイド",
+      "deploy": "インストール",
+      "maintain": "設定",
+      "create": "制作",
+      "ops": "運用",
+      "help": "ヘルプ"
     },
     "hub": {
       "eyebrow": "ドキュメント",

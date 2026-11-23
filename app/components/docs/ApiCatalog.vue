@@ -60,15 +60,16 @@ const catalogMarkdown = computed(() => {
   return `${lines.join('\n').trim()}\n`
 })
 
-watchEffect(() => {
-  toc.value = [
+watchEffect((onCleanup) => {
+  const items = [
     { id: 'overview', text: t('docs.api.overview'), depth: 2 },
     { id: 'studio', text: t('docs.api.cat_studio'), depth: 2 },
     { id: 'ops', text: t('docs.api.cat_ops'), depth: 2 },
   ]
-})
-onUnmounted(() => {
-  toc.value = []
+  toc.value = items
+  onCleanup(() => {
+    if (toc.value === items) toc.value = []
+  })
 })
 
 function toGroup(g: ApiGroup) {
@@ -79,14 +80,18 @@ function toGroup(g: ApiGroup) {
 <template>
   <article class="docs-prose docs-api-overview">
     <h1>{{ title }}</h1>
+    <p v-if="description" class="docs-lead">{{ description }}</p>
     <div class="docs-page-actions">
       <DocsCopyMarkdown :markdown="catalogMarkdown" />
     </div>
-    <p v-if="description" class="docs-lead">{{ description }}</p>
 
-    <div class="docs-callout">
-      <div class="docs-callout-k">{{ t('docs.api.callout') }}</div>
-      <p>{{ t('docs.api.callout_d') }}</p>
+    <div class="docs-callout" data-type="info">
+      <span class="docs-callout-bar" aria-hidden="true" />
+      <svg class="docs-callout-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 11v5" stroke="var(--fd-card)" stroke-width="1.6" fill="none" /><circle cx="12" cy="8" r="0.8" fill="var(--fd-card)" /></svg>
+      <div class="docs-callout-body">
+        <p class="docs-callout-k">{{ t('docs.api.callout') }}</p>
+        <p>{{ t('docs.api.callout_d') }}</p>
+      </div>
     </div>
 
     <section id="overview">
