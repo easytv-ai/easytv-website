@@ -11,6 +11,7 @@ const links = useSiteLinks()
 const { isDark, toggle } = useTheme()
 const open = ref(false)
 const sideCollapsed = ref(false)
+const sideMotion = ref(false)
 const searchOpen = ref(false)
 const query = ref('')
 const searchEl = ref<HTMLInputElement | null>(null)
@@ -380,6 +381,7 @@ onMounted(() => {
   tocReady.value = true
   isMac.value = /Mac|iPhone|iPad/.test(navigator.platform)
   try { sideCollapsed.value = localStorage.getItem('docs-sidebar-collapsed') === '1' } catch {}
+  requestAnimationFrame(() => requestAnimationFrame(() => { sideMotion.value = true }))
   window.addEventListener('keydown', onKey)
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onScroll)
@@ -423,7 +425,7 @@ watch(tocListEl, (el) => {
 </script>
 
 <template>
-  <div class="docs-root" :class="{ 'is-collapsed': sideCollapsed }">
+  <div class="docs-root" :class="{ 'is-collapsed': sideCollapsed, 'is-motion': sideMotion }">
     <aside class="docs-side" :class="open ? 'docs-side--open' : ''">
       <div class="docs-side-inner">
       <div class="docs-brand">
@@ -604,7 +606,7 @@ watch(tocListEl, (el) => {
       </div>
     </aside>
 
-    <div v-if="sideCollapsed" class="docs-collapsed-bar">
+    <div class="docs-collapsed-bar">
       <button type="button" class="docs-icon-btn" :aria-label="t('docs.expand')" @click="setSideCollapsed(false)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg>
       </button>
