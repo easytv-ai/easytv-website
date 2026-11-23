@@ -340,6 +340,13 @@
   justify-content: center;
   border-radius: 8px;
   color: var(--fd-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.docs-root .docs-side-foot .lang-switch-btn.is-icon:hover,
+.docs-root .docs-side-foot .lang-switch-btn.is-icon[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--fd-fg) 6%, transparent);
+  color: var(--fd-fg);
 }
 .docs-root .docs-side-foot .lang-switch-menu {
   top: auto;
