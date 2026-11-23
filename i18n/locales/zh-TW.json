@@ -350,6 +350,8 @@
     "prev": "上一頁",
     "next": "下一頁",
     "search": "搜尋文件",
+    "collapse": "收合側欄",
+    "expand": "展開側欄",
     "edit": "在 GitHub 上編輯此頁",
     "empty": "沒有符合的頁面",
     "open": "打開",

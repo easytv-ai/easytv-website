@@ -350,6 +350,8 @@
     "prev": "Previous",
     "next": "Next",
     "search": "Search docs",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
     "edit": "Edit this page on GitHub",
     "empty": "No matching pages",
     "open": "Open",

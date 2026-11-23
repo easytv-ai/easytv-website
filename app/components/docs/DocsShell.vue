@@ -10,6 +10,7 @@ const route = useRoute()
 const links = useSiteLinks()
 const { isDark, toggle } = useTheme()
 const open = ref(false)
+const sideCollapsed = ref(false)
 const searchOpen = ref(false)
 const query = ref('')
 const searchEl = ref<HTMLInputElement | null>(null)
@@ -366,8 +367,14 @@ function updateTrack() {
   updateThumb()
 }
 
+function setSideCollapsed(value: boolean) {
+  sideCollapsed.value = value
+  try { localStorage.setItem('docs-sidebar-collapsed', value ? '1' : '0') } catch {}
+}
+
 onMounted(() => {
   isMac.value = /Mac|iPhone|iPad/.test(navigator.platform)
+  try { sideCollapsed.value = localStorage.getItem('docs-sidebar-collapsed') === '1' } catch {}
   window.addEventListener('keydown', onKey)
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('resize', onScroll)
@@ -411,7 +418,7 @@ watch(tocListEl, (el) => {
 </script>
 
 <template>
-  <div class="docs-root">
+  <div class="docs-root" :class="{ 'is-collapsed': sideCollapsed }">
     <aside class="docs-side" :class="open ? 'docs-side--open' : ''">
       <div class="docs-side-inner">
       <div class="docs-brand">
@@ -419,6 +426,9 @@ watch(tocListEl, (el) => {
           <SiteLogo class="h-7 w-7" />
           <span>EasyTV</span>
         </NuxtLink>
+        <button type="button" class="docs-icon-btn docs-collapse" :aria-label="sideCollapsed ? t('docs.expand') : t('docs.collapse')" @click="setSideCollapsed(!sideCollapsed)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg>
+        </button>
         <button type="button" class="docs-icon-btn docs-mobile-only" :aria-label="t('nav.docs')" @click="open = false">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
         </button>
@@ -577,13 +587,26 @@ watch(tocListEl, (el) => {
         <a :href="links.org" target="_blank" rel="noopener" class="docs-icon-btn" :aria-label="t('nav.github')">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" /></svg>
         </a>
-        <button type="button" class="docs-icon-btn" :aria-label="t('nav.theme')" @click="toggle">
-          <svg v-if="isDark" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" /></svg>
-          <svg v-else class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" /></svg>
+        <button type="button" class="docs-theme-toggle" :aria-label="t('nav.theme')" @click="toggle">
+          <span class="docs-theme-ico" :class="{ 'is-on': !isDark }" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4" /></svg>
+          </span>
+          <span class="docs-theme-ico" :class="{ 'is-on': isDark }" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" /></svg>
+          </span>
         </button>
       </div>
       </div>
     </aside>
+
+    <div v-if="sideCollapsed" class="docs-collapsed-bar">
+      <button type="button" class="docs-icon-btn" :aria-label="t('docs.expand')" @click="setSideCollapsed(false)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /></svg>
+      </button>
+      <button type="button" class="docs-icon-btn" :aria-label="t('docs.search')" @click="openSearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" /></svg>
+      </button>
+    </div>
 
     <div class="docs-col">
       <header class="docs-mobile-bar">
@@ -675,7 +698,7 @@ watch(tocListEl, (el) => {
 
     <div v-if="searchOpen" class="docs-search-mask" @click.self="closeSearch">
       <div class="docs-search-dialog" role="dialog" :aria-label="t('docs.search')">
-        <div class="docs-search-field">
+        <div class="docs-search-field" :class="{ 'has-list': query.trim() }">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" /></svg>
           <input
             ref="searchEl"
@@ -685,7 +708,7 @@ watch(tocListEl, (el) => {
             @keydown="onSearchKey"
           >
         </div>
-        <div class="docs-search-results">
+        <div v-if="query.trim()" class="docs-search-results">
           <p v-if="query.trim() && !searchHits.length" class="docs-search-empty">{{ t('docs.empty') }}</p>
           <button
             v-for="(hit, i) in searchHits"

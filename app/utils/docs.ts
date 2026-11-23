@@ -13,9 +13,9 @@ export const DOC_PAGES: DocPageMeta[] = [
   { slug: 'features', section: 'start' },
   { slug: 'architecture', section: 'start' },
   { slug: 'quickstart', section: 'start' },
-  { slug: 'guide-overview', section: 'start' },
   { slug: 'compare', section: 'start' },
   { slug: 'changelog', section: 'start' },
+  { slug: 'guide-overview', section: 'start' },
   { slug: 'install', section: 'install' },
   { slug: 'install-docker', section: 'install' },
   { slug: 'install-source', section: 'install' },
@@ -50,6 +50,30 @@ export const DOC_NAV_GROUPS: { section: DocSection, id: string, slugs: string[] 
   { section: 'guide', id: 'ops', slugs: ['billing', 'community', 'team', 'admin', 'partner', 'gateway'] },
   { section: 'ref', id: 'help', slugs: ['faq', 'license'] },
 ]
+
+/** 上一页 / 下一页跟侧栏走：先按分组，分组里没写到的再接在该分区后面。 */
+export function docReadingOrder(): DocPageMeta[] {
+  const bySlug = new Map(DOC_PAGES.map(page => [page.slug, page]))
+  const ordered: DocPageMeta[] = []
+  const seen = new Set<string>()
+  for (const section of DOC_SECTIONS) {
+    for (const group of DOC_NAV_GROUPS) {
+      if (group.section !== section) continue
+      for (const slug of group.slugs) {
+        const page = bySlug.get(slug)
+        if (!page || seen.has(slug)) continue
+        seen.add(slug)
+        ordered.push(page)
+      }
+    }
+    for (const page of DOC_PAGES) {
+      if (page.section !== section || seen.has(page.slug)) continue
+      seen.add(page.slug)
+      ordered.push(page)
+    }
+  }
+  return ordered
+}
 
 export function docPath(slug: string) {
   return `/docs/${slug}`

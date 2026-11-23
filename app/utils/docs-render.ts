@@ -1,5 +1,5 @@
 import { marked } from 'marked'
-import { DOC_PAGES, parseFrontmatter, slugifyHeading, type DocPageMeta } from './docs'
+import { DOC_PAGES, docReadingOrder, parseFrontmatter, slugifyHeading, type DocPageMeta } from './docs'
 import { DEFAULT_LOCALE, contentLocales } from './locales'
 
 // 目录名即语种 code；新增译文只要放进 content/docs/<code>/ 就会被读到
@@ -221,9 +221,10 @@ export function loadDocNav(locale: string) {
 }
 
 export function neighbors(slug: string) {
-  const i = DOC_PAGES.findIndex(p => p.slug === slug)
+  const pages = docReadingOrder()
+  const i = pages.findIndex(p => p.slug === slug)
   return {
-    prev: i > 0 ? DOC_PAGES[i - 1] : null,
-    next: i >= 0 && i < DOC_PAGES.length - 1 ? DOC_PAGES[i + 1] : null,
+    prev: i > 0 ? pages[i - 1] : null,
+    next: i >= 0 && i < pages.length - 1 ? pages[i + 1] : null,
   }
 }

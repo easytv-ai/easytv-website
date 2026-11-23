@@ -350,6 +350,8 @@
     "prev": "Précédent",
     "next": "Suivant",
     "search": "Rechercher dans la doc",
+    "collapse": "Réduire la barre latérale",
+    "expand": "Développer la barre latérale",
     "edit": "Modifier cette page sur GitHub",
     "empty": "Aucune page correspondante",
     "open": "Ouvrir",
