@@ -17,6 +17,8 @@ const searchEl = ref<HTMLInputElement | null>(null)
 const activeHit = ref(0)
 const isMac = ref(false)
 const toc = useDocsToc()
+// 目录由页面在异步 setup 之后写入，SSR 时外壳先渲染、拿不到；挂载后再显示，避免 hydration 不一致。
+const tocReady = ref(false)
 const activeIds = ref<string[]>([])
 const tocListEl = ref<HTMLElement | null>(null)
 const thumb = ref({ top: 0, height: 0 })
@@ -373,6 +375,7 @@ function setSideCollapsed(value: boolean) {
 }
 
 onMounted(() => {
+  tocReady.value = true
   isMac.value = /Mac|iPhone|iPad/.test(navigator.platform)
   try { sideCollapsed.value = localStorage.getItem('docs-sidebar-collapsed') === '1' } catch {}
   window.addEventListener('keydown', onKey)
@@ -635,11 +638,11 @@ watch(tocListEl, (el) => {
       </nav>
 
       <div class="docs-stage">
-        <div class="docs-page" :class="{ 'docs-page--toc': toc.length }">
+        <div class="docs-page" :class="{ 'docs-page--toc': tocReady && toc.length }">
           <div class="docs-main">
             <slot />
           </div>
-          <aside v-if="toc.length" class="docs-toc">
+          <aside v-if="tocReady && toc.length" class="docs-toc">
           <p class="docs-toc-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" /></svg>
             {{ t('docs.toc') }}
